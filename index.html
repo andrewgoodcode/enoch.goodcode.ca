@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#07131f" />
-    <meta name="description" content="Enoch creates tamper-evident event logs and document archives for regulated enterprises using private data and public proof." />
+    <meta name="description" content="Enoch is an API-first integrity layer for tamper-evident records. Customer-held keys, private data, public Hedera proof, and independent verification." />
+    <link rel="canonical" href="https://enoch.goodcode.ca/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Enoch" />
+    <meta property="og:title" content="Enoch | Tamper-evident records for regulated enterprises" />
+    <meta property="og:description" content="Private records stay in customer-controlled systems. SHA-256 proofs are anchored to Hedera for independent verification." />
+    <meta property="og:url" content="https://enoch.goodcode.ca/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Enoch | Tamper-evident records for regulated enterprises" />
+    <meta name="twitter:description" content="An API-first integrity layer with customer-held keys, private data, public proof, and independent verification." />
     <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-    <title>Enoch</title>
+    <title>Enoch | Tamper-evident records for regulated enterprises</title>
     <style>
       :root {
         color-scheme: light dark;
@@ -294,6 +303,48 @@
       .feature h3 { margin-bottom: 9px; font-size: 20px; font-weight: 600; }
       .feature p { margin-bottom: 0; color: var(--muted); }
 
+      .proof-model { background: var(--surface-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .fact-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line-strong); }
+      .fact { padding: 30px 32px 30px 0; border-bottom: 1px solid var(--line); }
+      .fact:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--line); }
+      .fact h3 { margin-bottom: 8px; font-size: 19px; font-weight: 600; }
+      .fact p { margin-bottom: 0; color: var(--muted); }
+      .fact code { font-family: "IBM Plex Mono", monospace; font-size: 0.88em; color: var(--accent); }
+
+      .limitations { background: var(--navy); color: var(--on-dark); }
+      .limitations .section-label { color: var(--accent-bright); }
+      .limitations .section-intro { color: var(--on-dark-muted); }
+      .limits-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(255,255,255,0.18); }
+      .limit { padding: 28px 32px 28px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+      .limit:nth-child(even) { padding-left: 32px; border-left: 1px solid rgba(255,255,255,0.14); }
+      .limit h3 { margin-bottom: 8px; color: var(--on-dark); font-size: 19px; font-weight: 500; }
+      .limit p { margin-bottom: 0; color: var(--on-dark-muted); }
+      .comparison { margin-top: 54px; }
+      .comparison h3 { margin-bottom: 22px; font-size: 25px; font-weight: 500; }
+      .comparison-list { border-top: 1px solid rgba(255,255,255,0.18); }
+      .comparison-row { display: grid; grid-template-columns: minmax(180px, 0.34fr) 1fr; gap: 28px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+      .comparison-row strong { color: var(--accent-bright); font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; }
+      .comparison-row p { margin: 0; color: #d3e0e4; }
+
+      .status-band { background: var(--surface-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .status-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-strong); }
+      .status-item { padding: 28px 28px 28px 0; border-bottom: 1px solid var(--line); }
+      .status-item + .status-item { padding-left: 28px; border-left: 1px solid var(--line); }
+      .status-item h3 { margin-bottom: 8px; font-size: 18px; font-weight: 600; }
+      .status-item p { margin: 0; color: var(--muted); }
+
+      .faq-layout { display: grid; grid-template-columns: minmax(250px, 0.4fr) minmax(0, 1fr); gap: 84px; align-items: start; }
+      .faq-intro { position: sticky; top: 118px; }
+      .faq-group { margin-bottom: 48px; }
+      .faq-group > h3 { margin-bottom: 12px; color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500; }
+      details { border-top: 1px solid var(--line); }
+      details:last-child { border-bottom: 1px solid var(--line); }
+      summary { position: relative; cursor: pointer; list-style: none; padding: 21px 42px 21px 0; color: var(--ink); font-size: 17px; font-weight: 600; line-height: 1.4; }
+      summary::-webkit-details-marker { display: none; }
+      summary::after { content: "+"; position: absolute; right: 4px; top: 17px; color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 22px; font-weight: 400; }
+      details[open] summary::after { content: "−"; }
+      details p { max-width: 760px; margin: -2px 42px 22px 0; color: var(--muted); }
+
       .industries { padding-top: 10px; }
       .industry-band {
         position: relative;
@@ -354,13 +405,15 @@
         .hero { padding-top: 74px; }
         .hero-grid { grid-template-columns: 1fr; gap: 56px; }
         .proof-panel { max-width: 680px; }
-        .problem-grid, .industry-layout { grid-template-columns: 1fr; gap: 48px; }
-        .problem-copy { position: static; }
+        .problem-grid, .industry-layout, .faq-layout { grid-template-columns: 1fr; gap: 48px; }
+        .problem-copy, .faq-intro { position: static; }
         .steps { grid-template-columns: 1fr; }
         .step, .step + .step { padding: 30px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
         .step-number { margin-bottom: 24px; }
         .architecture-note { grid-template-columns: 1fr; gap: 12px; }
         .closing-inner { grid-template-columns: 1fr; align-items: start; }
+        .status-grid { grid-template-columns: 1fr; }
+        .status-item, .status-item + .status-item { padding: 24px 0; border-left: 0; }
       }
 
       @media (max-width: 720px) {
@@ -384,8 +437,10 @@
         .section h2 { font-size: 36px; }
         .features-head { display: block; margin-bottom: 38px; }
         .features-head h2 { margin-bottom: 18px; }
-        .feature-grid { grid-template-columns: 1fr; }
-        .feature, .feature:nth-child(even) { min-height: 0; padding: 28px 0; border-left: 0; }
+        .feature-grid, .fact-grid, .limits-grid { grid-template-columns: 1fr; }
+        .feature, .feature:nth-child(even), .fact, .fact:nth-child(even), .limit, .limit:nth-child(even) { min-height: 0; padding: 28px 0; border-left: 0; }
+        .comparison-row { grid-template-columns: 1fr; gap: 8px; }
+        summary { font-size: 16px; }
         .industry-band { padding: 72px 0; }
         .sector-group { grid-template-columns: 1fr; gap: 9px; }
         .closing { padding: 76px 0; }
@@ -402,10 +457,12 @@
   <body>
     <nav class="site-nav" aria-label="Primary navigation">
       <div class="container nav-inner">
-        <a class="wordmark" href="#top" aria-label="Enoch home">Enoch</a>
+        <a class="wordmark" href="#top" aria-label="Go to page start">Private data. Public proof.</a>
         <div class="nav-links">
           <a href="#how-it-works">How it works</a>
           <a href="#capabilities">Capabilities</a>
+          <a href="#limitations">Limitations</a>
+          <a href="#faq">FAQ</a>
           <a class="button nav-cta" href="mailto:enoch@goodcode.ca?subject=Enoch%20inquiry">Contact</a>
         </div>
       </div>
@@ -418,10 +475,10 @@
             <div class="hero-copy">
               <p class="kicker">Private data. Public proof.</p>
               <h1 id="hero-title">Tamper-evident records for regulated enterprises</h1>
-              <p>Enoch turns operational events and document versions into independently verifiable evidence, without moving sensitive data outside your control.</p>
+              <p>Enoch is an API-first integrity layer in development. It anchors cryptographic proofs to Hedera while record contents remain in systems the customer controls.</p>
               <p class="brand-story">Named for Enoch, the ancient scribe and keeper of records.</p>
               <div class="hero-actions">
-                <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Request%20Enoch%20access">Request access
+                <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20pilot%20discussion">Discuss a pilot
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
                 <a class="button secondary" href="#how-it-works">How it works</a>
@@ -451,6 +508,7 @@
               </div>
               <div class="receipt" aria-hidden="true">
                 <div class="receipt-row"><span>record_hash</span><span>0x91f4...c82a</span></div>
+                <div class="receipt-row"><span>hcs_reference</span><span>network · topic · sequence</span></div>
                 <div class="receipt-row"><span>consensus_time</span><span>2026-10-15T21:42:18Z</span></div>
                 <div class="receipt-row"><span>status</span><span style="color:#38c4a1">cryptographic match</span></div>
               </div>
@@ -492,30 +550,47 @@
         <div class="container">
           <p class="section-label">How it works</p>
           <h2 id="how-title">From operational record to verifiable evidence</h2>
-          <p class="section-intro">A simple integrity layer connects your existing systems to durable public proof.</p>
+          <p class="section-intro">The product is designed as an API-first integrity layer with a verification dashboard. It does not replace the system of record.</p>
           <div class="steps">
             <article class="step">
               <span class="step-number">01 / CAPTURE</span>
               <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="6" y="6" width="32" height="32" stroke="currentColor" stroke-width="1.5"/><path d="M14 15h16M14 22h16M14 29h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               <h3>Capture</h3>
-              <p>Log events and archive document versions through the API, with metadata that preserves context and ownership.</p>
+              <p>The customer sends record bytes and a canonical metadata envelope containing the record ID, event type, and capture timestamp. The customer decides which events are sent.</p>
             </article>
             <article class="step">
               <span class="step-number">02 / ANCHOR</span>
               <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M12 17.5 22 12l10 5.5v11L22 34l-10-5.5v-11Z" stroke="currentColor" stroke-width="1.5"/><path d="m12 17.5 10 5.5 10-5.5M22 23v11" stroke="currentColor" stroke-width="1.5"/></svg>
               <h3>Anchor</h3>
-              <p>Cryptographic hashes and trusted timestamps are submitted to the Hedera public network through the Consensus Service.</p>
+              <p>The customer signs and submits a SHA-256 hash. Hedera Consensus Service assigns a network consensus timestamp. Record contents, filenames, and personal data are not submitted.</p>
             </article>
             <article class="step">
               <span class="step-number">03 / VERIFY</span>
               <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.5"/><path d="m14.5 22 5 5 10-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <h3>Verify</h3>
-              <p>Recompute and compare the proof at any time to produce clear, audit-ready evidence of record integrity.</p>
+              <p>The evidence export contains the original record bytes, associated metadata, canonicalization specification, hash algorithm, anchored digest, signer account and public-key data, plus the Hedera network, topic, sequence number, and consensus timestamp. A verifier recomputes the hash and checks the referenced message through a compatible mirror node that retains it. No Enoch account or service is required.</p>
             </article>
           </div>
           <div class="architecture-note">
             <strong>ARCHITECTURE PRINCIPLE</strong>
-            <p>Sensitive content never goes on a public ledger. Your enterprise retains the records and controls access. Hedera receives only the cryptographic proof needed to verify integrity.</p>
+            <p>Records stay in customer-controlled systems. Anchoring keys also stay with the customer. Enoch cannot create or sign records on a customer's behalf. The public ledger receives only the proof required to test integrity.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section proof-model" id="proof-model" aria-labelledby="proof-model-title">
+        <div class="container">
+          <p class="section-label">Trust and proof model</p>
+          <h2 id="proof-model-title">What the proof establishes</h2>
+          <p class="section-intro">A cryptographic match establishes that a record is byte-identical to the record anchored at the stated consensus time. It does not establish that the record was truthful.</p>
+          <div class="fact-grid">
+            <article class="fact"><h3>Customer-held keys</h3><p>Anchoring keys remain with the customer. Enoch cannot silently create, alter, or sign a customer's record.</p></article>
+            <article class="fact"><h3>Visible corrections</h3><p>A correction is a new, superseding record. The original anchor remains and the version chain shows the complete history.</p></article>
+            <article class="fact"><h3>Independent verification</h3><p>Every evidence export is designed to carry the inputs and receipt needed to reproduce the digest and locate its exact Hedera message. Verification uses a compatible mirror node that retains the referenced message. It does not depend on Enoch remaining available.</p></article>
+            <article class="fact"><h3>Hash agility</h3><p>The design uses <code>SHA-256</code> today. Records can be re-anchored under a stronger algorithm later without removing the original timestamp.</p></article>
+            <article class="fact"><h3>Selective by definition</h3><p>Enoch anchors what the customer sends. It cannot prove that an event never sent to it occurred, or that the log is complete.</p></article>
+            <article class="fact"><h3>Deletion without disclosure</h3><p>A customer can delete local records under its retention or expungement policy. The anchor remains as an orphan proof that reveals no record content.</p></article>
           </div>
         </div>
       </section>
@@ -535,7 +610,7 @@
             <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 9h22v17H5V9Z" stroke="currentColor" stroke-width="1.5"/><path d="M11 9V6h10v3M12 17h8" stroke="currentColor" stroke-width="1.5"/></svg><div><h3>Enterprise data ownership</h3><p>Keep source records in infrastructure you control, under your retention and access policies.</p></div></article>
             <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Trusted timestamps</h3><p>Attach consensus timestamps that establish when each proof entered the public record.</p></div></article>
             <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 16s5-8 13-8 13 8 13 8-5 8-13 8S3 16 3 16Z" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><div><h3>Independent verification</h3><p>Let authorized auditors or counterparties validate integrity without trusting your database alone.</p></div></article>
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 5h16v22H8V5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 11h8M12 16h8M12 21h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Audit-ready exports</h3><p>Package records, proofs, timestamps, and verification results into defensible evidence sets.</p></div></article>
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 5h16v22H8V5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 11h8M12 16h8M12 21h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Portable evidence exports</h3><p>The design packages records, proofs, timestamps, and verification results in a format that can be independently checked.</p></div></article>
           </div>
         </div>
       </section>
@@ -564,8 +639,97 @@
                 </article>
               </div>
               <p class="sector-strategy">Start with the firms that feel audit pain most acutely, then expand upmarket.</p>
-              <p class="compliance"><strong>Compliance support:</strong> Designed to support SOC 2, HIPAA, FINRA, ISO 27001 and GDPR audit requirements. Certification and compliance remain specific to each organization and implementation.</p>
+              <p class="compliance"><strong>Current status:</strong> Enoch holds no certifications and claims no regulator endorsement. Each organization remains responsible for its own legal and compliance assessment.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section limitations" id="limitations" aria-labelledby="limitations-title">
+        <div class="container">
+          <p class="section-label">Honest limitations</p>
+          <h2 id="limitations-title">What Enoch does not prove</h2>
+          <p class="section-intro">Anchoring narrows the trust problem. It does not remove every source of error, omission, or fraud.</p>
+          <div class="limits-grid">
+            <article class="limit"><h3>Truthfulness</h3><p>Enoch proves that a record existed in a specific state at a specific time. It does not prove that the content was true. A contestation marker is part of the design.</p></article>
+            <article class="limit"><h3>Completeness</h3><p>Enoch proves the integrity of records it receives. It cannot prove that every relevant event was submitted.</p></article>
+            <article class="limit"><h3>Single-network dependency</h3><p>The design depends on Hedera. During a network outage, events queue locally and anchor after recovery. The pre-anchor window is real and will be documented.</p></article>
+            <article class="limit"><h3>Unverified product claims</h3><p>Enoch is pre-launch. No independent security audit has been completed, no court has admitted Enoch-verified evidence, and no regulator has endorsed it.</p></article>
+          </div>
+          <div class="comparison">
+            <h3>How the proof model differs</h3>
+            <div class="comparison-list">
+              <div class="comparison-row"><strong>CONVENTIONAL LOGS</strong><p>A conventional log can be changed by someone with sufficient access. An anchored hash makes a later change detectable.</p></div>
+              <div class="comparison-row"><strong>WORM STORAGE</strong><p>A WORM appliance proves integrity to parties that trust its operator. Enoch is designed for third-party verification against a public ledger without trusting the vendor.</p></div>
+              <div class="comparison-row"><strong>RFC 3161</strong><p>An RFC 3161 timestamp relies on one timestamp authority. Hedera timestamps are produced through network consensus. Their legal authority still varies by jurisdiction.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section status-band" id="status" aria-labelledby="status-title">
+        <div class="container">
+          <p class="section-label">Product status</p>
+          <h2 id="status-title">Enoch is in development</h2>
+          <p class="section-intro">The current page describes the product's design and planned operating model. It does not describe a launched service.</p>
+          <div class="status-grid">
+            <article class="status-item"><h3>Company</h3><p>Built by The Good Code Company, based in Toronto with team members distributed worldwide. Founder-funded, with no outside investors.</p></article>
+            <article class="status-item"><h3>Evidence</h3><p>No customers, reference firms, court cases, regulator endorsements, certifications, security audits, or insurance coverage are claimed.</p></article>
+            <article class="status-item"><h3>Before launch</h3><p>An independent security audit, published security reports, breach notification process, pricing, service levels, support terms, and remedies are required before launch.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+          <div class="faq-intro">
+            <p class="section-label">Questions and direct answers</p>
+            <h2 id="faq-title">Enoch FAQ</h2>
+            <p class="section-intro">Current facts, design decisions, and unresolved launch details.</p>
+          </div>
+          <div>
+            <section class="faq-group" aria-labelledby="faq-proof"><h3 id="faq-proof">TRUST AND PROOF</h3>
+              <details><summary>What exactly goes on Hedera?</summary><p>A SHA-256 hash computed over a canonical package containing the record bytes and a metadata envelope with the record ID, event type, and capture timestamp. Document contents, filenames, and personal data do not go on the ledger.</p></details>
+              <details><summary>What does a successful verification prove?</summary><p>It proves that the supplied record is byte-identical to the record anchored at the Hedera consensus time. It does not prove that the content was truthful or establish authorship beyond custody of the signing key.</p></details>
+              <details><summary>Who controls the anchoring keys?</summary><p>The customer. The service cannot create or sign records on a customer's behalf. This prevents a vendor insider from silently fabricating a customer record and stamping it as genuine.</p></details>
+              <details><summary>How are corrections handled?</summary><p>A correction becomes a new, superseding record that is anchored separately. The original remains visible and the version chain preserves the complete history.</p></details>
+              <details><summary>Can Enoch prove that every event was logged?</summary><p>No. The customer defines what gets sent and Enoch anchors what it receives. It cannot prove the completeness of events that were never submitted.</p></details>
+              <details><summary>How can an auditor verify a record?</summary><p>The evidence export is designed to include the original record bytes, associated metadata, canonicalization specification, hash algorithm, anchored digest, signer account and public-key data, Hedera network, HCS topic, message sequence number, and consensus timestamp. The auditor recomputes the digest with standard tooling or the published verifier, then checks the referenced message through a compatible mirror node that retains it. No Enoch account, permission, or service dependency is required.</p></details>
+              <details><summary>What happens if SHA-256 becomes unsuitable?</summary><p>The design supports re-anchoring under a stronger algorithm while preserving the original anchor and its timestamp.</p></details>
+            </section>
+
+            <section class="faq-group" aria-labelledby="faq-data"><h3 id="faq-data">DATA CONTROL AND EXIT</h3>
+              <details><summary>Where do customer records live?</summary><p>In customer-controlled systems. Enoch is designed not to hold record contents, so its employees and contractors cannot access them.</p></details>
+              <details><summary>What happens if a customer deletes a record?</summary><p>The local record can be deleted under the customer's retention or expungement policy. The public anchor remains as an orphan proof that something existed at a time, but it reveals no content.</p></details>
+              <details><summary>What happens if The Good Code Company fails or is acquired?</summary><p>Customer records remain with the customer. Old anchors remain verifiable through the public ledger without Enoch or The Good Code Company.</p></details>
+              <details><summary>What could Enoch provide under subpoena?</summary><p>The service is designed to hold no customer record contents. It therefore has no record content to produce. Operational and account metadata policies will be documented before launch.</p></details>
+              <details><summary>Can customers export and leave?</summary><p>The design permits export at any time. Verification of old anchors continues through the public ledger after exit.</p></details>
+            </section>
+
+            <section class="faq-group" aria-labelledby="faq-implementation"><h3 id="faq-implementation">IMPLEMENTATION AND OPERATIONS</h3>
+              <details><summary>What is the product deliverable?</summary><p>The design is an API-first integrity layer plus a verification dashboard. It connects to existing systems rather than replacing them.</p></details>
+              <details><summary>Which integrations are available?</summary><p>None have shipped. Integrations will be listed here only after they ship, not as roadmap promises.</p></details>
+              <details><summary>How long will implementation take?</summary><p>The design goal is days, not months. No firm implementation timeline is claimed before pilots produce evidence.</p></details>
+              <details><summary>What happens during a Hedera outage?</summary><p>Events queue locally and anchor after recovery. The interval before anchoring is a real exposure window and will be documented in the product's operating guidance.</p></details>
+              <details><summary>What administration is required?</summary><p>Role-based access is planned and keys stay with the customer. Avoiding dedicated Enoch headcount is a design goal, not a proven result.</p></details>
+              <details><summary>What service level and support are offered?</summary><p>Uptime commitments, support hours, response targets, remedies, and the breach notification process are not final. They will be published before launch.</p></details>
+            </section>
+
+            <section class="faq-group" aria-labelledby="faq-commercial"><h3 id="faq-commercial">PRICING AND COMMERCIAL TERMS</h3>
+              <details><summary>What will Enoch cost?</summary><p>Pricing is not finalized and will be published before launch. Enoch will not hide per-seat charges. Total cost of ownership will be stated as one clear number.</p></details>
+              <details><summary>Who pays Hedera network fees?</summary><p>Hedera Consensus Service fees are HBAR-denominated and, at current network rates, are a fraction of a cent per anchor. Enoch's published pricing will state plainly who pays them.</p></details>
+              <details><summary>Is there a minimum commitment or onboarding fee?</summary><p>No minimum commitment, contract term, or onboarding fee is set. Those terms will be published before launch.</p></details>
+              <details><summary>Will there be a pilot?</summary><p>A pilot program is planned. Scope, qualification, duration, and cost are not yet final.</p></details>
+            </section>
+
+            <section class="faq-group" aria-labelledby="faq-legal"><h3 id="faq-legal">LEGAL, REGULATORY, AND VENDOR STATUS</h3>
+              <details><summary>Has a court accepted Enoch-verified evidence?</summary><p>No. No court acceptance is claimed. Hedera consensus timestamps have finality in seconds, but their legal authority varies by jurisdiction.</p></details>
+              <details><summary>Has a regulator or auditor endorsed Enoch?</summary><p>No. Enoch claims no endorsement from the Law Society of Ontario, the CRA, any regulator, or any auditor.</p></details>
+              <details><summary>Does Enoch hold certifications or independent audits?</summary><p>No certifications are held. No security audit or privacy impact assessment has been completed. The product is intended to receive an independent security audit before launch and the reports are intended to be published.</p></details>
+              <details><summary>Does Enoch provide legal opinions or expert witnesses?</summary><p>No. Enoch is designed to support authentication of electronic records. It does not provide legal opinions or expert-witness services.</p></details>
+              <details><summary>Who is behind Enoch?</summary><p>The Good Code Company, a founder-funded product company based in Toronto with team members distributed worldwide. Enoch is in development and has no customers or reference firms yet.</p></details>
+              <details><summary>Does Enoch carry insurance?</summary><p>No insurance coverage is claimed. Coverage decisions will be disclosed before commercial launch.</p></details>
+            </section>
           </div>
         </div>
       </section>
@@ -575,9 +739,9 @@
           <div>
             <p class="section-label">Build trust into the record</p>
             <h2 id="closing-title">Make your audit trail independently verifiable</h2>
-            <p>Tell us where record integrity creates friction in your organization. We are opening early access conversations with regulated teams.</p>
+            <p>Enoch is in development. We are discussing pilot requirements with regulated teams that can define a specific record-integrity problem.</p>
           </div>
-          <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20early%20access">Request access
+          <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20pilot%20discussion">Discuss a pilot
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -586,11 +750,281 @@
 
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year">2026</span> Enoch. Provisional product concept.</span>
+        <span>© <span id="year">2026</span> Enoch. Enoch is in development.</span>
         <a href="mailto:enoch@goodcode.ca">enoch@goodcode.ca</a>
       </div>
     </footer>
 
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://goodcode.ca/#organization",
+      "name": "The Good Code Company",
+      "url": "https://goodcode.ca/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toronto",
+        "addressCountry": "CA"
+      },
+      "email": "hello@goodcode.ca"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://enoch.goodcode.ca/#website",
+      "url": "https://enoch.goodcode.ca/",
+      "name": "Enoch",
+      "publisher": {
+        "@id": "https://goodcode.ca/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://enoch.goodcode.ca/#software",
+      "name": "Enoch",
+      "url": "https://enoch.goodcode.ca/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "An API-first integrity layer in development for tamper-evident records using customer-held keys, private data, and public Hedera proof.",
+      "creator": {
+        "@id": "https://goodcode.ca/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://enoch.goodcode.ca/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What exactly goes on Hedera?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A SHA-256 hash computed over a canonical package containing the record bytes and a metadata envelope with the record ID, event type, and capture timestamp. Document contents, filenames, and personal data do not go on the ledger."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a successful verification prove?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It proves that the supplied record is byte-identical to the record anchored at the Hedera consensus time. It does not prove that the content was truthful or establish authorship beyond custody of the signing key."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who controls the anchoring keys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The customer. The service cannot create or sign records on a customer's behalf. This prevents a vendor insider from silently fabricating a customer record and stamping it as genuine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are corrections handled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A correction becomes a new, superseding record that is anchored separately. The original remains visible and the version chain preserves the complete history."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Enoch prove that every event was logged?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The customer defines what gets sent and Enoch anchors what it receives. It cannot prove the completeness of events that were never submitted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can an auditor verify a record?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The evidence export is designed to include the original record bytes, associated metadata, canonicalization specification, hash algorithm, anchored digest, signer account and public-key data, Hedera network, HCS topic, message sequence number, and consensus timestamp. The auditor recomputes the digest with standard tooling or the published verifier, then checks the referenced message through a compatible mirror node that retains it. No Enoch account, permission, or service dependency is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if SHA-256 becomes unsuitable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The design supports re-anchoring under a stronger algorithm while preserving the original anchor and its timestamp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do customer records live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In customer-controlled systems. Enoch is designed not to hold record contents, so its employees and contractors cannot access them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if a customer deletes a record?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The local record can be deleted under the customer's retention or expungement policy. The public anchor remains as an orphan proof that something existed at a time, but it reveals no content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if The Good Code Company fails or is acquired?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Customer records remain with the customer. Old anchors remain verifiable through the public ledger without Enoch or The Good Code Company."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What could Enoch provide under subpoena?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The service is designed to hold no customer record contents. It therefore has no record content to produce. Operational and account metadata policies will be documented before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can customers export and leave?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The design permits export at any time. Verification of old anchors continues through the public ledger after exit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the product deliverable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The design is an API-first integrity layer plus a verification dashboard. It connects to existing systems rather than replacing them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which integrations are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "None have shipped. Integrations will be listed here only after they ship, not as roadmap promises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long will implementation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The design goal is days, not months. No firm implementation timeline is claimed before pilots produce evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens during a Hedera outage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Events queue locally and anchor after recovery. The interval before anchoring is a real exposure window and will be documented in the product's operating guidance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What administration is required?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Role-based access is planned and keys stay with the customer. Avoiding dedicated Enoch headcount is a design goal, not a proven result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What service level and support are offered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uptime commitments, support hours, response targets, remedies, and the breach notification process are not final. They will be published before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What will Enoch cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pricing is not finalized and will be published before launch. Enoch will not hide per-seat charges. Total cost of ownership will be stated as one clear number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who pays Hedera network fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hedera Consensus Service fees are HBAR-denominated and, at current network rates, are a fraction of a cent per anchor. Enoch's published pricing will state plainly who pays them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a minimum commitment or onboarding fee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No minimum commitment, contract term, or onboarding fee is set. Those terms will be published before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will there be a pilot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A pilot program is planned. Scope, qualification, duration, and cost are not yet final."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Has a court accepted Enoch-verified evidence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. No court acceptance is claimed. Hedera consensus timestamps have finality in seconds, but their legal authority varies by jurisdiction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Has a regulator or auditor endorsed Enoch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Enoch claims no endorsement from the Law Society of Ontario, the CRA, any regulator, or any auditor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Enoch hold certifications or independent audits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No certifications are held. No security audit or privacy impact assessment has been completed. The product is intended to receive an independent security audit before launch and the reports are intended to be published."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Enoch provide legal opinions or expert witnesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Enoch is designed to support authentication of electronic records. It does not provide legal opinions or expert-witness services."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is behind Enoch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Good Code Company, a founder-funded product company based in Toronto with team members distributed worldwide. Enoch is in development and has no customers or reference firms yet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Enoch carry insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No insurance coverage is claimed. Coverage decisions will be disclosed before commercial launch."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
     <script>
       (function () {
         var year = document.getElementById("year");
