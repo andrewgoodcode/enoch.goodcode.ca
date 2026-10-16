@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enoch.goodcode.ca/sitemap.xml
