@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#07131f" />
+    <meta name="description" content="Enoch creates tamper-evident event logs and document archives for regulated enterprises using private data and public proof." />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>Enoch</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f4f7f8;
+        --surface: #ffffff;
+        --surface-alt: #e9eff1;
+        --navy: #07131f;
+        --navy-2: #0c2131;
+        --ink: #102231;
+        --muted: #4a5d69;
+        --line: #cbd7dc;
+        --line-strong: #9fb1b9;
+        --accent: #087f8c;
+        --accent-bright: #18a6b4;
+        --accent-soft: #d9f1f2;
+        --on-dark: #f5fbfc;
+        --on-dark-muted: #a8bac3;
+        --success: #38c4a1;
+        --shadow: 0 26px 70px rgba(9, 30, 44, 0.12);
+        --max: 1180px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #06111b;
+          --surface: #0b1a26;
+          --surface-alt: #102532;
+          --ink: #f2f8fa;
+          --muted: #a7bac3;
+          --line: #28404d;
+          --line-strong: #49606b;
+          --accent: #2fb8c1;
+          --accent-bright: #62d5d8;
+          --accent-soft: #12373f;
+          --navy: #030c13;
+          --navy-2: #081924;
+          --on-dark: #f5fbfc;
+          --on-dark-muted: #a8bac3;
+          --shadow: 0 26px 70px rgba(0, 0, 0, 0.32);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        text-rendering: optimizeLegibility;
+      }
+      a { color: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      svg { display: block; }
+      .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+      .mono { font-family: "IBM Plex Mono", monospace; }
+
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: color-mix(in srgb, var(--navy) 92%, transparent);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+      }
+      .nav-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .wordmark {
+        color: var(--on-dark);
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        text-decoration: none;
+        font-size: 19px;
+      }
+      .nav-links { display: flex; align-items: center; gap: 30px; }
+      .nav-links > a:not(.button) {
+        color: var(--on-dark-muted);
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .nav-links > a:not(.button):hover { color: var(--on-dark); }
+
+      .button {
+        min-height: 44px;
+        padding: 10px 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+      .button.primary { background: var(--accent-bright); color: #041316; }
+      .button.primary:hover { background: #76e0e1; }
+      .button.secondary { color: var(--on-dark); border-color: rgba(255, 255, 255, 0.28); background: transparent; }
+      .button.secondary:hover { border-color: rgba(255, 255, 255, 0.55); background: rgba(255, 255, 255, 0.06); }
+      .button.nav-cta { min-height: 38px; padding: 7px 14px; color: var(--on-dark); border-color: rgba(255, 255, 255, 0.28); }
+      .button.nav-cta:hover { border-color: var(--accent-bright); color: var(--accent-bright); }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: var(--navy);
+        color: var(--on-dark);
+        padding: 94px 0 88px;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.42;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to right, black, transparent 75%);
+      }
+      .hero-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+        gap: 72px;
+        align-items: center;
+      }
+      .kicker {
+        margin: 0 0 20px;
+        color: var(--accent-bright);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 {
+        margin-bottom: 24px;
+        max-width: 760px;
+        font-size: clamp(44px, 6vw, 76px);
+        line-height: 1.01;
+        letter-spacing: -0.046em;
+        font-weight: 500;
+      }
+      .hero-copy > p:not(.kicker):not(.brand-story) {
+        max-width: 640px;
+        margin-bottom: 34px;
+        color: var(--on-dark-muted);
+        font-size: clamp(18px, 2vw, 21px);
+        line-height: 1.55;
+      }
+      .brand-story {
+        margin: -18px 0 30px;
+        color: var(--accent-bright);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+      .proof-panel {
+        position: relative;
+        padding: 26px;
+        border: 1px solid rgba(255,255,255,0.16);
+        background: #0a1b29;
+        box-shadow: 0 24px 70px rgba(0,0,0,0.32);
+      }
+      .proof-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+      .proof-head span:first-child { color: var(--on-dark-muted); font-size: 12px; letter-spacing: 0.04em; }
+      .verified { display: inline-flex; align-items: center; gap: 7px; color: var(--success); font-size: 12px; }
+      .verified::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px rgba(56,196,161,0.12); }
+      .flow { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1fr; align-items: center; }
+      .flow-node {
+        min-height: 116px;
+        padding: 14px 10px;
+        border: 1px solid rgba(255,255,255,0.13);
+        background: rgba(255,255,255,0.025);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .flow-node svg { width: 27px; height: 27px; margin-bottom: 12px; color: var(--accent-bright); }
+      .flow-node strong { font-size: 12px; font-weight: 500; }
+      .flow-node small { color: var(--on-dark-muted); font-size: 10px; }
+      .flow-arrow { color: #67808d; display: flex; justify-content: center; }
+      .flow-arrow svg { width: 18px; height: 18px; }
+      .receipt {
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        display: grid;
+        gap: 8px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        color: #8099a5;
+      }
+      .receipt-row { display: flex; justify-content: space-between; gap: 16px; }
+      .receipt-row span:last-child { color: #c7d7dd; text-align: right; overflow-wrap: anywhere; }
+      .trust-strip { position: relative; margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-wrap: wrap; gap: 16px 34px; color: var(--on-dark-muted); font-size: 13px; }
+      .trust-strip span { display: inline-flex; align-items: center; gap: 10px; }
+      .trust-strip span::before { content: ""; width: 5px; height: 5px; background: var(--accent-bright); }
+
+      .section { padding: 108px 0; }
+      .section-label { margin: 0 0 16px; color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500; }
+      .section h2 {
+        margin-bottom: 22px;
+        max-width: 810px;
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+        font-weight: 500;
+      }
+      .section-intro { max-width: 690px; color: var(--muted); font-size: 18px; }
+
+      .problem-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 96px; align-items: start; }
+      .problem-copy { position: sticky; top: 118px; }
+      .problem-list { border-top: 1px solid var(--line-strong); }
+      .problem-item {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 18px;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .problem-item .index { color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 13px; padding-top: 3px; }
+      .problem-item h3 { margin-bottom: 7px; font-size: 19px; font-weight: 600; letter-spacing: -0.015em; }
+      .problem-item p { margin-bottom: 0; color: var(--muted); }
+
+      .how { background: var(--navy); color: var(--on-dark); }
+      .how .section-label { color: var(--accent-bright); }
+      .how .section-intro { color: var(--on-dark-muted); }
+      .steps { margin-top: 58px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.18); }
+      .step { position: relative; padding: 34px 34px 10px 0; }
+      .step + .step { padding-left: 34px; border-left: 1px solid rgba(255,255,255,0.14); }
+      .step-number { display: block; margin-bottom: 44px; color: var(--accent-bright); font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+      .step-icon { width: 42px; height: 42px; color: var(--accent-bright); margin-bottom: 22px; }
+      .step h3 { margin-bottom: 10px; font-size: 24px; font-weight: 500; }
+      .step p { margin-bottom: 0; color: var(--on-dark-muted); }
+      .architecture-note {
+        margin-top: 68px;
+        padding: 22px 0 0;
+        border-top: 1px solid rgba(255,255,255,0.18);
+        display: grid;
+        grid-template-columns: 185px 1fr;
+        gap: 30px;
+      }
+      .architecture-note strong { color: var(--accent-bright); font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; }
+      .architecture-note p { max-width: 770px; margin: 0; color: #d3e0e4; }
+
+      .features-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 52px; }
+      .features-head h2 { margin-bottom: 0; }
+      .features-head p { max-width: 440px; margin: 0 0 7px; color: var(--muted); }
+      .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line-strong); }
+      .feature {
+        min-height: 210px;
+        padding: 34px 34px 34px 0;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 20px;
+      }
+      .feature:nth-child(even) { padding-left: 34px; border-left: 1px solid var(--line); }
+      .feature-icon { width: 31px; height: 31px; color: var(--accent); }
+      .feature h3 { margin-bottom: 9px; font-size: 20px; font-weight: 600; }
+      .feature p { margin-bottom: 0; color: var(--muted); }
+
+      .industries { padding-top: 10px; }
+      .industry-band {
+        position: relative;
+        overflow: hidden;
+        background: var(--surface-alt);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 94px 0;
+      }
+      .industry-layout { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 90px; align-items: start; }
+      .sector-groups { border-top: 1px solid var(--line-strong); }
+      .sector-group {
+        display: grid;
+        grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
+        gap: 28px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .sector-group h3 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 17px;
+        line-height: 1.35;
+        font-weight: 600;
+      }
+      .sector-group p { margin: 0; color: var(--muted); }
+      .sector-group strong { color: var(--ink); font-weight: 600; }
+      .sector-strategy {
+        margin: 24px 0 0;
+        color: var(--ink);
+        font-size: 17px;
+        font-weight: 500;
+      }
+      .compliance {
+        margin-top: 30px;
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .compliance strong { color: var(--ink); font-weight: 600; }
+
+      .closing { padding: 96px 0; background: var(--navy); color: var(--on-dark); }
+      .closing-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 50px; }
+      .closing h2 { max-width: 760px; margin-bottom: 16px; color: var(--on-dark); }
+      .closing p { max-width: 650px; margin-bottom: 0; color: var(--on-dark-muted); font-size: 18px; }
+      .closing .button { min-width: 180px; }
+
+      footer { background: var(--navy); color: var(--on-dark-muted); border-top: 1px solid rgba(255,255,255,0.1); }
+      .footer-inner { min-height: 92px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 13px; }
+      .footer-inner a { text-decoration: none; color: var(--on-dark-muted); }
+      .footer-inner a:hover { color: var(--on-dark); }
+
+      :focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 4px; }
+
+      @media (max-width: 980px) {
+        .hero { padding-top: 74px; }
+        .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+        .proof-panel { max-width: 680px; }
+        .problem-grid, .industry-layout { grid-template-columns: 1fr; gap: 48px; }
+        .problem-copy { position: static; }
+        .steps { grid-template-columns: 1fr; }
+        .step, .step + .step { padding: 30px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+        .step-number { margin-bottom: 24px; }
+        .architecture-note { grid-template-columns: 1fr; gap: 12px; }
+        .closing-inner { grid-template-columns: 1fr; align-items: start; }
+      }
+
+      @media (max-width: 720px) {
+        .container { width: min(100% - 32px, var(--max)); }
+        .nav-inner { min-height: 64px; }
+        .nav-links > a:not(.button) { display: none; }
+        .hero { padding: 66px 0 62px; }
+        .hero-grid { gap: 44px; }
+        h1 { font-size: clamp(41px, 13vw, 60px); }
+        .hero-copy > p:not(.kicker):not(.brand-story) { font-size: 18px; }
+        .hero-actions .button { flex: 1 1 150px; }
+        .proof-panel { padding: 18px; }
+        .flow { grid-template-columns: 1fr; gap: 10px; }
+        .flow-node { min-height: 88px; flex-direction: row; gap: 12px; text-align: left; justify-content: flex-start; padding: 14px 18px; }
+        .flow-node svg { margin: 0; flex: 0 0 auto; }
+        .flow-arrow { transform: rotate(90deg); }
+        .receipt-row { display: grid; gap: 1px; }
+        .receipt-row span:last-child { text-align: left; }
+        .trust-strip { margin-top: 44px; display: grid; gap: 13px; }
+        .section { padding: 78px 0; }
+        .section h2 { font-size: 36px; }
+        .features-head { display: block; margin-bottom: 38px; }
+        .features-head h2 { margin-bottom: 18px; }
+        .feature-grid { grid-template-columns: 1fr; }
+        .feature, .feature:nth-child(even) { min-height: 0; padding: 28px 0; border-left: 0; }
+        .industry-band { padding: 72px 0; }
+        .sector-group { grid-template-columns: 1fr; gap: 9px; }
+        .closing { padding: 76px 0; }
+        .closing .button { width: 100%; }
+        .footer-inner { min-height: 110px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition-duration: 0.01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="container nav-inner">
+        <a class="wordmark" href="#top" aria-label="Enoch home">Enoch</a>
+        <div class="nav-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#capabilities">Capabilities</a>
+          <a class="button nav-cta" href="mailto:andrew@goodrook.ca?subject=Enoch%20inquiry">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="kicker">Private data. Public proof.</p>
+              <h1 id="hero-title">Tamper-evident records for regulated enterprises</h1>
+              <p>Enoch turns operational events and document versions into independently verifiable evidence, without moving sensitive data outside your control.</p>
+              <p class="brand-story">Named for Enoch, the ancient scribe and keeper of records.</p>
+              <div class="hero-actions">
+                <a class="button primary" href="mailto:andrew@goodrook.ca?subject=Request%20Enoch%20access">Request access
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a class="button secondary" href="#how-it-works">How it works</a>
+              </div>
+            </div>
+
+            <div class="proof-panel" role="img" aria-label="Diagram showing private enterprise records hashed and anchored through Hedera Consensus Service for independent verification">
+              <div class="proof-head mono">
+                <span>VERIFICATION RECEIPT</span>
+                <span class="verified">MATCHED</span>
+              </div>
+              <div class="flow">
+                <div class="flow-node">
+                  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 5h13l5 5v17H7V5Z" stroke="currentColor" stroke-width="1.6"/><path d="M20 5v6h5M11 17h10M11 21h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                  <div><strong>Private record</strong><br><small>Enterprise system</small></div>
+                </div>
+                <span class="flow-arrow"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <div class="flow-node">
+                  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 11.5 16 6l9 5.5v9L16 26l-9-5.5v-9Z" stroke="currentColor" stroke-width="1.6"/><path d="m7 11.5 9 5.5 9-5.5M16 17v9" stroke="currentColor" stroke-width="1.6"/></svg>
+                  <div><strong>Public proof</strong><br><small>Hedera HCS</small></div>
+                </div>
+                <span class="flow-arrow"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <div class="flow-node">
+                  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 27s9-4 9-12V8l-9-3-9 3v7c0 8 9 12 9 12Z" stroke="currentColor" stroke-width="1.6"/><path d="m11.5 15.5 3 3 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <div><strong>Verified</strong><br><small>Audit evidence</small></div>
+                </div>
+              </div>
+              <div class="receipt" aria-hidden="true">
+                <div class="receipt-row"><span>record_hash</span><span>0x91f4...c82a</span></div>
+                <div class="receipt-row"><span>consensus_time</span><span>2026-10-15T21:42:18Z</span></div>
+                <div class="receipt-row"><span>status</span><span style="color:#38c4a1">cryptographic match</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="trust-strip" aria-label="Key principles">
+            <span>Data stays private</span>
+            <span>Every version is traceable</span>
+            <span>Proof is independently verifiable</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="problem" aria-labelledby="problem-title">
+        <div class="container problem-grid">
+          <div class="problem-copy">
+            <p class="section-label">The integrity gap</p>
+            <h2 id="problem-title">Audit trails should prove what happened</h2>
+            <p class="section-intro">Regulated organizations generate critical records every day. Most are still stored in systems where administrators, integrations, or database changes can quietly rewrite history.</p>
+          </div>
+          <div class="problem-list">
+            <article class="problem-item">
+              <span class="index">01</span>
+              <div><h3>Mutable records create doubt</h3><p>A timestamp in a conventional database shows what the system says happened. It does not prove the record remained unchanged.</p></div>
+            </article>
+            <article class="problem-item">
+              <span class="index">02</span>
+              <div><h3>Evidence is scattered</h3><p>Events, approvals, files, and document revisions live across separate tools, making one defensible timeline difficult to assemble.</p></div>
+            </article>
+            <article class="problem-item">
+              <span class="index">03</span>
+              <div><h3>Verification is expensive</h3><p>During audits, investigations, or disputes, proving integrity often requires manual reconciliation and specialist review.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section how" id="how-it-works" aria-labelledby="how-title">
+        <div class="container">
+          <p class="section-label">How it works</p>
+          <h2 id="how-title">From operational record to verifiable evidence</h2>
+          <p class="section-intro">A simple integrity layer connects your existing systems to durable public proof.</p>
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">01 / CAPTURE</span>
+              <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="6" y="6" width="32" height="32" stroke="currentColor" stroke-width="1.5"/><path d="M14 15h16M14 22h16M14 29h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <h3>Capture</h3>
+              <p>Log events and archive document versions through the API, with metadata that preserves context and ownership.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">02 / ANCHOR</span>
+              <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M12 17.5 22 12l10 5.5v11L22 34l-10-5.5v-11Z" stroke="currentColor" stroke-width="1.5"/><path d="m12 17.5 10 5.5 10-5.5M22 23v11" stroke="currentColor" stroke-width="1.5"/></svg>
+              <h3>Anchor</h3>
+              <p>Cryptographic hashes and trusted timestamps are submitted to the Hedera public network through the Consensus Service.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">03 / VERIFY</span>
+              <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.5"/><path d="m14.5 22 5 5 10-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <h3>Verify</h3>
+              <p>Recompute and compare the proof at any time to produce clear, audit-ready evidence of record integrity.</p>
+            </article>
+          </div>
+          <div class="architecture-note">
+            <strong>ARCHITECTURE PRINCIPLE</strong>
+            <p>Sensitive content never goes on a public ledger. Your enterprise retains the records and controls access. Hedera receives only the cryptographic proof needed to verify integrity.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="capabilities" aria-labelledby="capabilities-title">
+        <div class="container">
+          <div class="features-head">
+            <div>
+              <p class="section-label">Core capabilities</p>
+              <h2 id="capabilities-title">Evidence infrastructure that fits your stack</h2>
+            </div>
+            <p>Built as a focused integrity layer, not another system of record your teams have to replace.</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 8h20v18H6V8ZM10 4h12v4H10V4Z" stroke="currentColor" stroke-width="1.5"/><path d="M11 14h10M11 19h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Immutable event log</h3><p>Capture critical actions with durable proofs that reveal any change after anchoring.</p></div></article>
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 4h12l5 5v19H8V4Z" stroke="currentColor" stroke-width="1.5"/><path d="M20 4v6h5M12 16h9M12 21h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Versioned document archive</h3><p>Preserve every document revision in a traceable history, with authorship and context intact.</p></div></article>
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 9h22v17H5V9Z" stroke="currentColor" stroke-width="1.5"/><path d="M11 9V6h10v3M12 17h8" stroke="currentColor" stroke-width="1.5"/></svg><div><h3>Enterprise data ownership</h3><p>Keep source records in infrastructure you control, under your retention and access policies.</p></div></article>
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Trusted timestamps</h3><p>Attach consensus timestamps that establish when each proof entered the public record.</p></div></article>
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 16s5-8 13-8 13 8 13 8-5 8-13 8S3 16 3 16Z" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><div><h3>Independent verification</h3><p>Let authorized auditors or counterparties validate integrity without trusting your database alone.</p></div></article>
+            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 5h16v22H8V5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 11h8M12 16h8M12 21h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Audit-ready exports</h3><p>Package records, proofs, timestamps, and verification results into defensible evidence sets.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="industries" id="industries" aria-labelledby="industries-title">
+        <div class="industry-band">
+          <div class="container industry-layout">
+            <div>
+              <p class="section-label">Built for oversight</p>
+              <h2 id="industries-title">Start where audit pain is immediate</h2>
+              <p class="section-intro">Small professional firms and public-serving organizations need defensible records too, often without dedicated compliance infrastructure.</p>
+            </div>
+            <div>
+              <div class="sector-groups" aria-label="Sectors served, grouped by the evidence they need">
+                <article class="sector-group">
+                  <h3>Proving records were not altered</h3>
+                  <p><strong>Law firms:</strong> evidence chain of custody and litigation holds. <strong>Medical practices:</strong> PHIPA audit trails and patient record integrity. <strong>Accountants:</strong> workpaper integrity and CRA audit defense. <strong>Notaries:</strong> durable proof for executed records.</p>
+                </article>
+                <article class="sector-group">
+                  <h3>Proving money was handled right</h3>
+                  <p><strong>NGOs:</strong> donor trust and grant compliance. <strong>Lawyers and realtors:</strong> trust account records. <strong>Insurance teams:</strong> claims records that can withstand review.</p>
+                </article>
+                <article class="sector-group">
+                  <h3>Proving process was followed</h3>
+                  <p><strong>Municipal government:</strong> procurement transparency, FOI requests, and council minutes. <strong>Construction firms:</strong> liens, change orders, and safety incident logs.</p>
+                </article>
+              </div>
+              <p class="sector-strategy">Start with the firms that feel audit pain most acutely, then expand upmarket.</p>
+              <p class="compliance"><strong>Compliance support:</strong> Designed to support SOC 2, HIPAA, FINRA, ISO 27001 and GDPR audit requirements. Certification and compliance remain specific to each organization and implementation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section closing" aria-labelledby="closing-title">
+        <div class="container closing-inner">
+          <div>
+            <p class="section-label">Build trust into the record</p>
+            <h2 id="closing-title">Make your audit trail independently verifiable</h2>
+            <p>Tell us where record integrity creates friction in your organization. We are opening early access conversations with regulated teams.</p>
+          </div>
+          <a class="button primary" href="mailto:andrew@goodrook.ca?subject=Enoch%20early%20access">Request access
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year">2026</span> Enoch. Provisional product concept.</span>
+        <a href="mailto:andrew@goodrook.ca">andrew@goodrook.ca</a>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var year = document.getElementById("year");
+        if (year) year.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </body>
+</html>
