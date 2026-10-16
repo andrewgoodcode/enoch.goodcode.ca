@@ -4,120 +4,131 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#07131f" />
-    <meta name="description" content="Enoch is an API-first integrity layer for tamper-evident records. Customer-held keys, private data, public Hedera proof, and independent verification." />
-    <meta name="author" content="The Good Code Company" />
-    <link rel="canonical" href="https://enoch.goodcode.ca/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_CA" />
-    <meta property="og:site_name" content="Enoch" />
-    <meta property="og:title" content="Enoch | Tamper-evident records for regulated enterprises" />
-    <meta property="og:description" content="Private records stay in customer-controlled systems. SHA-256 proofs are anchored to Hedera for independent verification." />
-    <meta property="og:url" content="https://enoch.goodcode.ca/" />
-    <meta property="og:image" content="https://enoch.goodcode.ca/og-image.png" />
-    <meta property="og:image:alt" content="Enoch: Tamper-evident records for regulated enterprises." />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Enoch | Tamper-evident records for regulated enterprises" />
-    <meta name="twitter:description" content="An API-first integrity layer with customer-held keys, private data, public proof, and independent verification." />
-    <meta name="twitter:image" content="https://enoch.goodcode.ca/og-image.png" />
-    <link rel="icon" href="https://enoch.goodcode.ca/favicon.png" />
-    <link rel="apple-touch-icon" href="https://enoch.goodcode.ca/apple-touch-icon.png" />
+    <meta name="theme-color" content="#08111a" />
+    <meta name="description" content="Enoch is a tamper-evident records system built on a private Hedera instance bridged to the public mainnet. Customer-held keys, private data, public proof, and independent verification." />
+    <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-    <title>Enoch | Tamper-evident records for regulated enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>Enoch v2 | Tamper-evident records for regulated enterprises</title>
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #f4f7f8;
+        /* Token system: one paper, one ink, one navy, one hairline.
+           A single green exists, and it means exactly one thing: verified. */
+        --paper: #f5f6f4;
         --surface: #ffffff;
-        --surface-alt: #e9eff1;
-        --navy: #07131f;
-        --navy-2: #0c2131;
-        --ink: #102231;
-        --muted: #4a5d69;
-        --line: #cbd7dc;
-        --line-strong: #9fb1b9;
-        --accent: #087f8c;
-        --accent-bright: #18a6b4;
-        --accent-soft: #d9f1f2;
-        --on-dark: #f5fbfc;
-        --on-dark-muted: #a8bac3;
-        --success: #38c4a1;
-        --shadow: 0 26px 70px rgba(9, 30, 44, 0.12);
+        --surface-alt: #eceeeb;
+        --ink: #121a1e;
+        --muted: #52616a;
+        --faint: #85939b;
+        --hairline: #d8dcd8;
+        --hairline-strong: #aeb8b2;
+        --navy: #08111a;
+        --navy-2: #0c1a26;
+        --navy-3: #10222f;
+        --on-dark: #edf3f0;
+        --on-dark-muted: #9db1aa;
+        --on-dark-faint: #6d837c;
+        --line-dark: rgba(237, 243, 240, 0.14);
+        --line-dark-strong: rgba(237, 243, 240, 0.28);
+        --verify: #17714f;
+        --verify-on-dark: #3ecf9a;
+        --verify-dim: rgba(62, 207, 154, 0.12);
         --max: 1180px;
+        --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
+        --font-body: "IBM Plex Sans", sans-serif;
+        --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
       }
 
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #06111b;
-          --surface: #0b1a26;
-          --surface-alt: #102532;
-          --ink: #f2f8fa;
-          --muted: #a7bac3;
-          --line: #28404d;
-          --line-strong: #49606b;
-          --accent: #2fb8c1;
-          --accent-bright: #62d5d8;
-          --accent-soft: #12373f;
-          --navy: #030c13;
-          --navy-2: #081924;
-          --on-dark: #f5fbfc;
-          --on-dark-muted: #a8bac3;
-          --shadow: 0 26px 70px rgba(0, 0, 0, 0.32);
+          --paper: #060c12;
+          --surface: #0a141d;
+          --surface-alt: #0d1a24;
+          --ink: #e9f1ee;
+          --muted: #9daca6;
+          --faint: #67786f;
+          --hairline: #1f2f38;
+          --hairline-strong: #3a4d55;
+          --navy: #04090f;
+          --navy-2: #08131c;
+          --navy-3: #0b1a26;
+          --verify: #3ecf9a;
         }
       }
 
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+      html { scroll-behavior: smooth; scroll-padding-top: 92px; }
       body {
         margin: 0;
         min-width: 320px;
-        background: var(--bg);
+        background: var(--paper);
         color: var(--ink);
-        font-family: "IBM Plex Sans", sans-serif;
+        font-family: var(--font-body);
         font-size: 16px;
         line-height: 1.6;
         text-rendering: optimizeLegibility;
+        font-variant-numeric: tabular-nums;
       }
       a { color: inherit; }
       button, a { -webkit-tap-highlight-color: transparent; }
       svg { display: block; }
       .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-      .mono { font-family: "IBM Plex Mono", monospace; }
+      .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+      h1, h2, h3, p { margin-top: 0; }
+      :focus-visible { outline: 2px solid var(--verify); outline-offset: 4px; }
 
+      /* ---------- Nav: the instrument's header strip ---------- */
       .site-nav {
         position: sticky;
         top: 0;
         z-index: 20;
-        background: color-mix(in srgb, var(--navy) 92%, transparent);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(16px);
+        background: color-mix(in srgb, var(--navy) 94%, transparent);
+        border-bottom: 1px solid var(--line-dark);
+        backdrop-filter: blur(14px);
       }
       .nav-inner {
-        min-height: 72px;
+        min-height: 68px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
       }
       .wordmark {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 12px;
         color: var(--on-dark);
-        font-weight: 600;
-        letter-spacing: -0.025em;
         text-decoration: none;
-        font-size: 19px;
       }
-      .nav-links { display: flex; align-items: center; gap: 30px; }
+      .wordmark .name {
+        font-family: var(--font-display);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+      .wordmark .tag {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--on-dark-muted);
+        letter-spacing: 0.02em;
+      }
+      .nav-links { display: flex; align-items: center; gap: 28px; }
       .nav-links > a:not(.button) {
         color: var(--on-dark-muted);
-        font-size: 14px;
+        font-size: 13.5px;
         font-weight: 500;
         text-decoration: none;
       }
       .nav-links > a:not(.button):hover { color: var(--on-dark); }
+      .nav-status {
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        color: var(--on-dark-faint);
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
 
       .button {
         min-height: 44px;
@@ -127,333 +138,542 @@
         justify-content: center;
         gap: 9px;
         border: 1px solid transparent;
-        border-radius: 5px;
+        border-radius: 3px;
         font-size: 14px;
         font-weight: 600;
         text-decoration: none;
+        cursor: pointer;
         transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
       }
-      .button.primary { background: var(--accent-bright); color: #041316; }
-      .button.primary:hover { background: #76e0e1; }
-      .button.secondary { color: var(--on-dark); border-color: rgba(255, 255, 255, 0.28); background: transparent; }
-      .button.secondary:hover { border-color: rgba(255, 255, 255, 0.55); background: rgba(255, 255, 255, 0.06); }
-      .button.nav-cta { min-height: 38px; padding: 7px 14px; color: var(--on-dark); border-color: rgba(255, 255, 255, 0.28); }
-      .button.nav-cta:hover { border-color: var(--accent-bright); color: var(--accent-bright); }
+      .button.primary { background: var(--on-dark); color: var(--navy); }
+      .button.primary:hover { background: #ffffff; }
+      .button.secondary { color: var(--on-dark); border-color: var(--line-dark-strong); background: transparent; }
+      .button.secondary:hover { border-color: var(--on-dark-muted); background: rgba(237,243,240,0.05); }
+      .button.nav-cta { min-height: 38px; padding: 7px 14px; color: var(--on-dark); border-color: var(--line-dark-strong); }
+      .button.nav-cta:hover { border-color: var(--verify-on-dark); color: var(--verify-on-dark); }
 
+      /* ---------- Hero ---------- */
       .hero {
         position: relative;
         overflow: hidden;
         background: var(--navy);
         color: var(--on-dark);
-        padding: 94px 0 88px;
+        padding: 88px 0 0;
       }
       .hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        opacity: 0.42;
         background-image:
-          linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-        background-size: 48px 48px;
-        mask-image: linear-gradient(to right, black, transparent 75%);
+          linear-gradient(rgba(237,243,240,0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(237,243,240,0.045) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(to bottom, black, transparent 88%);
       }
       .hero-grid {
         position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
-        gap: 72px;
+        grid-template-columns: minmax(0, 1.02fr) minmax(430px, 0.98fr);
+        gap: 68px;
         align-items: center;
       }
       .kicker {
-        margin: 0 0 20px;
-        color: var(--accent-bright);
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 13px;
+        margin: 0 0 22px;
+        color: var(--on-dark-muted);
+        font-family: var(--font-mono);
+        font-size: 12.5px;
         font-weight: 500;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.06em;
       }
-      h1, h2, h3, p { margin-top: 0; }
+      .kicker b { color: var(--verify-on-dark); font-weight: 500; }
       h1 {
         margin-bottom: 24px;
-        max-width: 760px;
-        font-size: clamp(44px, 6vw, 76px);
-        line-height: 1.01;
-        letter-spacing: -0.046em;
-        font-weight: 500;
+        max-width: 720px;
+        font-family: var(--font-display);
+        font-size: clamp(42px, 5.6vw, 68px);
+        line-height: 1.04;
+        letter-spacing: -0.02em;
+        font-weight: 600;
       }
-      .hero-copy > p:not(.kicker):not(.brand-story) {
-        max-width: 640px;
-        margin-bottom: 34px;
+      .hero-copy > p.lede {
+        max-width: 600px;
+        margin-bottom: 18px;
         color: var(--on-dark-muted);
-        font-size: clamp(18px, 2vw, 21px);
+        font-size: clamp(17px, 1.9vw, 20px);
         line-height: 1.55;
       }
       .brand-story {
-        margin: -18px 0 30px;
-        color: var(--accent-bright);
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 13px;
+        margin: 0 0 32px;
+        color: var(--on-dark-faint);
+        font-family: var(--font-mono);
+        font-size: 12.5px;
         line-height: 1.55;
       }
       .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
-      .proof-panel {
+      /* The receipt: the proof model, rendered as the decoration. */
+      .receipt-panel {
         position: relative;
-        padding: 26px;
-        border: 1px solid rgba(255,255,255,0.16);
-        background: #0a1b29;
-        box-shadow: 0 24px 70px rgba(0,0,0,0.32);
+        border: 1px solid var(--line-dark-strong);
+        background: var(--navy-2);
+        padding: 0;
       }
-      .proof-head {
+      .receipt-panel::before, .receipt-panel::after,
+      .receipt-corner::before, .receipt-corner::after {
+        content: "+";
+        position: absolute;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1;
+        color: var(--on-dark-faint);
+      }
+      .receipt-panel::before { top: 5px; left: 7px; }
+      .receipt-panel::after { top: 5px; right: 7px; }
+      .receipt-corner::before { bottom: 5px; left: 7px; }
+      .receipt-corner::after { bottom: 5px; right: 7px; }
+      .receipt-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 28px;
+        gap: 16px;
+        padding: 16px 22px;
+        border-bottom: 1px solid var(--line-dark);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--on-dark-muted);
       }
-      .proof-head span:first-child { color: var(--on-dark-muted); font-size: 12px; letter-spacing: 0.04em; }
-      .verified { display: inline-flex; align-items: center; gap: 7px; color: var(--success); font-size: 12px; }
-      .verified::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px rgba(56,196,161,0.12); }
-      .flow { display: grid; grid-template-columns: 1fr 34px 1fr 34px 1fr; align-items: center; }
-      .flow-node {
-        min-height: 116px;
-        padding: 14px 10px;
-        border: 1px solid rgba(255,255,255,0.13);
-        background: rgba(255,255,255,0.025);
-        display: flex;
-        flex-direction: column;
+      .verified {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        gap: 7px;
+        color: var(--verify-on-dark);
+        letter-spacing: 0.08em;
+        white-space: nowrap;
       }
-      .flow-node svg { width: 27px; height: 27px; margin-bottom: 12px; color: var(--accent-bright); }
-      .flow-node strong { font-size: 12px; font-weight: 500; }
-      .flow-node small { color: var(--on-dark-muted); font-size: 10px; }
-      .flow-arrow { color: #67808d; display: flex; justify-content: center; }
-      .flow-arrow svg { width: 18px; height: 18px; }
-      .receipt {
-        margin-top: 24px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255,255,255,0.12);
+      .verified::before {
+        content: "";
+        width: 7px; height: 7px;
+        background: currentColor;
+        box-shadow: 0 0 0 4px var(--verify-dim);
+      }
+      .receipt-body { padding: 22px; }
+      .receipt-label {
+        margin: 0 0 8px;
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        letter-spacing: 0.08em;
+        color: var(--on-dark-faint);
+      }
+      .hash {
+        margin: 0 0 20px;
+        font-family: var(--font-mono);
+        font-size: clamp(14px, 1.55vw, 16.5px);
+        line-height: 1.9;
+        color: var(--on-dark);
+        overflow-wrap: anywhere;
+      }
+      .hash .grp { white-space: nowrap; }
+      .hash .sep { color: var(--on-dark-faint); }
+      .receipt-fields { border-top: 1px solid var(--line-dark); }
+      .receipt-row {
         display: grid;
-        gap: 8px;
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 10px;
-        color: #8099a5;
+        grid-template-columns: 148px 1fr;
+        gap: 14px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line-dark);
+        font-family: var(--font-mono);
+        font-size: 12px;
       }
-      .receipt-row { display: flex; justify-content: space-between; gap: 16px; }
-      .receipt-row span:last-child { color: #c7d7dd; text-align: right; overflow-wrap: anywhere; }
-      .trust-strip { position: relative; margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-wrap: wrap; gap: 16px 34px; color: var(--on-dark-muted); font-size: 13px; }
-      .trust-strip span { display: inline-flex; align-items: center; gap: 10px; }
-      .trust-strip span::before { content: ""; width: 5px; height: 5px; background: var(--accent-bright); }
+      .receipt-row:last-child { border-bottom: 0; }
+      .receipt-row dt { color: var(--on-dark-faint); margin: 0; }
+      .receipt-row dd { margin: 0; color: #cfdcd6; text-align: right; overflow-wrap: anywhere; }
+      .receipt-row dd.match { color: var(--verify-on-dark); }
+      .receipt-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 10px;
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line-dark);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--on-dark-muted);
+      }
+      .receipt-flow .node { border: 1px solid var(--line-dark-strong); padding: 5px 9px; color: var(--on-dark); }
+      .receipt-flow .arrow { color: var(--on-dark-faint); }
+      .receipt-flow .node.ok { border-color: var(--verify-on-dark); color: var(--verify-on-dark); }
 
-      .section { padding: 108px 0; }
-      .section-label { margin: 0 0 16px; color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500; }
-      .section h2 {
-        margin-bottom: 22px;
-        max-width: 810px;
-        font-size: clamp(34px, 4vw, 52px);
-        line-height: 1.1;
-        letter-spacing: -0.035em;
+      .trust-strip {
+        position: relative;
+        margin-top: 64px;
+        border-top: 1px solid var(--line-dark);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .trust-strip span {
+        padding: 20px 22px 22px 0;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.03em;
+        color: var(--on-dark-muted);
+        display: flex;
+        gap: 12px;
+        align-items: baseline;
+      }
+      .trust-strip span + span { border-left: 1px solid var(--line-dark); padding-left: 22px; }
+      .trust-strip i { font-style: normal; color: var(--verify-on-dark); }
+
+      /* ---------- Sections ---------- */
+      .section { padding: 104px 0; }
+      .section-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 20px; }
+      .section-index {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
         font-weight: 500;
+        color: var(--verify);
+        white-space: nowrap;
       }
-      .section-intro { max-width: 690px; color: var(--muted); font-size: 18px; }
+      .section-label {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .on-dark .section-label { color: var(--on-dark-muted); }
+      .on-dark .section-index { color: var(--verify-on-dark); }
+      .section h2 {
+        margin-bottom: 20px;
+        max-width: 780px;
+        font-family: var(--font-display);
+        font-size: clamp(32px, 3.8vw, 48px);
+        line-height: 1.12;
+        letter-spacing: -0.018em;
+        font-weight: 600;
+      }
+      .section-intro { max-width: 680px; color: var(--muted); font-size: 17.5px; }
+      .on-dark { background: var(--navy); color: var(--on-dark); }
+      .on-dark .section-intro { color: var(--on-dark-muted); }
 
-      .problem-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 96px; align-items: start; }
-      .problem-copy { position: sticky; top: 118px; }
-      .problem-list { border-top: 1px solid var(--line-strong); }
+      /* Problem */
+      .problem-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 90px; align-items: start; }
+      .problem-copy { position: sticky; top: 116px; }
+      .fig-note {
+        margin-top: 28px;
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        color: var(--faint);
+        line-height: 1.7;
+      }
+      .problem-list { border-top: 1px solid var(--hairline-strong); }
       .problem-item {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 18px;
+        padding: 26px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .problem-item .index { color: var(--verify); font-family: var(--font-mono); font-size: 13px; padding-top: 3px; }
+      .problem-item h3 { margin-bottom: 7px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+      .problem-item p { margin-bottom: 0; color: var(--muted); }
+
+      /* How it works: the ledger line */
+      .ledger { margin-top: 56px; position: relative; }
+      .ledger::before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 10px;
+        bottom: 10px;
+        width: 1px;
+        background: var(--line-dark-strong);
+      }
+      .block { position: relative; padding: 0 0 44px 44px; }
+      .block:last-child { padding-bottom: 6px; }
+      .block::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 11px;
+        height: 11px;
+        background: var(--navy);
+        border: 1px solid var(--on-dark-muted);
+      }
+      .block.sealed::before { background: var(--verify-on-dark); border-color: var(--verify-on-dark); }
+      .block-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line-dark);
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.06em;
+      }
+      .block-head .seq { color: var(--verify-on-dark); }
+      .block-head .meta { color: var(--on-dark-faint); text-align: right; }
+      .block h3 {
+        margin: 20px 0 10px;
+        font-family: var(--font-display);
+        font-size: 27px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .block p { max-width: 780px; margin-bottom: 0; color: var(--on-dark-muted); }
+      .block-receipt {
+        margin-top: 16px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--on-dark-faint);
+        overflow-wrap: anywhere;
+      }
+      .block-receipt b { color: var(--verify-on-dark); font-weight: 500; }
+      .architecture-note {
+        margin-top: 54px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line-dark-strong);
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 28px;
+      }
+      .architecture-note strong { color: var(--verify-on-dark); font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; }
+      .architecture-note p { max-width: 780px; margin: 0; color: #d5e0da; }
+
+      /* Proof model: spec sheet rows */
+      .spec { margin-top: 46px; border-top: 1px solid var(--hairline-strong); }
+      .spec-row {
+        display: grid;
+        grid-template-columns: 210px 1fr;
+        gap: 30px;
+        padding: 26px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .spec-row .spec-key {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.07em;
+        color: var(--faint);
+        padding-top: 5px;
+      }
+      .spec-row h3 { margin-bottom: 7px; font-size: 19px; font-weight: 600; }
+      .spec-row p { max-width: 720px; margin-bottom: 0; color: var(--muted); }
+      .spec-row code { font-family: var(--font-mono); font-size: 0.88em; color: var(--verify); }
+
+      /* Verifier demo */
+      .verifier {
+        margin-top: 52px;
+        border: 1px solid var(--hairline-strong);
+        background: var(--surface);
+      }
+      .verifier-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--hairline);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+      .verifier-body { padding: 20px; display: grid; gap: 16px; }
+      .verifier label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--faint); display: block; margin-bottom: 7px; }
+      .verifier textarea {
+        width: 100%;
+        min-height: 64px;
+        resize: vertical;
+        padding: 12px 14px;
+        border: 1px solid var(--hairline-strong);
+        border-radius: 3px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .verifier .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      .verify-btn {
+        min-height: 42px;
+        padding: 9px 18px;
+        border: 1px solid var(--ink);
+        border-radius: 3px;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+      }
+      .verify-btn:hover { opacity: 0.88; }
+      .verify-status { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+      .verify-status.ok { color: var(--verify); font-weight: 600; }
+      .verify-status.bad { color: var(--ink); font-weight: 600; }
+      .verify-out {
+        font-family: var(--font-mono);
+        font-size: 13.5px;
+        line-height: 1.9;
+        overflow-wrap: anywhere;
+        color: var(--ink);
+      }
+      .verify-out .sep { color: var(--faint); }
+      .verifier-note { margin: 0; font-size: 13px; color: var(--muted); }
+
+      /* Capabilities */
+      .features-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 48px; }
+      .features-head h2 { margin-bottom: 0; }
+      .features-head p { max-width: 420px; margin: 0 0 6px; color: var(--muted); }
+      .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--hairline-strong); }
+      .feature {
+        min-height: 200px;
+        padding: 32px 32px 32px 0;
+        border-bottom: 1px solid var(--hairline);
         display: grid;
         grid-template-columns: 44px 1fr;
         gap: 18px;
-        padding: 28px 0;
-        border-bottom: 1px solid var(--line);
       }
-      .problem-item .index { color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 13px; padding-top: 3px; }
-      .problem-item h3 { margin-bottom: 7px; font-size: 19px; font-weight: 600; letter-spacing: -0.015em; }
-      .problem-item p { margin-bottom: 0; color: var(--muted); }
-
-      .how { background: var(--navy); color: var(--on-dark); }
-      .how .section-label { color: var(--accent-bright); }
-      .how .section-intro { color: var(--on-dark-muted); }
-      .steps { margin-top: 58px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.18); }
-      .step { position: relative; padding: 34px 34px 10px 0; }
-      .step + .step { padding-left: 34px; border-left: 1px solid rgba(255,255,255,0.14); }
-      .step-number { display: block; margin-bottom: 44px; color: var(--accent-bright); font-family: "IBM Plex Mono", monospace; font-size: 13px; }
-      .step-icon { width: 42px; height: 42px; color: var(--accent-bright); margin-bottom: 22px; }
-      .step h3 { margin-bottom: 10px; font-size: 24px; font-weight: 500; }
-      .step p { margin-bottom: 0; color: var(--on-dark-muted); }
-      .architecture-note {
-        margin-top: 68px;
-        padding: 22px 0 0;
-        border-top: 1px solid rgba(255,255,255,0.18);
-        display: grid;
-        grid-template-columns: 185px 1fr;
-        gap: 30px;
-      }
-      .architecture-note strong { color: var(--accent-bright); font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; }
-      .architecture-note p { max-width: 770px; margin: 0; color: #d3e0e4; }
-
-      .features-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 52px; }
-      .features-head h2 { margin-bottom: 0; }
-      .features-head p { max-width: 440px; margin: 0 0 7px; color: var(--muted); }
-      .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line-strong); }
-      .feature {
-        min-height: 210px;
-        padding: 34px 34px 34px 0;
-        border-bottom: 1px solid var(--line);
-        display: grid;
-        grid-template-columns: 46px 1fr;
-        gap: 20px;
-      }
-      .feature:nth-child(even) { padding-left: 34px; border-left: 1px solid var(--line); }
-      .feature-icon { width: 31px; height: 31px; color: var(--accent); }
-      .feature h3 { margin-bottom: 9px; font-size: 20px; font-weight: 600; }
+      .feature:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--hairline); }
+      .feature .f-index { font-family: var(--font-mono); font-size: 12px; color: var(--faint); padding-top: 4px; }
+      .feature h3 { margin-bottom: 8px; font-size: 19.5px; font-weight: 600; }
       .feature p { margin-bottom: 0; color: var(--muted); }
 
-      .proof-model { background: var(--surface-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-      .fact-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line-strong); }
-      .fact { padding: 30px 32px 30px 0; border-bottom: 1px solid var(--line); }
-      .fact:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--line); }
-      .fact h3 { margin-bottom: 8px; font-size: 19px; font-weight: 600; }
-      .fact p { margin-bottom: 0; color: var(--muted); }
-      .fact code { font-family: "IBM Plex Mono", monospace; font-size: 0.88em; color: var(--accent); }
-
-      .limitations { background: var(--navy); color: var(--on-dark); }
-      .limitations .section-label { color: var(--accent-bright); }
-      .limitations .section-intro { color: var(--on-dark-muted); }
-      .limits-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(255,255,255,0.18); }
-      .limit { padding: 28px 32px 28px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
-      .limit:nth-child(even) { padding-left: 32px; border-left: 1px solid rgba(255,255,255,0.14); }
-      .limit h3 { margin-bottom: 8px; color: var(--on-dark); font-size: 19px; font-weight: 500; }
-      .limit p { margin-bottom: 0; color: var(--on-dark-muted); }
-      .comparison { margin-top: 54px; }
-      .comparison h3 { margin-bottom: 22px; font-size: 25px; font-weight: 500; }
-      .comparison-list { border-top: 1px solid rgba(255,255,255,0.18); }
-      .comparison-row { display: grid; grid-template-columns: minmax(180px, 0.34fr) 1fr; gap: 28px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
-      .comparison-row strong { color: var(--accent-bright); font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; }
-      .comparison-row p { margin: 0; color: #d3e0e4; }
-
-      .status-band { background: var(--surface-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-      .status-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-strong); }
-      .status-item { padding: 28px 28px 28px 0; border-bottom: 1px solid var(--line); }
-      .status-item + .status-item { padding-left: 28px; border-left: 1px solid var(--line); }
-      .status-item h3 { margin-bottom: 8px; font-size: 18px; font-weight: 600; }
-      .status-item p { margin: 0; color: var(--muted); }
-
-      .faq-layout { display: grid; grid-template-columns: minmax(250px, 0.4fr) minmax(0, 1fr); gap: 84px; align-items: start; }
-      .faq-intro { position: sticky; top: 118px; }
-      .faq-group { margin-bottom: 48px; }
-      .faq-group > h3 { margin-bottom: 12px; color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500; }
-      details { border-top: 1px solid var(--line); }
-      details:last-child { border-bottom: 1px solid var(--line); }
-      summary { position: relative; cursor: pointer; list-style: none; padding: 21px 42px 21px 0; color: var(--ink); font-size: 17px; font-weight: 600; line-height: 1.4; }
-      summary::-webkit-details-marker { display: none; }
-      summary::after { content: "+"; position: absolute; right: 4px; top: 17px; color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 22px; font-weight: 400; }
-      details[open] summary::after { content: "−"; }
-      details p { max-width: 760px; margin: -2px 42px 22px 0; color: var(--muted); }
-
-      .industries { padding-top: 10px; }
-      .industry-band {
-        position: relative;
-        overflow: hidden;
-        background: var(--surface-alt);
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        padding: 94px 0;
-      }
-      .industry-layout { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 90px; align-items: start; }
-      .sector-groups { border-top: 1px solid var(--line-strong); }
+      /* Industries */
+      .industry-band { background: var(--surface-alt); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 96px 0; }
+      .industry-layout { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 88px; align-items: start; }
+      .sector-groups { border-top: 1px solid var(--hairline-strong); }
       .sector-group {
         display: grid;
         grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
         gap: 28px;
         padding: 24px 0;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--hairline);
       }
-      .sector-group h3 {
-        margin: 0;
-        color: var(--ink);
-        font-size: 17px;
-        line-height: 1.35;
-        font-weight: 600;
-      }
+      .sector-group h3 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 600; }
       .sector-group p { margin: 0; color: var(--muted); }
       .sector-group strong { color: var(--ink); font-weight: 600; }
-      .sector-strategy {
-        margin: 24px 0 0;
-        color: var(--ink);
-        font-size: 17px;
-        font-weight: 500;
-      }
-      .compliance {
-        margin-top: 30px;
-        padding: 18px 0;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 13px;
-      }
+      .sector-strategy { margin: 24px 0 0; font-size: 17px; font-weight: 500; }
+      .compliance { margin-top: 30px; padding: 18px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); color: var(--muted); font-size: 13px; }
       .compliance strong { color: var(--ink); font-weight: 600; }
 
-      .closing { padding: 96px 0; background: var(--navy); color: var(--on-dark); }
-      .closing-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 50px; }
-      .closing h2 { max-width: 760px; margin-bottom: 16px; color: var(--on-dark); }
-      .closing p { max-width: 650px; margin-bottom: 0; color: var(--on-dark-muted); font-size: 18px; }
-      .closing .button { min-width: 180px; }
+      /* Limitations */
+      .limits-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line-dark-strong); }
+      .limit { padding: 28px 32px 28px 0; border-bottom: 1px solid var(--line-dark); }
+      .limit:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--line-dark); }
+      .limit .l-key { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; color: var(--on-dark-faint); display: block; margin-bottom: 10px; }
+      .limit h3 { margin-bottom: 8px; font-size: 19px; font-weight: 600; font-family: var(--font-display); letter-spacing: 0; }
+      .limit p { margin-bottom: 0; color: var(--on-dark-muted); }
+      .comparison { margin-top: 54px; }
+      .comparison h3 { margin-bottom: 20px; font-family: var(--font-display); font-size: 25px; font-weight: 600; }
+      .comparison-list { border-top: 1px solid var(--line-dark-strong); }
+      .comparison-row { display: grid; grid-template-columns: minmax(180px, 0.34fr) 1fr; gap: 28px; padding: 19px 0; border-bottom: 1px solid var(--line-dark); }
+      .comparison-row strong { color: var(--verify-on-dark); font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.05em; padding-top: 3px; }
+      .comparison-row p { margin: 0; color: #d5e0da; }
 
-      footer { background: var(--navy); color: var(--on-dark-muted); border-top: 1px solid rgba(255,255,255,0.1); }
-      .footer-inner { min-height: 92px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 13px; }
+      /* Status */
+      .status-band { background: var(--surface-alt); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+      .status-grid { margin-top: 42px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hairline-strong); }
+      .status-item { padding: 26px 26px 26px 0; border-bottom: 1px solid var(--hairline); }
+      .status-item + .status-item { padding-left: 26px; border-left: 1px solid var(--hairline); }
+      .status-item h3 { margin-bottom: 8px; font-size: 18px; font-weight: 600; }
+      .status-item p { margin: 0; color: var(--muted); }
+
+      /* FAQ */
+      .faq-layout { display: grid; grid-template-columns: minmax(250px, 0.4fr) minmax(0, 1fr); gap: 82px; align-items: start; }
+      .faq-intro { position: sticky; top: 116px; }
+      .faq-group { margin-bottom: 46px; }
+      .faq-group > h3 {
+        margin-bottom: 12px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+      }
+      .faq-group > h3 .n { color: var(--verify); margin-right: 10px; }
+      details { border-top: 1px solid var(--hairline); }
+      details:last-child { border-bottom: 1px solid var(--hairline); }
+      summary {
+        position: relative;
+        cursor: pointer;
+        list-style: none;
+        padding: 20px 44px 20px 0;
+        font-size: 16.5px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      summary::-webkit-details-marker { display: none; }
+      summary::after {
+        content: "+";
+        position: absolute;
+        right: 4px; top: 16px;
+        color: var(--verify);
+        font-family: var(--font-mono);
+        font-size: 21px;
+        font-weight: 400;
+      }
+      details[open] summary::after { content: "−"; }
+      details p { max-width: 740px; margin: -2px 44px 22px 0; color: var(--muted); }
+
+      /* Closing + footer */
+      .closing { padding: 92px 0; background: var(--navy); color: var(--on-dark); }
+      .closing-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 48px; }
+      .closing h2 { margin-bottom: 14px; font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
+      .closing p { max-width: 640px; margin-bottom: 0; color: var(--on-dark-muted); font-size: 17.5px; }
+      .closing .button { min-width: 180px; }
+      footer { background: var(--navy); color: var(--on-dark-muted); border-top: 1px solid var(--line-dark); }
+      .footer-inner { min-height: 88px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 13px; }
+      .footer-inner .mono { font-size: 11.5px; color: var(--on-dark-faint); }
       .footer-inner a { text-decoration: none; color: var(--on-dark-muted); }
       .footer-inner a:hover { color: var(--on-dark); }
 
-      :focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 4px; }
-
       @media (max-width: 980px) {
-        .hero { padding-top: 74px; }
-        .hero-grid { grid-template-columns: 1fr; gap: 56px; }
-        .proof-panel { max-width: 680px; }
-        .problem-grid, .industry-layout, .faq-layout { grid-template-columns: 1fr; gap: 48px; }
+        .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+        .receipt-panel { max-width: 640px; }
+        .problem-grid, .industry-layout, .faq-layout { grid-template-columns: 1fr; gap: 46px; }
         .problem-copy, .faq-intro { position: static; }
-        .steps { grid-template-columns: 1fr; }
-        .step, .step + .step { padding: 30px 0; border-left: 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
-        .step-number { margin-bottom: 24px; }
-        .architecture-note { grid-template-columns: 1fr; gap: 12px; }
+        .architecture-note { grid-template-columns: 1fr; gap: 10px; }
         .closing-inner { grid-template-columns: 1fr; align-items: start; }
         .status-grid { grid-template-columns: 1fr; }
         .status-item, .status-item + .status-item { padding: 24px 0; border-left: 0; }
+        .spec-row { grid-template-columns: 1fr; gap: 8px; }
       }
 
       @media (max-width: 720px) {
         .container { width: min(100% - 32px, var(--max)); }
-        .nav-inner { min-height: 64px; }
-        .nav-links > a:not(.button) { display: none; }
-        .hero { padding: 66px 0 62px; }
-        .hero-grid { gap: 44px; }
-        h1 { font-size: clamp(41px, 13vw, 60px); }
-        .hero-copy > p:not(.kicker):not(.brand-story) { font-size: 18px; }
+        .nav-inner { min-height: 62px; }
+        .nav-links > a:not(.button), .nav-status, .wordmark .tag { display: none; }
+        .hero { padding-top: 62px; }
+        h1 { font-size: clamp(38px, 11.5vw, 54px); }
         .hero-actions .button { flex: 1 1 150px; }
-        .proof-panel { padding: 18px; }
-        .flow { grid-template-columns: 1fr; gap: 10px; }
-        .flow-node { min-height: 88px; flex-direction: row; gap: 12px; text-align: left; justify-content: flex-start; padding: 14px 18px; }
-        .flow-node svg { margin: 0; flex: 0 0 auto; }
-        .flow-arrow { transform: rotate(90deg); }
-        .receipt-row { display: grid; gap: 1px; }
-        .receipt-row span:last-child { text-align: left; }
-        .trust-strip { margin-top: 44px; display: grid; gap: 13px; }
-        .section { padding: 78px 0; }
-        .section h2 { font-size: 36px; }
-        .features-head { display: block; margin-bottom: 38px; }
-        .features-head h2 { margin-bottom: 18px; }
-        .feature-grid, .fact-grid, .limits-grid { grid-template-columns: 1fr; }
-        .feature, .feature:nth-child(even), .fact, .fact:nth-child(even), .limit, .limit:nth-child(even) { min-height: 0; padding: 28px 0; border-left: 0; }
-        .comparison-row { grid-template-columns: 1fr; gap: 8px; }
-        summary { font-size: 16px; }
+        .receipt-body { padding: 18px; }
+        .receipt-head { padding: 14px 18px; }
+        .receipt-row { grid-template-columns: 1fr; gap: 1px; }
+        .receipt-row dd { text-align: left; }
+        .trust-strip { grid-template-columns: 1fr; margin-top: 48px; }
+        .trust-strip span { padding: 15px 0; }
+        .trust-strip span + span { border-left: 0; border-top: 1px solid var(--line-dark); padding-left: 0; }
+        .section { padding: 76px 0; }
+        .block { padding-left: 30px; }
+        .block-head .meta { text-align: left; }
+        .features-head { display: block; margin-bottom: 36px; }
+        .features-head h2 { margin-bottom: 16px; }
+        .feature-grid, .limits-grid { grid-template-columns: 1fr; }
+        .feature, .feature:nth-child(even), .limit, .limit:nth-child(even) { min-height: 0; padding: 26px 0; border-left: 0; }
+        .comparison-row { grid-template-columns: 1fr; gap: 7px; }
         .industry-band { padding: 72px 0; }
-        .sector-group { grid-template-columns: 1fr; gap: 9px; }
-        .closing { padding: 76px 0; }
+        .sector-group { grid-template-columns: 1fr; gap: 8px; }
+        .closing { padding: 72px 0; }
         .closing .button { width: 100%; }
-        .footer-inner { min-height: 110px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; }
+        .footer-inner { min-height: 108px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 7px; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -465,8 +685,12 @@
   <body>
     <nav class="site-nav" aria-label="Primary navigation">
       <div class="container nav-inner">
-        <a class="wordmark" href="#top" aria-label="Go to page start">Private data. Public proof.</a>
+        <a class="wordmark" href="#top" aria-label="Enoch, back to page start">
+          <span class="name">ENOCH</span>
+          <span class="tag">private data · public proof</span>
+        </a>
         <div class="nav-links">
+          <span class="nav-status" aria-hidden="true">HCS / MAINNET / RECORDING</span>
           <a href="#how-it-works">How it works</a>
           <a href="#capabilities">Capabilities</a>
           <a href="#limitations">Limitations</a>
@@ -481,9 +705,9 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-copy">
-              <p class="kicker">Private data. Public proof.</p>
+              <p class="kicker">PRIVATE HEDERA RECORDS SYSTEM <b>/</b> IN DEVELOPMENT</p>
               <h1 id="hero-title">Tamper-evident records for regulated enterprises</h1>
-              <p>Enoch is an API-first integrity layer in development. It anchors cryptographic proofs to Hedera while record contents remain in systems the customer controls.</p>
+              <p class="lede">Enoch runs as a private Hedera instance inside the customer's own environment, bridged to the public mainnet. Record contents stay in systems the customer controls, whether local or in the cloud; only cryptographic proofs cross to the public ledger. Any later change to a record is detectable, by anyone, without asking Enoch.</p>
               <p class="brand-story">Named for Enoch, the ancient scribe and keeper of records.</p>
               <div class="hero-actions">
                 <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20pilot%20discussion">Discuss a pilot
@@ -493,39 +717,42 @@
               </div>
             </div>
 
-            <div class="proof-panel" role="img" aria-label="Diagram showing private enterprise records hashed and anchored through Hedera Consensus Service for independent verification">
-              <div class="proof-head mono">
-                <span>VERIFICATION RECEIPT</span>
+            <div class="receipt-panel">
+              <span class="receipt-corner" aria-hidden="true"></span>
+              <div class="receipt-head">
+                <span>VERIFICATION RECEIPT · EXAMPLE</span>
                 <span class="verified">MATCHED</span>
               </div>
-              <div class="flow">
-                <div class="flow-node">
-                  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 5h13l5 5v17H7V5Z" stroke="currentColor" stroke-width="1.6"/><path d="M20 5v6h5M11 17h10M11 21h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                  <div><strong>Private record</strong><br><small>Enterprise system</small></div>
+              <div class="receipt-body">
+                <p class="receipt-label">SHA-256 DIGEST OF RECORD</p>
+                <p class="hash" aria-label="Example SHA-256 digest: 01ae732d 5bf4476f 8159d2a0 2e23c58a 6f33044d 0dae2d0b d8a605c0 57187284"><span class="grp">01ae732d</span><span class="sep"> </span><span class="grp">5bf4476f</span><span class="sep"> </span><span class="grp">8159d2a0</span><span class="sep"> </span><span class="grp">2e23c58a</span><span class="sep"> </span><span class="grp">6f33044d</span><span class="sep"> </span><span class="grp">0dae2d0b</span><span class="sep"> </span><span class="grp">d8a605c0</span><span class="sep"> </span><span class="grp">57187284</span></p>
+                <dl class="receipt-fields">
+                  <div class="receipt-row"><dt>algorithm</dt><dd>SHA-256</dd></div>
+                  <div class="receipt-row"><dt>network</dt><dd>Hedera mainnet · HCS</dd></div>
+                  <div class="receipt-row"><dt>topic · sequence</dt><dd>0.0.4815162 · 8,412,907</dd></div>
+                  <div class="receipt-row"><dt>consensus_time</dt><dd>2026-10-15T21:42:18.204Z</dd></div>
+                  <div class="receipt-row"><dt>signer</dt><dd>customer-held key</dd></div>
+                  <div class="receipt-row"><dt>status</dt><dd class="match">cryptographic match</dd></div>
+                </dl>
+                <div class="receipt-flow" aria-hidden="true">
+                  <span class="node">PRIVATE RECORD</span>
+                  <span class="arrow">→</span>
+                  <span class="node">PRIVATE INSTANCE</span>
+                  <span class="arrow">→</span>
+                  <span class="node">HASH</span>
+                  <span class="arrow">→</span>
+                  <span class="node">PUBLIC MAINNET ANCHOR</span>
+                  <span class="arrow">→</span>
+                  <span class="node ok">VERIFIED ✓</span>
                 </div>
-                <span class="flow-arrow"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <div class="flow-node">
-                  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 11.5 16 6l9 5.5v9L16 26l-9-5.5v-9Z" stroke="currentColor" stroke-width="1.6"/><path d="m7 11.5 9 5.5 9-5.5M16 17v9" stroke="currentColor" stroke-width="1.6"/></svg>
-                  <div><strong>Public proof</strong><br><small>Hedera HCS</small></div>
-                </div>
-                <span class="flow-arrow"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <div class="flow-node">
-                  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 27s9-4 9-12V8l-9-3-9 3v7c0 8 9 12 9 12Z" stroke="currentColor" stroke-width="1.6"/><path d="m11.5 15.5 3 3 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <div><strong>Verified</strong><br><small>Audit evidence</small></div>
-                </div>
-              </div>
-              <div class="receipt" aria-hidden="true">
-                <div class="receipt-row"><span>record_hash</span><span>0x91f4...c82a</span></div>
-                <div class="receipt-row"><span>hcs_reference</span><span>network · topic · sequence</span></div>
-                <div class="receipt-row"><span>consensus_time</span><span>2026-10-15T21:42:18Z</span></div>
-                <div class="receipt-row"><span>status</span><span style="color:#38c4a1">cryptographic match</span></div>
               </div>
             </div>
           </div>
+
           <div class="trust-strip" aria-label="Key principles">
-            <span>Data stays private</span>
-            <span>Every version is traceable</span>
-            <span>Proof is independently verifiable</span>
+            <span><i>01</i> Data stays private</span>
+            <span><i>02</i> Every version is traceable</span>
+            <span><i>03</i> Proof is independently verifiable</span>
           </div>
         </div>
       </section>
@@ -533,9 +760,10 @@
       <section class="section" id="problem" aria-labelledby="problem-title">
         <div class="container problem-grid">
           <div class="problem-copy">
-            <p class="section-label">The integrity gap</p>
+            <div class="section-head"><span class="section-index">SEC. 01</span><p class="section-label">The integrity gap</p></div>
             <h2 id="problem-title">Audit trails should prove what happened</h2>
             <p class="section-intro">Regulated organizations generate critical records every day. Most are still stored in systems where administrators, integrations, or database changes can quietly rewrite history.</p>
+            <p class="fig-note">FIG. 01 · A timestamp inside a database is a claim.<br>An anchored hash is evidence.</p>
           </div>
           <div class="problem-list">
             <article class="problem-item">
@@ -554,51 +782,83 @@
         </div>
       </section>
 
-      <section class="section how" id="how-it-works" aria-labelledby="how-title">
+      <section class="section on-dark" id="how-it-works" aria-labelledby="how-title">
         <div class="container">
-          <p class="section-label">How it works</p>
+          <div class="section-head"><span class="section-index">SEC. 02</span><p class="section-label">How it works</p></div>
           <h2 id="how-title">From operational record to verifiable evidence</h2>
-          <p class="section-intro">The product is designed as an API-first integrity layer with a verification dashboard. It does not replace the system of record.</p>
-          <div class="steps">
-            <article class="step">
-              <span class="step-number">01 / CAPTURE</span>
-              <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="6" y="6" width="32" height="32" stroke="currentColor" stroke-width="1.5"/><path d="M14 15h16M14 22h16M14 29h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p class="section-intro">Enoch is a system, not a single application: a private Hedera instance, modular microservices that bridge it to the public mainnet and connect it to the customer's existing systems, and a verification dashboard. It does not replace the system of record.</p>
+
+          <div class="ledger">
+            <article class="block">
+              <div class="block-head">
+                <span><span class="seq">BLOCK 01</span> · CAPTURE</span>
+                <span class="meta">INPUT: RECORD BYTES + METADATA ENVELOPE</span>
+              </div>
               <h3>Capture</h3>
-              <p>The customer sends record bytes and a canonical metadata envelope containing the record ID, event type, and capture timestamp. The customer decides which events are sent.</p>
+              <p>Microservices connected to the customer's existing systems capture record bytes and a canonical metadata envelope containing the record ID, event type, and capture timestamp into the customer's private Hedera instance, inside their own environment. The customer decides which events are captured.</p>
+              <p class="block-receipt">envelope → record_id · event_type · capture_timestamp</p>
             </article>
-            <article class="step">
-              <span class="step-number">02 / ANCHOR</span>
-              <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M12 17.5 22 12l10 5.5v11L22 34l-10-5.5v-11Z" stroke="currentColor" stroke-width="1.5"/><path d="m12 17.5 10 5.5 10-5.5M22 23v11" stroke="currentColor" stroke-width="1.5"/></svg>
+
+            <article class="block">
+              <div class="block-head">
+                <span><span class="seq">BLOCK 02</span> · ANCHOR</span>
+                <span class="meta">OUTPUT: DIGEST + CONSENSUS TIMESTAMP</span>
+              </div>
               <h3>Anchor</h3>
-              <p>The customer signs and submits a SHA-256 hash. Hedera Consensus Service assigns a network consensus timestamp. Record contents, filenames, and personal data are not submitted.</p>
+              <p>A bridge microservice submits a SHA-256 hash from the private instance to the public mainnet, signed with the customer's key. Hedera Consensus Service assigns a network consensus timestamp. Only the hash crosses from private to public: record contents, filenames, and personal data stay on the private side and are not submitted.</p>
+              <p class="block-receipt">digest <b>01ae732d…57187284</b> · signed by customer key · contents never leave customer systems</p>
             </article>
-            <article class="step">
-              <span class="step-number">03 / VERIFY</span>
-              <svg class="step-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.5"/><path d="m14.5 22 5 5 10-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            <article class="block sealed">
+              <div class="block-head">
+                <span><span class="seq">BLOCK 03</span> · VERIFY</span>
+                <span class="meta">RESULT: MATCH OR MISMATCH, NO INTERMEDIARY</span>
+              </div>
               <h3>Verify</h3>
               <p>The evidence export contains the original record bytes, associated metadata, canonicalization specification, hash algorithm, anchored digest, signer account and public-key data, plus the Hedera network, topic, sequence number, and consensus timestamp. A verifier recomputes the hash and checks the referenced message through a compatible mirror node that retains it. No Enoch account or service is required.</p>
+              <p class="block-receipt">recompute → compare → <b>cryptographic match</b></p>
             </article>
           </div>
+
           <div class="architecture-note">
             <strong>ARCHITECTURE PRINCIPLE</strong>
-            <p>Records stay in customer-controlled systems. Anchoring keys also stay with the customer. Enoch cannot create or sign records on a customer's behalf. The public ledger receives only the proof required to test integrity.</p>
+            <p>Records stay in customer-controlled systems. Anchoring keys also stay with the customer, and Enoch cannot create or sign records on a customer's behalf. The private instance runs in the customer's environment: on their own infrastructure, in cloud infrastructure they control, or on supplied server hardware for onsite nodes. Modular microservices bridge it to the public mainnet and connect the customer's existing systems to their private network. The public ledger receives only the proof required to test integrity.</p>
           </div>
         </div>
       </section>
 
-
-      <section class="section proof-model" id="proof-model" aria-labelledby="proof-model-title">
+      <section class="section" id="proof-model" aria-labelledby="proof-model-title" style="padding-bottom:0">
         <div class="container">
-          <p class="section-label">Trust and proof model</p>
+          <div class="section-head"><span class="section-index">SEC. 03</span><p class="section-label">Trust and proof model</p></div>
           <h2 id="proof-model-title">What the proof establishes</h2>
           <p class="section-intro">A cryptographic match establishes that a record is byte-identical to the record anchored at the stated consensus time. It does not establish that the record was truthful.</p>
-          <div class="fact-grid">
-            <article class="fact"><h3>Customer-held keys</h3><p>Anchoring keys remain with the customer. Enoch cannot silently create, alter, or sign a customer's record.</p></article>
-            <article class="fact"><h3>Visible corrections</h3><p>A correction is a new, superseding record. The original anchor remains and the version chain shows the complete history.</p></article>
-            <article class="fact"><h3>Independent verification</h3><p>Every evidence export is designed to carry the inputs and receipt needed to reproduce the digest and locate its exact Hedera message. Verification uses a compatible mirror node that retains the referenced message. It does not depend on Enoch remaining available.</p></article>
-            <article class="fact"><h3>Hash agility</h3><p>The design uses <code>SHA-256</code> today. Records can be re-anchored under a stronger algorithm later without removing the original timestamp.</p></article>
-            <article class="fact"><h3>Selective by definition</h3><p>Enoch anchors what the customer sends. It cannot prove that an event never sent to it occurred, or that the log is complete.</p></article>
-            <article class="fact"><h3>Deletion without disclosure</h3><p>A customer can delete local records under its retention or expungement policy. The anchor remains as an orphan proof that reveals no record content.</p></article>
+
+          <div class="spec">
+            <div class="spec-row"><span class="spec-key">KEYS / HELD BY CUSTOMER</span><div><h3>Customer-held keys</h3><p>Anchoring keys remain with the customer. Enoch cannot silently create, alter, or sign a customer's record.</p></div></div>
+            <div class="spec-row"><span class="spec-key">CORRECTIONS / SUPERSEDING</span><div><h3>Visible corrections</h3><p>A correction is a new, superseding record. The original anchor remains and the version chain shows the complete history.</p></div></div>
+            <div class="spec-row"><span class="spec-key">VERIFICATION / INDEPENDENT</span><div><h3>Independent verification</h3><p>Every evidence export is designed to carry the inputs and receipt needed to reproduce the digest and locate its exact Hedera message. Verification uses a compatible mirror node that retains the referenced message. It does not depend on Enoch remaining available.</p></div></div>
+            <div class="spec-row"><span class="spec-key">ALGORITHM / SHA-256 TODAY</span><div><h3>Hash agility</h3><p>The design uses <code>SHA-256</code> today. Records can be re-anchored under a stronger algorithm later without removing the original timestamp.</p></div></div>
+            <div class="spec-row"><span class="spec-key">SCOPE / SELECTIVE</span><div><h3>Selective by definition</h3><p>Enoch anchors what the customer's existing systems send to their private instance. It cannot prove that an event never submitted occurred, or that the log is complete.</p></div></div>
+            <div class="spec-row"><span class="spec-key">DELETION / ORPHAN PROOF</span><div><h3>Deletion without disclosure</h3><p>A customer can delete local records under its retention or expungement policy. The anchor remains as an orphan proof that reveals no record content.</p></div></div>
+          </div>
+
+          <div class="verifier" aria-labelledby="verifier-title">
+            <div class="verifier-head">
+              <span id="verifier-title">TRY THE PROOF · RUNS IN YOUR BROWSER</span>
+              <span>ANCHORED DIGEST 01ae732d…57187284</span>
+            </div>
+            <div class="verifier-body">
+              <div>
+                <label for="record-input">CANONICAL RECORD ENVELOPE (EDIT IT AND THE DIGEST CHANGES)</label>
+                <textarea id="record-input" spellcheck="false">record_id=EN-2026-0001;event=document.captured;file=engagement-letter.pdf;captured_at=2026-10-15T21:42:18Z</textarea>
+              </div>
+              <div class="row">
+                <button class="verify-btn" id="verify-btn" type="button">RECOMPUTE SHA-256</button>
+                <span class="verify-status" id="verify-status" role="status">The digest above is the real SHA-256 of this exact text.</span>
+              </div>
+              <div class="verify-out" id="verify-out" aria-label="Computed SHA-256 digest"></div>
+              <p class="verifier-note">This is the whole verification idea, at envelope scale: recompute the hash, compare it to the anchored digest. A match proves the record is unchanged since anchoring. Any edit, even one character, produces a different digest.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -607,18 +867,20 @@
         <div class="container">
           <div class="features-head">
             <div>
-              <p class="section-label">Core capabilities</p>
+              <div class="section-head"><span class="section-index">SEC. 04</span><p class="section-label">Core capabilities</p></div>
               <h2 id="capabilities-title">Evidence infrastructure that fits your stack</h2>
             </div>
-            <p>Built as a focused integrity layer, not another system of record your teams have to replace.</p>
+            <p>A modular system of microservices, not another system of record your teams have to replace.</p>
           </div>
           <div class="feature-grid">
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 8h20v18H6V8ZM10 4h12v4H10V4Z" stroke="currentColor" stroke-width="1.5"/><path d="M11 14h10M11 19h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Immutable event log</h3><p>Capture critical actions with durable proofs that reveal any change after anchoring.</p></div></article>
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 4h12l5 5v19H8V4Z" stroke="currentColor" stroke-width="1.5"/><path d="M20 4v6h5M12 16h9M12 21h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Versioned document archive</h3><p>Preserve every document revision in a traceable history, with authorship and context intact.</p></div></article>
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 9h22v17H5V9Z" stroke="currentColor" stroke-width="1.5"/><path d="M11 9V6h10v3M12 17h8" stroke="currentColor" stroke-width="1.5"/></svg><div><h3>Enterprise data ownership</h3><p>Keep source records in infrastructure you control, under your retention and access policies.</p></div></article>
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Trusted timestamps</h3><p>Attach consensus timestamps that establish when each proof entered the public record.</p></div></article>
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 16s5-8 13-8 13 8 13 8-5 8-13 8S3 16 3 16Z" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><div><h3>Independent verification</h3><p>Let authorized auditors or counterparties validate integrity without trusting your database alone.</p></div></article>
-            <article class="feature"><svg class="feature-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 5h16v22H8V5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 11h8M12 16h8M12 21h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><h3>Portable evidence exports</h3><p>The design packages records, proofs, timestamps, and verification results in a format that can be independently checked.</p></div></article>
+            <article class="feature"><span class="f-index">C·01</span><div><h3>Immutable event log</h3><p>Capture critical actions with durable proofs that reveal any change after anchoring.</p></div></article>
+            <article class="feature"><span class="f-index">C·02</span><div><h3>Versioned record history</h3><p>Documents stay in the systems that already hold them; each anchored revision joins a traceable version chain, with authorship and context intact.</p></div></article>
+            <article class="feature"><span class="f-index">C·03</span><div><h3>Enterprise data ownership</h3><p>Keep source records in infrastructure you control, under your retention and access policies.</p></div></article>
+            <article class="feature"><span class="f-index">C·04</span><div><h3>Trusted timestamps</h3><p>Attach consensus timestamps that establish when each proof entered the public record.</p></div></article>
+            <article class="feature"><span class="f-index">C·05</span><div><h3>Independent verification</h3><p>Let authorized auditors or counterparties validate integrity without trusting your database alone.</p></div></article>
+            <article class="feature"><span class="f-index">C·06</span><div><h3>Portable evidence exports</h3><p>The design packages a record supplied from your existing systems with its proof, timestamp, and verification result in a format that can be independently checked.</p></div></article>
+            <article class="feature"><span class="f-index">C·07</span><div><h3>Modular microservice bridge</h3><p>Dedicated microservices bridge the private instance to the public mainnet, customized to connect the systems you already run to your private network.</p></div></article>
+            <article class="feature"><span class="f-index">C·08</span><div><h3>Onsite node hardware</h3><p>Where you want your own server nodes for the private Hedera network, Enoch can include the hardware to run them onsite, inside your own environment.</p></div></article>
           </div>
         </div>
       </section>
@@ -627,7 +889,7 @@
         <div class="industry-band">
           <div class="container industry-layout">
             <div>
-              <p class="section-label">Built for oversight</p>
+              <div class="section-head"><span class="section-index">SEC. 05</span><p class="section-label">Built for oversight</p></div>
               <h2 id="industries-title">Start where audit pain is immediate</h2>
               <p class="section-intro">Small professional firms and public-serving organizations need defensible records too, often without dedicated compliance infrastructure.</p>
             </div>
@@ -653,16 +915,16 @@
         </div>
       </section>
 
-      <section class="section limitations" id="limitations" aria-labelledby="limitations-title">
+      <section class="section on-dark" id="limitations" aria-labelledby="limitations-title">
         <div class="container">
-          <p class="section-label">Honest limitations</p>
+          <div class="section-head"><span class="section-index">SEC. 06</span><p class="section-label">Honest limitations</p></div>
           <h2 id="limitations-title">What Enoch does not prove</h2>
           <p class="section-intro">Anchoring narrows the trust problem. It does not remove every source of error, omission, or fraud.</p>
           <div class="limits-grid">
-            <article class="limit"><h3>Truthfulness</h3><p>Enoch proves that a record existed in a specific state at a specific time. It does not prove that the content was true. A contestation marker is part of the design.</p></article>
-            <article class="limit"><h3>Completeness</h3><p>Enoch proves the integrity of records it receives. It cannot prove that every relevant event was submitted.</p></article>
-            <article class="limit"><h3>Single-network dependency</h3><p>The design depends on Hedera. During a network outage, events queue locally and anchor after recovery. The pre-anchor window is real and will be documented.</p></article>
-            <article class="limit"><h3>Unverified product claims</h3><p>Enoch is pre-launch. No independent security audit has been completed, no court has admitted Enoch-verified evidence, and no regulator has endorsed it.</p></article>
+            <article class="limit"><span class="l-key">LIMIT / 01</span><h3>Truthfulness</h3><p>Enoch proves that a record existed in a specific state at a specific time. It does not prove that the content was true. A contestation marker is part of the design.</p></article>
+            <article class="limit"><span class="l-key">LIMIT / 02</span><h3>Completeness</h3><p>Enoch proves the integrity of records it receives. It cannot prove that every relevant event was submitted.</p></article>
+            <article class="limit"><span class="l-key">LIMIT / 03</span><h3>Single-network dependency</h3><p>Enoch depends on Hedera twice over: the private instance, and the public mainnet it anchors to. During a mainnet outage, events queue locally and anchor after recovery. The pre-anchor window is real and will be documented.</p></article>
+            <article class="limit"><span class="l-key">LIMIT / 04</span><h3>Unverified claims</h3><p>Enoch is pre-launch. No independent security audit has been completed, no court has admitted Enoch-verified evidence, and no regulator has endorsed it.</p></article>
           </div>
           <div class="comparison">
             <h3>How the proof model differs</h3>
@@ -675,11 +937,11 @@
         </div>
       </section>
 
-      <section class="section status-band" id="status" aria-labelledby="status-title">
+      <section class="section status-band" id="status" aria-labelledby="status-title" style="padding:96px 0">
         <div class="container">
-          <p class="section-label">Product status</p>
+          <div class="section-head"><span class="section-index">SEC. 07</span><p class="section-label">System status</p></div>
           <h2 id="status-title">Enoch is in development</h2>
-          <p class="section-intro">The current page describes the product's design and planned operating model. It does not describe a launched service.</p>
+          <p class="section-intro">The current page describes the system's design and planned operating model. It does not describe a launched service.</p>
           <div class="status-grid">
             <article class="status-item"><h3>Company</h3><p>Built by The Good Code Company, based in Toronto with team members distributed worldwide. Founder-funded, with no outside investors.</p></article>
             <article class="status-item"><h3>Evidence</h3><p>No customers, reference firms, court cases, regulator endorsements, certifications, security audits, or insurance coverage are claimed.</p></article>
@@ -691,61 +953,61 @@
       <section class="section" id="faq" aria-labelledby="faq-title">
         <div class="container faq-layout">
           <div class="faq-intro">
-            <p class="section-label">Questions and direct answers</p>
+            <div class="section-head"><span class="section-index">SEC. 08</span><p class="section-label">Questions and direct answers</p></div>
             <h2 id="faq-title">Enoch FAQ</h2>
             <p class="section-intro">Current facts, design decisions, and unresolved launch details.</p>
           </div>
           <div>
-            <section class="faq-group" aria-labelledby="faq-proof"><h3 id="faq-proof">TRUST AND PROOF</h3>
-              <details><summary>What exactly goes on Hedera?</summary><p>A SHA-256 hash computed over a canonical package containing the record bytes and a metadata envelope with the record ID, event type, and capture timestamp. Document contents, filenames, and personal data do not go on the ledger.</p></details>
+            <section class="faq-group" aria-labelledby="faq-proof"><h3 id="faq-proof"><span class="n">A</span>TRUST AND PROOF</h3>
+              <details><summary>What exactly goes on Hedera?</summary><p>A SHA-256 hash computed over a canonical package containing the record bytes and a metadata envelope with the record ID, event type, and capture timestamp. The bridge microservices submit that hash from the customer's private instance to the public mainnet. Document contents, filenames, and personal data stay on the private side and do not go on the ledger.</p></details>
               <details><summary>What does a successful verification prove?</summary><p>It proves that the supplied record is byte-identical to the record anchored at the Hedera consensus time. It does not prove that the content was truthful or establish authorship beyond custody of the signing key.</p></details>
-              <details><summary>Who controls the anchoring keys?</summary><p>The customer. The service cannot create or sign records on a customer's behalf. This prevents a vendor insider from silently fabricating a customer record and stamping it as genuine.</p></details>
+              <details><summary>Who controls the anchoring keys?</summary><p>The customer. Enoch cannot create or sign records on a customer's behalf. This prevents a vendor insider from silently fabricating a customer record and stamping it as genuine.</p></details>
               <details><summary>How are corrections handled?</summary><p>A correction becomes a new, superseding record that is anchored separately. The original remains visible and the version chain preserves the complete history.</p></details>
-              <details><summary>Can Enoch prove that every event was logged?</summary><p>No. The customer defines what gets sent and Enoch anchors what it receives. It cannot prove the completeness of events that were never submitted.</p></details>
+              <details><summary>Can Enoch prove that every event was logged?</summary><p>No. The customer defines what their existing systems send to the private instance, and Enoch anchors what that instance receives. It cannot prove the completeness of events that were never submitted.</p></details>
               <details><summary>How can an auditor verify a record?</summary><p>The evidence export is designed to include the original record bytes, associated metadata, canonicalization specification, hash algorithm, anchored digest, signer account and public-key data, Hedera network, HCS topic, message sequence number, and consensus timestamp. The auditor recomputes the digest with standard tooling or the published verifier, then checks the referenced message through a compatible mirror node that retains it. No Enoch account, permission, or service dependency is required.</p></details>
               <details><summary>What happens if SHA-256 becomes unsuitable?</summary><p>The design supports re-anchoring under a stronger algorithm while preserving the original anchor and its timestamp.</p></details>
             </section>
 
-            <section class="faq-group" aria-labelledby="faq-data"><h3 id="faq-data">DATA CONTROL AND EXIT</h3>
+            <section class="faq-group" aria-labelledby="faq-data"><h3 id="faq-data"><span class="n">B</span>DATA CONTROL AND EXIT</h3>
               <details><summary>Where do customer records live?</summary><p>In customer-controlled systems. Enoch is designed not to hold record contents, so its employees and contractors cannot access them.</p></details>
               <details><summary>What happens if a customer deletes a record?</summary><p>The local record can be deleted under the customer's retention or expungement policy. The public anchor remains as an orphan proof that something existed at a time, but it reveals no content.</p></details>
               <details><summary>What happens if The Good Code Company fails or is acquired?</summary><p>Customer records remain with the customer. Old anchors remain verifiable through the public ledger without Enoch or The Good Code Company.</p></details>
-              <details><summary>What could Enoch provide under subpoena?</summary><p>The service is designed to hold no customer record contents. It therefore has no record content to produce. Operational and account metadata policies will be documented before launch.</p></details>
+              <details><summary>What could Enoch provide under subpoena?</summary><p>Enoch runs inside the customer's environment and is designed to hold no customer record contents on any vendor system. It therefore has no record content to produce. Operational and account metadata policies will be documented before launch.</p></details>
               <details><summary>Can customers export and leave?</summary><p>The design permits export at any time. Verification of old anchors continues through the public ledger after exit.</p></details>
             </section>
 
-            <section class="faq-group" aria-labelledby="faq-implementation"><h3 id="faq-implementation">IMPLEMENTATION AND OPERATIONS</h3>
-              <details><summary>What is the product deliverable?</summary><p>The design is an API-first integrity layer plus a verification dashboard. It connects to existing systems rather than replacing them.</p></details>
+            <section class="faq-group" aria-labelledby="faq-implementation"><h3 id="faq-implementation"><span class="n">C</span>IMPLEMENTATION AND OPERATIONS</h3>
+              <details><summary>What does an Enoch deployment consist of?</summary><p>A private Hedera instance running in the customer's environment, modular microservices that bridge it to the public mainnet and connect the customer's existing systems to their private network, and a verification dashboard. Where the customer wants onsite server nodes for the private network, the hardware can be included. It connects to existing systems rather than replacing them.</p></details>
               <details><summary>Which integrations are available?</summary><p>None have shipped. Integrations will be listed here only after they ship, not as roadmap promises.</p></details>
-              <details><summary>How long will implementation take?</summary><p>The design goal is days, not months. No firm implementation timeline is claimed before pilots produce evidence.</p></details>
-              <details><summary>What happens during a Hedera outage?</summary><p>Events queue locally and anchor after recovery. The interval before anchoring is a real exposure window and will be documented in the product's operating guidance.</p></details>
+              <details><summary>How long will implementation take?</summary><p>Each deployment is customized: the bridge microservices and the connections to existing systems are fitted to the customer's environment. No firm implementation timeline is claimed before pilots produce evidence.</p></details>
+              <details><summary>What happens during a Hedera outage?</summary><p>Events queue locally and anchor after recovery. The interval before anchoring is a real exposure window and will be documented in the system's operating guidance.</p></details>
               <details><summary>What administration is required?</summary><p>Role-based access is planned and keys stay with the customer. Avoiding dedicated Enoch headcount is a design goal, not a proven result.</p></details>
               <details><summary>What service level and support are offered?</summary><p>Uptime commitments, support hours, response targets, remedies, and the breach notification process are not final. They will be published before launch.</p></details>
             </section>
 
-            <section class="faq-group" aria-labelledby="faq-commercial"><h3 id="faq-commercial">PRICING AND COMMERCIAL TERMS</h3>
+            <section class="faq-group" aria-labelledby="faq-commercial"><h3 id="faq-commercial"><span class="n">D</span>PRICING AND COMMERCIAL TERMS</h3>
               <details><summary>What will Enoch cost?</summary><p>Pricing is not finalized and will be published before launch. Enoch will not hide per-seat charges. Total cost of ownership will be stated as one clear number.</p></details>
               <details><summary>Who pays Hedera network fees?</summary><p>Hedera Consensus Service fees are HBAR-denominated and, at current network rates, are a fraction of a cent per anchor. Enoch's published pricing will state plainly who pays them.</p></details>
               <details><summary>Is there a minimum commitment or onboarding fee?</summary><p>No minimum commitment, contract term, or onboarding fee is set. Those terms will be published before launch.</p></details>
               <details><summary>Will there be a pilot?</summary><p>A pilot program is planned. Scope, qualification, duration, and cost are not yet final.</p></details>
             </section>
 
-            <section class="faq-group" aria-labelledby="faq-legal"><h3 id="faq-legal">LEGAL, REGULATORY, AND VENDOR STATUS</h3>
+            <section class="faq-group" aria-labelledby="faq-legal"><h3 id="faq-legal"><span class="n">E</span>LEGAL, REGULATORY, AND VENDOR STATUS</h3>
               <details><summary>Has a court accepted Enoch-verified evidence?</summary><p>No. No court acceptance is claimed. Hedera consensus timestamps have finality in seconds, but their legal authority varies by jurisdiction.</p></details>
               <details><summary>Has a regulator or auditor endorsed Enoch?</summary><p>No. Enoch claims no endorsement from the Law Society of Ontario, the CRA, any regulator, or any auditor.</p></details>
-              <details><summary>Does Enoch hold certifications or independent audits?</summary><p>No certifications are held. No security audit or privacy impact assessment has been completed. The product is intended to receive an independent security audit before launch and the reports are intended to be published.</p></details>
+              <details><summary>Does Enoch hold certifications or independent audits?</summary><p>No certifications are held. No security audit or privacy impact assessment has been completed. The system is intended to receive an independent security audit before launch, and the reports are intended to be published.</p></details>
               <details><summary>Does Enoch provide legal opinions or expert witnesses?</summary><p>No. Enoch is designed to support authentication of electronic records. It does not provide legal opinions or expert-witness services.</p></details>
-              <details><summary>Who is behind Enoch?</summary><p>The Good Code Company, a founder-funded product company based in Toronto with team members distributed worldwide. Enoch is in development and has no customers or reference firms yet.</p></details>
+              <details><summary>Who is behind Enoch?</summary><p>The Good Code Company, a founder-funded systems company based in Toronto with team members distributed worldwide. Enoch is in development and has no customers or reference firms yet.</p></details>
               <details><summary>Does Enoch carry insurance?</summary><p>No insurance coverage is claimed. Coverage decisions will be disclosed before commercial launch.</p></details>
             </section>
           </div>
         </div>
       </section>
 
-      <section class="section closing" aria-labelledby="closing-title">
+      <section class="closing" aria-labelledby="closing-title">
         <div class="container closing-inner">
           <div>
-            <p class="section-label">Build trust into the record</p>
+            <div class="section-head"><span class="section-index">SEC. 09</span><p class="section-label" style="color:var(--on-dark-muted)">Build trust into the record</p></div>
             <h2 id="closing-title">Make your audit trail independently verifiable</h2>
             <p>Enoch is in development. We are discussing pilot requirements with regulated teams that can define a specific record-integrity problem.</p>
           </div>
@@ -759,284 +1021,57 @@
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year">2026</span> Enoch. Enoch is in development.</span>
+        <span class="mono">43.6532° N · 79.3832° W · TORONTO</span>
         <a href="mailto:enoch@goodcode.ca">enoch@goodcode.ca</a>
       </div>
     </footer>
 
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://goodcode.ca/#organization",
-      "name": "The Good Code Company",
-      "url": "https://goodcode.ca/",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Toronto",
-        "addressCountry": "CA"
-      },
-      "email": "hello@goodcode.ca"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://enoch.goodcode.ca/#website",
-      "url": "https://enoch.goodcode.ca/",
-      "name": "Enoch",
-      "publisher": {
-        "@id": "https://goodcode.ca/#organization"
-      }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://enoch.goodcode.ca/#software",
-      "name": "Enoch",
-      "url": "https://enoch.goodcode.ca/",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web",
-      "description": "An API-first integrity layer in development for tamper-evident records using customer-held keys, private data, and public Hedera proof.",
-      "creator": {
-        "@id": "https://goodcode.ca/#organization"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://enoch.goodcode.ca/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What exactly goes on Hedera?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A SHA-256 hash computed over a canonical package containing the record bytes and a metadata envelope with the record ID, event type, and capture timestamp. Document contents, filenames, and personal data do not go on the ledger."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does a successful verification prove?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It proves that the supplied record is byte-identical to the record anchored at the Hedera consensus time. It does not prove that the content was truthful or establish authorship beyond custody of the signing key."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who controls the anchoring keys?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The customer. The service cannot create or sign records on a customer's behalf. This prevents a vendor insider from silently fabricating a customer record and stamping it as genuine."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How are corrections handled?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A correction becomes a new, superseding record that is anchored separately. The original remains visible and the version chain preserves the complete history."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can Enoch prove that every event was logged?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. The customer defines what gets sent and Enoch anchors what it receives. It cannot prove the completeness of events that were never submitted."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can an auditor verify a record?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The evidence export is designed to include the original record bytes, associated metadata, canonicalization specification, hash algorithm, anchored digest, signer account and public-key data, Hedera network, HCS topic, message sequence number, and consensus timestamp. The auditor recomputes the digest with standard tooling or the published verifier, then checks the referenced message through a compatible mirror node that retains it. No Enoch account, permission, or service dependency is required."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if SHA-256 becomes unsuitable?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The design supports re-anchoring under a stronger algorithm while preserving the original anchor and its timestamp."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where do customer records live?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "In customer-controlled systems. Enoch is designed not to hold record contents, so its employees and contractors cannot access them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if a customer deletes a record?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The local record can be deleted under the customer's retention or expungement policy. The public anchor remains as an orphan proof that something existed at a time, but it reveals no content."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if The Good Code Company fails or is acquired?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Customer records remain with the customer. Old anchors remain verifiable through the public ledger without Enoch or The Good Code Company."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What could Enoch provide under subpoena?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The service is designed to hold no customer record contents. It therefore has no record content to produce. Operational and account metadata policies will be documented before launch."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can customers export and leave?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The design permits export at any time. Verification of old anchors continues through the public ledger after exit."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the product deliverable?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The design is an API-first integrity layer plus a verification dashboard. It connects to existing systems rather than replacing them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which integrations are available?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "None have shipped. Integrations will be listed here only after they ship, not as roadmap promises."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long will implementation take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The design goal is days, not months. No firm implementation timeline is claimed before pilots produce evidence."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens during a Hedera outage?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Events queue locally and anchor after recovery. The interval before anchoring is a real exposure window and will be documented in the product's operating guidance."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What administration is required?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Role-based access is planned and keys stay with the customer. Avoiding dedicated Enoch headcount is a design goal, not a proven result."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What service level and support are offered?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Uptime commitments, support hours, response targets, remedies, and the breach notification process are not final. They will be published before launch."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What will Enoch cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Pricing is not finalized and will be published before launch. Enoch will not hide per-seat charges. Total cost of ownership will be stated as one clear number."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who pays Hedera network fees?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Hedera Consensus Service fees are HBAR-denominated and, at current network rates, are a fraction of a cent per anchor. Enoch's published pricing will state plainly who pays them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there a minimum commitment or onboarding fee?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No minimum commitment, contract term, or onboarding fee is set. Those terms will be published before launch."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will there be a pilot?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A pilot program is planned. Scope, qualification, duration, and cost are not yet final."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Has a court accepted Enoch-verified evidence?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. No court acceptance is claimed. Hedera consensus timestamps have finality in seconds, but their legal authority varies by jurisdiction."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Has a regulator or auditor endorsed Enoch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Enoch claims no endorsement from the Law Society of Ontario, the CRA, any regulator, or any auditor."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Enoch hold certifications or independent audits?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No certifications are held. No security audit or privacy impact assessment has been completed. The product is intended to receive an independent security audit before launch and the reports are intended to be published."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Enoch provide legal opinions or expert witnesses?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Enoch is designed to support authentication of electronic records. It does not provide legal opinions or expert-witness services."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is behind Enoch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Good Code Company, a founder-funded product company based in Toronto with team members distributed worldwide. Enoch is in development and has no customers or reference firms yet."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Enoch carry insurance?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No insurance coverage is claimed. Coverage decisions will be disclosed before commercial launch."
-          }
-        }
-      ]
-    }
-  ]
-}
-    </script>
     <script>
       (function () {
         var year = document.getElementById("year");
         if (year) year.textContent = String(new Date().getFullYear());
+
+        var ANCHORED = "01ae732d5bf4476f8159d2a02e23c58a6f33044d0dae2d0bd8a605c057187284";
+        var btn = document.getElementById("verify-btn");
+        var input = document.getElementById("record-input");
+        var out = document.getElementById("verify-out");
+        var status = document.getElementById("verify-status");
+
+        function chunk(hex) {
+          var parts = [];
+          for (var i = 0; i < hex.length; i += 8) parts.push(hex.slice(i, i + 8));
+          return parts.join('<span class="sep"> </span>');
+        }
+
+        function run() {
+          var text = input.value;
+          if (!window.crypto || !crypto.subtle) {
+            status.textContent = "SHA-256 is unavailable in this browser context.";
+            status.className = "verify-status bad";
+            return;
+          }
+          var data = new TextEncoder().encode(text);
+          crypto.subtle.digest("SHA-256", data).then(function (buf) {
+            var bytes = new Uint8Array(buf);
+            var hex = "";
+            for (var i = 0; i < bytes.length; i++) {
+              hex += ("0" + bytes[i].toString(16)).slice(-2);
+            }
+            out.innerHTML = chunk(hex);
+            if (hex === ANCHORED) {
+              status.textContent = "MATCH · byte-identical to the anchored digest";
+              status.className = "verify-status ok";
+            } else {
+              status.textContent = "NO MATCH · this input differs from the anchored record";
+              status.className = "verify-status bad";
+            }
+          });
+        }
+
+        if (btn && input && out && status) {
+          btn.addEventListener("click", run);
+          run();
+        }
       })();
     </script>
   </body>
