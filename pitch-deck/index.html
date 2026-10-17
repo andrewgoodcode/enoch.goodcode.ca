@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="description" content="Enoch investor pitch deck. Private." />
+<link rel="icon" href="data:," />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<title>Enoch — Investor Deck (Private)</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --paper: #f5f6f4;
+    --surface: #ffffff;
+    --ink: #121a1e;
+    --muted: #52616a;
+    --faint: #85939b;
+    --hairline: #d8dcd8;
+    --navy: #08111a;
+    --navy-2: #0c1a26;
+    --on-dark: #edf3f0;
+    --on-dark-muted: #9db1aa;
+    --verify: #17714f;
+    --max: 1180px;
+    --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
+    --font-body: "IBM Plex Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+  @media (min-width: 1281px) { :root { --max: 1600px; } }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #08111a;
+      --surface: #0c1a26;
+      --ink: #edf3f0;
+      --muted: #9db1aa;
+      --faint: #6d837c;
+      --hairline: rgba(237,243,240,.14);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--hairline);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar .brand { font-weight: 600; color: var(--ink); }
+  .topbar a { color: var(--muted); text-decoration: none; border: 1px solid var(--hairline); padding: 8px 14px; border-radius: 4px; }
+  .topbar a:hover { color: var(--ink); border-color: var(--muted); }
+  .deck {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+  }
+  .slide {
+    display: none;
+    max-width: var(--max);
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    padding: clamp(32px, 5vw, 72px);
+    min-height: 60vh;
+  }
+  .slide.active { display: block; }
+  .slide .kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .slide h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .slide h2 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.5vw, 40px);
+    line-height: 1.15;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .slide p, .slide li {
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .slide ul { padding-left: 24px; margin-bottom: 16px; }
+  .slide li::marker { color: var(--muted); }
+  .slide .lede { font-size: clamp(19px, 2vw, 24px); color: var(--muted); max-width: 60ch; }
+  .slide .tagline { font-family: var(--font-mono); font-size: 14px; color: var(--muted); margin-top: 16px; }
+  .slide .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px; }
+  @media (max-width: 720px) { .slide .cols { grid-template-columns: 1fr; } }
+  .slide .edition { border: 1px solid var(--hairline); border-radius: 6px; padding: 24px; }
+  .slide .edition h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 12px; }
+  .slide .edition p { font-size: 16px; color: var(--muted); }
+  .slide .steps { counter-reset: step; list-style: none; padding: 0; }
+  .slide .steps li {
+    counter-increment: step;
+    padding-left: 56px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .slide .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 2px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+  .slide .ask-box {
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    padding: 32px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .slide .ask-box .amount {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-top: 1px solid var(--hairline);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .controls .nav { display: flex; gap: 12px; }
+  .controls button {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+  .controls button:hover:not(:disabled) { border-color: var(--muted); }
+  .controls button:disabled { opacity: .35; cursor: default; }
+  .private-note {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+    padding: 12px;
+    letter-spacing: .06em;
+  }
+  @media print {
+    .topbar, .controls, .private-note { display: none; }
+    .slide { display: block !important; border: none; border-radius: 0; page-break-after: always; min-height: auto; }
+    .slide:last-child { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="brand">Enoch — Investor Deck</span>
+  <span>Private &middot; Do not distribute</span>
+  <a href="enoch-pitch-deck.pdf" download>Download PDF</a>
+</div>
+
+<main class="deck" id="deck">
+
+  <section class="slide active" data-n="1">
+    <div class="kicker">SEC. 01 &mdash; Cover</div>
+    <h1>Enoch</h1>
+    <p class="lede">Tamper-evident records for regulated enterprises.</p>
+    <p class="tagline">Andrew St. Bernard, Founder &middot; The Good Code Company &middot; Toronto, Canada<br/>enoch.goodcode.ca</p>
+  </section>
+
+  <section class="slide" data-n="2">
+    <div class="kicker">SEC. 02 &mdash; Problem</div>
+    <h2>Regulated firms live and die by record integrity.</h2>
+    <p>Law firms, medical practices, accountants, notaries, and NGOs face audits, disputes, and compliance reviews where they must prove records are complete and unaltered.</p>
+    <ul>
+      <li>Enterprise content systems are built and priced for large corporations</li>
+      <li>Manual processes (printed logs, spreadsheets, email archives) cannot prove a record was never changed</li>
+      <li>Generic cloud storage offers no tamper-evidence guarantees</li>
+    </ul>
+    <p>When a regulator, court, or client asks &ldquo;prove this record is authentic,&rdquo; small firms have no affordable answer.</p>
+  </section>
+
+  <section class="slide" data-n="3">
+    <div class="kicker">SEC. 03 &mdash; Solution</div>
+    <h2>Enoch: private data, public proof.</h2>
+    <p class="lede">Tamper-evident event logging and documentation archiving for regulated enterprises.</p>
+    <ul>
+      <li>Customer events and documents stay private in their own systems</li>
+      <li>Cryptographic hashes and trusted timestamps anchor to the Hedera public network via the Hedera Consensus Service</li>
+      <li>Anyone can independently verify a record was never altered, without seeing its contents</li>
+    </ul>
+    <p>No new database to migrate to. No records leave customer control. Just proof.</p>
+  </section>
+
+  <section class="slide" data-n="4">
+    <div class="kicker">SEC. 04 &mdash; How it works</div>
+    <h2>Five stages, one trust boundary.</h2>
+    <ol class="steps">
+      <li><strong>Capture.</strong> Modular microservices connect to existing systems (document, case, EHR, accounting) and capture events as they happen.</li>
+      <li><strong>Isolate.</strong> Each customer gets a private, permissioned Hedera instance. Contents stay inside the customer boundary.</li>
+      <li><strong>Anchor.</strong> Hashes and timestamps submit to the Hedera public mainnet via the Consensus Service. Only proofs cross, never contents.</li>
+      <li><strong>Verify.</strong> A browser verifier checks any record against the public anchor. Match or no match, no trust required.</li>
+      <li><strong>Hardware (optional).</strong> Onsite server-node hardware for customers needing physical custody.</li>
+    </ol>
+  </section>
+
+  <section class="slide" data-n="5">
+    <div class="kicker">SEC. 05 &mdash; Editions</div>
+    <h2>Two ways to run Enoch.</h2>
+    <div class="cols">
+      <div class="edition">
+        <h3>Enterprise Version</h3>
+        <p>Pilot now. The Enoch team sets up the private instance, builds the integrations, deploys in the customer environment, and manages it day to day under SLA. For firms that want it handled.</p>
+      </div>
+      <div class="edition">
+        <h3>Community Version</h3>
+        <p>Upcoming. The same core system, published as open source. Completely self-managed, no SLA. For developers, researchers, and firms with in-house capability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-n="6">
+    <div class="kicker">SEC. 06 &mdash; Market</div>
+    <h2>The wedge is small firms with acute audit pain.</h2>
+    <ul>
+      <li>Law firms (5&ndash;50 lawyers), medical and dental practices, accounting firms</li>
+      <li>Notaries, NGOs, municipal government, construction, insurance</li>
+    </ul>
+    <p><strong>Expansion:</strong> upmarket to mid-market enterprise and government once the wedge is proven.</p>
+    <p><strong>Why Hedera wins here:</strong> every anchored record is a Consensus Service transaction. Enoch&rsquo;s growth is Hedera&rsquo;s transaction growth. Small-firm penetration on Hedera is near zero today.</p>
+  </section>
+
+  <section class="slide" data-n="7">
+    <div class="kicker">SEC. 07 &mdash; Business model</div>
+    <h2>Contracts for the handled, open source for the capable.</h2>
+    <ul>
+      <li><strong>Enterprise:</strong> annual contracts per deployment. Pilots convert to production subscriptions covering setup, integration, management, and SLA support.</li>
+      <li><strong>Community:</strong> open source, self-managed, no license fee. Drives adoption, developer mindshare, and Hedera transaction volume. Enterprise upsell path for firms that outgrow self-management.</li>
+    </ul>
+    <p>Pricing calibrated to small-firm budgets, not enterprise seat licenses. Unit economics to be validated in pilots.</p>
+  </section>
+
+  <section class="slide" data-n="8">
+    <div class="kicker">SEC. 08 &mdash; Status</div>
+    <h2>Honest pre-launch.</h2>
+    <ul>
+      <li>Pre-product, pre-revenue. Solo founder, bootstrapped, $0 raised.</li>
+      <li>Founded October 15, 2023 (The Good Code Company, Ontario). Incorporating federally as The Good Code Company Inc.</li>
+      <li>MVP in build; pilot-ready architecture. Website live: enoch.goodcode.ca</li>
+      <li>Grant applications submitted: NLNet, OTF, Emergent Ventures, MongoDB, Airtable, AssemblyAI, ElevenLabs, Hashgraph Association</li>
+    </ul>
+    <p>No traction invented. No customers yet. No certifications or audits yet.</p>
+  </section>
+
+  <section class="slide" data-n="9">
+    <div class="kicker">SEC. 09 &mdash; Why now</div>
+    <h2>Four forces, one window.</h2>
+    <ol class="steps">
+      <li><strong>Regulatory pressure is increasing.</strong> Data integrity requirements tighten across legal, medical, and financial sectors.</li>
+      <li><strong>Hedera is enterprise-ready.</strong> The Consensus Service is the trust anchor; Enoch makes it usable without blockchain expertise.</li>
+      <li><strong>The small-firm gap is open.</strong> Enterprise vendors price out the firms that need this most.</li>
+      <li><strong>Open source is the wedge.</strong> A community edition builds trust in a product whose value proposition is trust.</li>
+    </ol>
+  </section>
+
+  <section class="slide" data-n="10">
+    <div class="kicker">SEC. 10 &mdash; The ask</div>
+    <h2>Raising to reach pilots.</h2>
+    <div class="ask-box">
+      <div class="amount">$300,000</div>
+    </div>
+    <ul>
+      <li>Complete the MVP (private instance, microservice bridges, browser verifier)</li>
+      <li>Run 3&ndash;5 pilot deployments with wedge firms</li>
+      <li>Publish the Community Version open source</li>
+      <li>Validate unit economics and pilot-to-contract conversion</li>
+    </ul>
+    <p class="tagline">Andrew St. Bernard &middot; enoch@goodcode.ca &middot; enoch.goodcode.ca &middot; Toronto, Canada</p>
+  </section>
+
+</main>
+
+<div class="controls">
+  <div class="nav">
+    <button id="prev" disabled>&larr; Prev</button>
+    <button id="next">Next &rarr;</button>
+  </div>
+  <span id="counter">1 / 10</span>
+</div>
+
+<div class="private-note">PRIVATE DECK &middot; NOT INDEXED &middot; DO NOT DISTRIBUTE</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+  var counter = document.getElementById('counter');
+  var i = 0;
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, k) { s.classList.toggle('active', k === i); });
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    counter.textContent = (i + 1) + ' / ' + slides.length;
+    window.scrollTo(0, 0);
+  }
+  prev.addEventListener('click', function () { show(i - 1); });
+  next.addEventListener('click', function () { show(i + 1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(i - 1);
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+  });
+  var h = location.hash.match(/slide-(\d+)/);
+  if (h) show(parseInt(h[1], 10) - 1);
+})();
+</script>
+</body>
+</html>
