@@ -553,6 +553,17 @@
       .feature h3 { margin-bottom: 8px; font-size: 19.5px; font-weight: 600; }
       .feature p { margin-bottom: 0; color: var(--muted); }
 
+      /* Editions */
+      .editions-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--hairline-strong); }
+      .edition { padding: 30px 34px 30px 0; border-bottom: 1px solid var(--hairline); }
+      .edition + .edition { padding-left: 34px; border-left: 1px solid var(--hairline); }
+      .edition .e-key { display: block; margin-bottom: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.07em; color: var(--faint); }
+      .edition h3 { margin-bottom: 9px; font-family: var(--font-display); font-size: 23px; font-weight: 600; letter-spacing: -0.01em; }
+      .edition p { margin-bottom: 0; color: var(--muted); }
+      .edition ul { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--hairline); }
+      .edition li { padding: 10px 0; border-bottom: 1px solid var(--hairline); font-size: 14.5px; color: var(--muted); }
+      .edition li:last-child { border-bottom: 0; padding-bottom: 2px; }
+
       /* Industries */
       .industry-band { background: var(--surface-alt); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 96px 0; }
       .industry-layout { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 88px; align-items: start; }
@@ -673,8 +684,9 @@
         .block-head .meta { text-align: left; }
         .features-head { display: block; margin-bottom: 36px; }
         .features-head h2 { margin-bottom: 16px; }
-        .feature-grid, .limits-grid { grid-template-columns: 1fr; }
+        .feature-grid, .limits-grid, .editions-grid { grid-template-columns: 1fr; }
         .feature, .feature:nth-child(even), .limit, .limit:nth-child(even) { min-height: 0; padding: 26px 0; border-left: 0; }
+        .edition, .edition + .edition { padding: 26px 0; border-left: 0; }
         .comparison-row { grid-template-columns: 1fr; gap: 7px; }
         .industry-band { padding: 72px 0; }
         .sector-group { grid-template-columns: 1fr; gap: 8px; }
@@ -700,6 +712,7 @@
           <span class="nav-status" aria-hidden="true">HCS / MAINNET / RECORDING</span>
           <a href="#how-it-works">How it works</a>
           <a href="#capabilities">Capabilities</a>
+          <a href="#editions">Editions</a>
           <a href="#limitations">Limitations</a>
           <a href="#faq">FAQ</a>
           <a class="button nav-cta" href="mailto:enoch@goodcode.ca?subject=Enoch%20inquiry">Contact</a>
@@ -892,11 +905,41 @@
         </div>
       </section>
 
+      <section class="section" id="editions" aria-labelledby="editions-title">
+        <div class="container">
+          <div class="section-head"><span class="section-index">SEC. 05</span><p class="section-label">Editions</p></div>
+          <h2 id="editions-title">Run it with us, or run it yourself</h2>
+          <p class="section-intro">One system, one proof model, two ways to operate it. The editions differ in who sets Enoch up and who keeps it running, never in how records are anchored or verified.</p>
+          <div class="editions-grid">
+            <article class="edition">
+              <span class="e-key">ENTERPRISE VERSION / MANAGED PILOT</span>
+              <h3>Enterprise Version</h3>
+              <p>Enterprise is how Enoch is engaged today, as a pilot run by the Enoch team at The Good Code Company. The team sets up your private instance, builds the integrations with your existing systems, deploys Enoch in your environment, and manages it day to day under a service level agreement for the pilot period. Managed means we operate the system: your records and anchoring keys stay in your environment, under your control, throughout.</p>
+              <ul>
+                <li>Setup, integration, and deployment by the Enoch team</li>
+                <li>Day-to-day management and support under an SLA</li>
+                <li>Pilot scope, duration, and SLA terms agreed in writing first</li>
+              </ul>
+            </article>
+            <article class="edition">
+              <span class="e-key">COMMUNITY VERSION / OPEN SOURCE · UPCOMING</span>
+              <h3>Community Version</h3>
+              <p>The Community Version is the same core system, to be published as open source. Your team installs it, connects it to your systems, and operates it entirely yourselves: no vendor in the loop, no SLA. It is not released yet. When it ships, anchors it produces will verify exactly the same way as Enterprise anchors, because verification never depended on us.</p>
+              <ul>
+                <li>Open source, installed and operated by your team</li>
+                <li>Completely self-managed: no SLA, no vendor operations</li>
+                <li>Same private instance, anchoring, and verification model</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="industries" id="industries" aria-labelledby="industries-title">
         <div class="industry-band">
           <div class="container industry-layout">
             <div>
-              <div class="section-head"><span class="section-index">SEC. 05</span><p class="section-label">Built for oversight</p></div>
+              <div class="section-head"><span class="section-index">SEC. 06</span><p class="section-label">Built for oversight</p></div>
               <h2 id="industries-title">Start where audit pain is immediate</h2>
               <p class="section-intro">Small professional firms and public-serving organizations need defensible records too, often without dedicated compliance infrastructure.</p>
             </div>
@@ -924,7 +967,7 @@
 
       <section class="section on-dark" id="limitations" aria-labelledby="limitations-title">
         <div class="container">
-          <div class="section-head"><span class="section-index">SEC. 06</span><p class="section-label">Honest limitations</p></div>
+          <div class="section-head"><span class="section-index">SEC. 07</span><p class="section-label">Honest limitations</p></div>
           <h2 id="limitations-title">What Enoch does not prove</h2>
           <p class="section-intro">Anchoring narrows the trust problem. It does not remove every source of error, omission, or fraud.</p>
           <div class="limits-grid">
@@ -946,13 +989,13 @@
 
       <section class="section status-band" id="status" aria-labelledby="status-title" style="padding:96px 0">
         <div class="container">
-          <div class="section-head"><span class="section-index">SEC. 07</span><p class="section-label">System status</p></div>
+          <div class="section-head"><span class="section-index">SEC. 08</span><p class="section-label">System status</p></div>
           <h2 id="status-title">Enoch is in development</h2>
           <p class="section-intro">The current page describes the system's design and planned operating model. It does not describe a launched service.</p>
           <div class="status-grid">
             <article class="status-item"><h3>Company</h3><p>Built by The Good Code Company, based in Toronto with team members distributed worldwide. Founder-funded, with no outside investors.</p></article>
             <article class="status-item"><h3>Evidence</h3><p>No customers, reference firms, court cases, regulator endorsements, certifications, security audits, or insurance coverage are claimed.</p></article>
-            <article class="status-item"><h3>Before launch</h3><p>An independent security audit, published security reports, breach notification process, pricing, service levels, support terms, and remedies are required before launch.</p></article>
+            <article class="status-item"><h3>Before launch</h3><p>An independent security audit, published security reports, a breach notification process, pricing, and standard published service terms are required before general launch. Pilot engagements set their SLA individually, in the pilot agreement.</p></article>
           </div>
         </div>
       </section>
@@ -960,7 +1003,7 @@
       <section class="section" id="faq" aria-labelledby="faq-title">
         <div class="container faq-layout">
           <div class="faq-intro">
-            <div class="section-head"><span class="section-index">SEC. 08</span><p class="section-label">Questions and direct answers</p></div>
+            <div class="section-head"><span class="section-index">SEC. 09</span><p class="section-label">Questions and direct answers</p></div>
             <h2 id="faq-title">Enoch FAQ</h2>
             <p class="section-intro">Current facts, design decisions, and unresolved launch details.</p>
           </div>
@@ -984,19 +1027,19 @@
             </section>
 
             <section class="faq-group" aria-labelledby="faq-implementation"><h3 id="faq-implementation"><span class="n">C</span>IMPLEMENTATION AND OPERATIONS</h3>
-              <details><summary>What does an Enoch deployment consist of?</summary><p>A private Hedera instance running in the customer's environment, modular microservices that bridge it to the public mainnet and connect the customer's existing systems to their private network, and a verification dashboard. Where the customer wants onsite server nodes for the private network, the hardware can be included. It connects to existing systems rather than replacing them.</p></details>
+              <details><summary>What does an Enoch deployment consist of?</summary><p>The same components in both editions: a private Hedera instance running in the customer's environment, modular microservices that bridge it to the public mainnet and connect the customer's existing systems to their private network, and a verification dashboard. Where the customer wants onsite server nodes for the private network, the hardware can be included. It connects to existing systems rather than replacing them. What differs is who does the work: on the Enterprise Version the Enoch team sets up, integrates, and manages it; on the Community Version the customer's own team does.</p></details>
               <details><summary>Which integrations are available?</summary><p>None have shipped. Integrations will be listed here only after they ship, not as roadmap promises.</p></details>
               <details><summary>How long will implementation take?</summary><p>Each deployment is customized: the bridge microservices and the connections to existing systems are fitted to the customer's environment. No firm implementation timeline is claimed before pilots produce evidence.</p></details>
               <details><summary>What happens during a Hedera outage?</summary><p>Events queue locally and anchor after recovery. The interval before anchoring is a real exposure window and will be documented in the system's operating guidance.</p></details>
-              <details><summary>What administration is required?</summary><p>Role-based access is planned and keys stay with the customer. Avoiding dedicated Enoch headcount is a design goal, not a proven result.</p></details>
-              <details><summary>What service level and support are offered?</summary><p>Uptime commitments, support hours, response targets, remedies, and the breach notification process are not final. They will be published before launch.</p></details>
+              <details><summary>What administration is required?</summary><p>Keys stay with the customer either way, and role-based access is planned for both editions. Under the Enterprise Version, the Enoch team administers the system day to day as part of the pilot. Under the Community Version, your own team administers it; avoiding dedicated Enoch headcount there is a design goal, not a proven result.</p></details>
+              <details><summary>What service level and support are offered?</summary><p>Enterprise pilots are operated by the Enoch team under a service level agreement set out in the pilot agreement, covering the running of the system for the pilot period. The Community Version is self-managed and carries no SLA and no vendor support. Standard published SLA terms for a general Enterprise release are not final and will be published before that launch.</p></details>
             </section>
 
             <section class="faq-group" aria-labelledby="faq-commercial"><h3 id="faq-commercial"><span class="n">D</span>PRICING AND COMMERCIAL TERMS</h3>
-              <details><summary>What will Enoch cost?</summary><p>Pricing is not finalized and will be published before launch. Enoch will not hide per-seat charges. Total cost of ownership will be stated as one clear number.</p></details>
+              <details><summary>What will Enoch cost?</summary><p>Pricing is not finalized and will be published before launch. The Community Version is open source, so running it yourself carries no license fee. Enoch will not hide per-seat charges. Total cost of ownership will be stated as one clear number.</p></details>
               <details><summary>Who pays Hedera network fees?</summary><p>Hedera Consensus Service fees are HBAR-denominated and, at current network rates, are a fraction of a cent per anchor. Enoch's published pricing will state plainly who pays them.</p></details>
               <details><summary>Is there a minimum commitment or onboarding fee?</summary><p>No minimum commitment, contract term, or onboarding fee is set. Those terms will be published before launch.</p></details>
-              <details><summary>Will there be a pilot?</summary><p>A pilot program is planned. Scope, qualification, duration, and cost are not yet final.</p></details>
+              <details><summary>Will there be a pilot?</summary><p>Yes. Pilots run on the Enterprise Version: the Enoch team sets up, integrates, deploys, and manages Enoch in the customer's environment under an SLA for the pilot period. Scope, qualification, duration, and cost are agreed per pilot and are not yet standardized.</p></details>
             </section>
 
             <section class="faq-group" aria-labelledby="faq-legal"><h3 id="faq-legal"><span class="n">E</span>LEGAL, REGULATORY, AND VENDOR STATUS</h3>
@@ -1014,7 +1057,7 @@
       <section class="closing" aria-labelledby="closing-title">
         <div class="container closing-inner">
           <div>
-            <div class="section-head"><span class="section-index">SEC. 09</span><p class="section-label" style="color:var(--on-dark-muted)">Build trust into the record</p></div>
+            <div class="section-head"><span class="section-index">SEC. 10</span><p class="section-label" style="color:var(--on-dark-muted)">Build trust into the record</p></div>
             <h2 id="closing-title">Make your audit trail independently verifiable</h2>
             <p>Enoch is in development. We are discussing pilot requirements with regulated teams that can define a specific record-integrity problem.</p>
           </div>
