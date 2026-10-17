@@ -33,12 +33,18 @@
         --line-dark: rgba(237, 243, 240, 0.14);
         --line-dark-strong: rgba(237, 243, 240, 0.28);
         --verify: #17714f;
+        --mismatch: #b42318;
         --verify-on-dark: #3ecf9a;
         --verify-dim: rgba(62, 207, 154, 0.12);
-        --max: 1180px;
+        --max: 1180px; /* wide screens widen below, up to 1800px */
         --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
         --font-body: "IBM Plex Sans", sans-serif;
         --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+      }
+
+      /* Above 1280px viewport the layout may spread out, capped at 1800px. */
+      @media (min-width: 1281px) {
+        :root { --max: 1800px; }
       }
 
       @media (prefers-color-scheme: dark) {
@@ -55,6 +61,7 @@
           --navy-2: #08131c;
           --navy-3: #0b1a26;
           --verify: #3ecf9a;
+          --mismatch: #f97066;
         }
       }
 
@@ -517,7 +524,7 @@
       .verify-btn:hover { opacity: 0.88; }
       .verify-status { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
       .verify-status.ok { color: var(--verify); font-weight: 600; }
-      .verify-status.bad { color: var(--ink); font-weight: 600; }
+      .verify-status.bad { color: var(--mismatch); font-weight: 600; }
       .verify-out {
         font-family: var(--font-mono);
         font-size: 13.5px;
