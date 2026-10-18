@@ -921,7 +921,7 @@
           <div class="problem-list">
             <article class="problem-item">
               <span class="index">01</span>
-              <div><h3>Short and focused</h3><p>A pilot usually runs 4 to 8 weeks and covers one record type, the one that causes you the most audit pain.</p></div>
+              <div><h3>Short and focused</h3><p>A pilot starts with 4 to 8 weeks of setup, then runs 3 to 12 months depending on your firm size, covering one record type, the one that causes you the most audit pain.</p></div>
             </article>
             <article class="problem-item">
               <span class="index">02</span>
@@ -940,30 +940,26 @@
       <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#52616a" stroke-width="1.5"/>
     </marker>
   </defs>
-  <!-- timeline line -->
   <line x1="60" y1="110" x2="940" y2="110" stroke="#d8dcd8" stroke-width="2"/>
-  <!-- Week 1-2: Setup -->
   <circle cx="180" cy="110" r="10" fill="#08111a"/>
-  <text x="180" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="600" fill="#121a1e">Setup</text>
-  <text x="180" y="150" text-anchor="middle" font-size="13" fill="#52616a">Weeks 1-2</text>
-  <text x="180" y="170" text-anchor="middle" font-size="12" fill="#85939b">We install Enoch</text>
-  <text x="180" y="186" text-anchor="middle" font-size="12" fill="#85939b">in your environment</text>
-  <!-- Week 3-6: Capture -->
+  <text x="180" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Setup</text>
+  <text x="180" y="150" text-anchor="middle" font-size="10" fill="#52616a">Weeks 1-8</text>
+  <text x="180" y="170" text-anchor="middle" font-size="9" fill="#85939b">We install Enoch,</text>
+  <text x="180" y="186" text-anchor="middle" font-size="9" fill="#85939b">build connectors</text>
   <circle cx="500" cy="110" r="10" fill="#08111a"/>
-  <text x="500" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="600" fill="#121a1e">Capture</text>
-  <text x="500" y="150" text-anchor="middle" font-size="13" fill="#52616a">Weeks 3-6</text>
-  <text x="500" y="170" text-anchor="middle" font-size="12" fill="#85939b">Records flow in,</text>
-  <text x="500" y="186" text-anchor="middle" font-size="12" fill="#85939b">proofs anchor daily</text>
-  <!-- Week 7-8: Review -->
+  <text x="500" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Pilot run</text>
+  <text x="500" y="150" text-anchor="middle" font-size="10" fill="#52616a">Months 3-12</text>
+  <text x="500" y="170" text-anchor="middle" font-size="9" fill="#85939b">Records flow,</text>
+  <text x="500" y="186" text-anchor="middle" font-size="9" fill="#85939b">proofs anchor daily</text>
   <circle cx="820" cy="110" r="10" fill="#17714f"/>
-  <text x="820" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="600" fill="#121a1e">Review</text>
-  <text x="820" y="150" text-anchor="middle" font-size="13" fill="#52616a">Weeks 7-8</text>
-  <text x="820" y="170" text-anchor="middle" font-size="12" fill="#85939b">Verify proofs together,</text>
-  <text x="820" y="186" text-anchor="middle" font-size="12" fill="#85939b">decide next steps</text>
-  <!-- arrows -->
+  <text x="820" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Review</text>
+  <text x="820" y="150" text-anchor="middle" font-size="10" fill="#52616a">End of pilot</text>
+  <text x="820" y="170" text-anchor="middle" font-size="9" fill="#85939b">Verify together,</text>
+  <text x="820" y="186" text-anchor="middle" font-size="9" fill="#85939b">decide next steps</text>
   <line x1="195" y1="110" x2="485" y2="110" stroke="#52616a" stroke-width="1.5" marker-end="url(#pj-arrow)"/>
   <line x1="515" y1="110" x2="805" y2="110" stroke="#52616a" stroke-width="1.5" marker-end="url(#pj-arrow)"/>
 </svg>
+
 
           </div>
           <div style="margin-top: 24px; border: 1px solid var(--hairline); border-radius: 8px; padding: 24px; background: var(--surface);">
@@ -1042,6 +1038,9 @@
             <details><summary>Do I need cryptocurrency? What is Hedera?</summary><p>Hedera is a public blockchain network, a shared digital ledger that no single company controls. It has its own cryptocurrency called HBAR, which pays a tiny fee (a fraction of a cent) each time we record a fingerprint.</p><p><strong>You never need to buy, hold, or think about cryptocurrency.</strong> We cover all network fees during your pilot. If you continue afterward, your agreement will spell out who pays. There is no wallet to set up and nothing to manage.</p><p>We use a public network because the proof needs to live somewhere independent. If we kept it in our own database, you would have to trust us. On a public ledger, anyone can check the proof without trusting anyone.</p></details>
             <details><summary>What if someone leaves or we lose a key?</summary><p>We set things up so no single person holds all the power. If someone leaves, their access is removed and replaced. If a key is lost, the remaining key holders can still sign, and we help you create a replacement. Your old proofs keep working.</p></details>
             <details><summary>What happens if a check fails?</summary><p>You will see a clear NO MATCH with both fingerprints shown side by side. This means the file changed since it was recorded, even slightly. Often it is innocent, like re-saving a file or converting formats. Nothing is automatically reported to anyone outside your firm. Your team checks what changed using the history Enoch keeps.</p></details>
+            <details><summary>Can anyone figure out what I recorded?</summary><p>No. The public fingerprint cannot be turned back into your document. But two things are visible: when you recorded something (the timestamp), and, if your document is very short and guessable like the word "approved," someone who guesses correctly could confirm it. We recommend including enough detail in each record to make guessing impractical.</p></details>
+            <details><summary>Should I record everything or just some things?</summary><p>That is your call, but be consistent. Enoch proves what you recorded. It cannot prove what you did not. If you only record some things, someone could later ask why. We suggest writing down a simple rule for what gets recorded and sticking to it.</p></details>
+            <details><summary>Is there a gap between when something happens and when it is protected?</summary><p>Yes. There is a short window, usually minutes, between when Enoch captures an event and when its fingerprint reaches the public ledger. During that window, someone with deep access to your systems could theoretically change the record before it is sealed. We are upfront about this because it matters. Once anchored, the record is tamper-evident.</p></details>
             <details><summary>What happens if you go out of business?</summary><p>Your records stay with you, and old fingerprints remain checkable on the public ledger without us.</p></details>
             <details><summary>Can I delete things?</summary><p>Yes. You can delete your local records under your own retention rules. The public fingerprint stays, but it reveals nothing about the record.</p></details>
             <details><summary>What if a record changes?</summary><p>A correction becomes a new record that replaces the old one, sealed separately. The original stays visible, so the full history is preserved. If a record changes without a proper correction, the fingerprint will not match, which is exactly what the system is designed to catch.</p></details>
