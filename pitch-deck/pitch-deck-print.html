@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Enoch — Investor Deck (Private)</title>
+<style>
+  @page {
+    size: letter landscape;
+    margin: 0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #121a1e;
+    background: #ffffff;
+  }
+  .page {
+    width: 11in;
+    height: 8.5in;
+    padding: 0.9in 1in;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: avoid; }
+  .kicker {
+    font-family: "Courier New", monospace;
+    font-size: 10pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    color: #6b7a82;
+    margin-bottom: 28pt;
+  }
+  h1 {
+    font-size: 44pt;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 18pt;
+  }
+  h2 {
+    font-size: 28pt;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20pt;
+    max-width: 9in;
+  }
+  p, li {
+    font-size: 13pt;
+    line-height: 1.55;
+    margin-bottom: 10pt;
+    max-width: 8.5in;
+  }
+  ul, ol { padding-left: 22pt; margin-bottom: 12pt; }
+  li { margin-bottom: 8pt; }
+  .lede { font-size: 16pt; color: #52616a; margin-bottom: 18pt; }
+  .tagline {
+    font-family: "Courier New", monospace;
+    font-size: 10pt;
+    color: #6b7a82;
+    margin-top: 20pt;
+    line-height: 1.6;
+  }
+  .cols { display: table; width: 100%; margin-top: 10pt; }
+  .col { display: table-cell; width: 50%; vertical-align: top; padding-right: 24pt; }
+  .edition { border: 1pt solid #d8dcd8; border-radius: 6pt; padding: 18pt; }
+  .edition h3 { font-size: 16pt; margin-bottom: 10pt; }
+  .edition p { font-size: 12pt; color: #52616a; }
+  .steps { list-style: none; padding: 0; counter-reset: step; }
+  .steps li { counter-increment: step; padding-left: 44pt; position: relative; margin-bottom: 14pt; }
+  .steps li::before {
+    content: "0" counter(step);
+    position: absolute;
+    left: 0; top: 2pt;
+    font-family: "Courier New", monospace;
+    font-size: 10pt;
+    color: #6b7a82;
+    border: 1pt solid #d8dcd8;
+    border-radius: 3pt;
+    padding: 3pt 6pt;
+  }
+  .ask-box {
+    border: 2pt solid #121a1e;
+    border-radius: 8pt;
+    padding: 28pt;
+    margin: 20pt 0;
+    text-align: center;
+    max-width: 5in;
+  }
+  .ask-box .amount { font-size: 48pt; font-weight: 700; }
+  .pagenum {
+    position: absolute;
+    bottom: 0.5in;
+    right: 1in;
+    font-family: "Courier New", monospace;
+    font-size: 9pt;
+    color: #aeb8b2;
+  }
+  .priv {
+    position: absolute;
+    bottom: 0.5in;
+    left: 1in;
+    font-family: "Courier New", monospace;
+    font-size: 9pt;
+    color: #aeb8b2;
+    letter-spacing: 1pt;
+  }
+  /* CSS variables for the embedded architecture diagram SVG */
+  :root {
+    --paper: #f5f6f4;
+    --surface: #ffffff;
+    --ink: #121a1e;
+    --muted: #52616a;
+    --faint: #85939b;
+    --hairline: #d8dcd8;
+    --navy: #08111a;
+    --on-dark: #edf3f0;
+    --on-dark-muted: #9db1aa;
+    --on-dark-faint: #6d837c;
+    --verify: #17714f;
+    --accent: #2b6cb0;
+  }
+  .page svg { width: 100%; height: auto; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="kicker">SEC. 01 &mdash; Cover</div>
+  <h1>Enoch</h1>
+  <p class="lede">Trust as a Service (TaaS): tamper-evident records for regulated enterprises.</p>
+  <p class="tagline">Andrew St. Bernard, Founder &middot; The Good Code Company &middot; Toronto, Canada<br/>enoch.goodcode.ca</p>
+  <div class="pagenum">01 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 02 &mdash; Problem</div>
+  <h2>Regulated firms live and die by record integrity.</h2>
+  <p>Law firms, medical practices, accountants, notaries, and NGOs face audits, disputes, and compliance reviews where they must prove records are complete and unaltered.</p>
+  <ul>
+    <li>Enterprise content systems are built and priced for large corporations</li>
+    <li>Manual processes (printed logs, spreadsheets, email archives) cannot prove a record was never changed</li>
+    <li>Generic cloud storage offers no tamper-evidence guarantees</li>
+  </ul>
+  <p>When a regulator, court, or client asks &ldquo;prove this record is authentic,&rdquo; small firms have no affordable answer.</p>
+  <div class="pagenum">02 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 03 &mdash; Solution</div>
+  <h2>Enoch: Trust as a Service. Private data, public proof.</h2>
+  <p class="lede">Tamper-evident event logging and documentation archiving for regulated enterprises.</p>
+  <ul>
+    <li>Customer events and documents stay private in their own systems</li>
+    <li>Cryptographic hashes and trusted timestamps anchor to the Hedera public network via the Hedera Consensus Service</li>
+    <li>Anyone can independently verify a record was never altered, without seeing its contents</li>
+  </ul>
+  <p>No new database to migrate to. No records leave customer control. Just proof.</p>
+  <div class="pagenum">03 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 04 &mdash; How it works</div>
+  <h2>Seven stages, one trust boundary.</h2>
+  <ol class="steps">
+    <li><strong>Sources.</strong> Eight types feed the system: Staff, Associates, Management, Stakeholders (customers, clients, members), Internal systems, External systems, Documentation, Devices. Most flow both ways.</li>
+    <li><strong>Bridge modules.</strong> Custom connectors per source type, drawn from an ever-growing module library. Companies use only what they need.</li>
+    <li><strong>Classification.</strong> Auto-recognition plus customer policy routes each item to archive, available data, or event log.</li>
+    <li><strong>Private Hedera.</strong> Each customer gets a private, permissioned Hedera instance. Contents stay inside the customer boundary, customer-controlled.</li>
+    <li><strong>Attestation.</strong> Intelligent batching (time plus volume plus priority) submits hashes to the public ledger. Only proofs cross, never contents.</li>
+    <li><strong>Verify.</strong> Browser-based verifier checks any record against the public anchor. Match or no match, no trust in Enoch required.</li>
+    <li><strong>Key custody.</strong> Multi-key with multi-sig (M-of-N), customer-held.</li>
+  </ol>
+  <div class="pagenum">04 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 05 &mdash; Architecture</div>
+  <h2>How the pieces connect.</h2>
+  <div style="border: 1pt solid #d8dcd8; border-radius: 6pt; overflow: hidden; background: #ffffff; margin: 12pt 0; padding: 8pt;">
+<svg viewBox="-90 0 2100 900" role="img" aria-label="Enoch system architecture diagram" id="diagram">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="context-stroke" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- ============ TRUST BOUNDARY ============ -->
+  <rect x="290" y="60" width="1310" height="780" rx="12" fill="none" stroke="var(--faint)" stroke-width="2" stroke-dasharray="14 8" opacity="0.6"/>
+  <text x="310" y="92" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3" fill="var(--muted)">PRIVATE</text>
+
+  <text x="1660" y="92" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3" fill="var(--muted)">PUBLIC</text>
+  <text x="1660" y="118" font-size="12" fill="var(--muted)">No private data here.</text>
+  <text x="1660" y="136" font-size="12" fill="var(--muted)">Verification hashes only.</text>
+
+  <!-- ============ SOURCES (8 independent) ============ -->
+  <g id="sources" font-family="IBM Plex Sans, sans-serif">
+    <!-- Staff -->
+    <g class="source" data-key="staff">
+      <rect x="40" y="120" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="154" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">Staff</text>
+    </g>
+    <!-- Associates -->
+    <g class="source" data-key="associates">
+      <rect x="40" y="208" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="242" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">Associates</text>
+    </g>
+    <!-- Management -->
+    <g class="source" data-key="management">
+      <rect x="40" y="296" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="330" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">Management</text>
+    </g>
+    <!-- Stakeholders -->
+    <g class="source" data-key="stakeholders">
+      <rect x="40" y="384" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="412" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Stakeholders</text>
+      <text x="140" y="430" text-anchor="middle" font-size="11" fill="var(--muted)">customers &middot; clients &middot; members</text>
+    </g>
+    <!-- Internal systems -->
+    <g class="source" data-key="internalSystems">
+      <rect x="40" y="472" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="506" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">Internal systems</text>
+    </g>
+    <!-- External systems -->
+    <g class="source" data-key="externalSystems">
+      <rect x="40" y="560" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="594" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">External systems</text>
+    </g>
+    <!-- Documentation -->
+    <g class="source" data-key="documentation">
+      <rect x="40" y="648" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="682" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">Documentation</text>
+    </g>
+    <!-- Devices -->
+    <g class="source" data-key="devices">
+      <rect x="40" y="736" width="200" height="56" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="140" y="770" text-anchor="middle" font-size="17" font-weight="600" fill="var(--ink)">Devices</text>
+    </g>
+  </g>
+  <text x="40" y="110" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2" fill="var(--muted)">SOURCES</text>
+
+  <!-- ============ BRIDGE MODULES ============ -->
+  <g id="bridges">
+    <rect x="340" y="330" width="220" height="240" rx="10" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
+    <text x="450" y="365" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="var(--ink)">Bridge modules</text>
+    <text x="450" y="390" text-anchor="middle" font-size="13" fill="var(--muted)">custom APIs &amp; microservices</text>
+    <text x="450" y="420" text-anchor="middle" font-size="13" fill="var(--muted)">per source type</text>
+    <text x="450" y="470" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--faint)">pluggable &middot; growing library</text>
+    <text x="450" y="540" text-anchor="middle" font-size="13" fill="var(--muted)">send &harr; receive</text>
+  </g>
+
+  <!-- ============ MODULE LIBRARY (satellite) ============ -->
+  <g id="moduleLibrary">
+    <rect x="340" y="120" width="220" height="110" rx="10" fill="none" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="8 5"/>
+    <text x="450" y="158" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="600" fill="var(--ink)">Module library</text>
+    <text x="450" y="182" text-anchor="middle" font-size="12" fill="var(--muted)">ever-growing &middot; updated</text>
+    <text x="450" y="202" text-anchor="middle" font-size="12" fill="var(--muted)">optimized add-ons</text>
+  </g>
+  <!-- library -> bridges connector -->
+  <line x1="450" y1="230" x2="450" y2="330" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- ============ CLASSIFICATION ============ -->
+  <g id="classification">
+    <rect x="660" y="360" width="220" height="180" rx="10" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
+    <text x="770" y="395" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="var(--ink)">Classification</text>
+    <text x="770" y="425" text-anchor="middle" font-size="13" fill="var(--muted)">auto-recognition</text>
+    <text x="770" y="447" text-anchor="middle" font-size="13" fill="var(--muted)">+ customer policy</text>
+    <text x="770" y="485" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--faint)">archive &middot; available &middot; event log</text>
+  </g>
+
+  <!-- ============ PRIVATE HEDERA ============ -->
+  <g id="privateHedera">
+    <rect x="980" y="300" width="260" height="300" rx="12" fill="var(--navy)" />
+    <text x="1110" y="345" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="21" font-weight="700" fill="var(--on-dark)">Private Hedera</text>
+    <text x="1110" y="372" text-anchor="middle" font-size="14" fill="var(--on-dark-muted)">permissioned instance</text>
+    <text x="1110" y="400" text-anchor="middle" font-size="14" fill="var(--on-dark-muted)">per customer</text>
+    <text x="1110" y="460" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--on-dark-faint)">contents stay inside</text>
+    <text x="1110" y="482" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--on-dark-faint)">customer-controlled</text>
+    <text x="1110" y="540" text-anchor="middle" font-size="13" fill="var(--on-dark-muted)">multi-cloud &middot; multi-server</text>
+    <text x="1110" y="562" text-anchor="middle" font-size="13" fill="var(--on-dark-muted)">or hybrid deployment</text>
+  </g>
+
+  <!-- ============ KEY CUSTODY ============ -->
+  <g id="keyCustody">
+    <rect x="980" y="140" width="260" height="100" rx="8" fill="none" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="8 5"/>
+    <text x="1110" y="172" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600" fill="var(--ink)">Key custody</text>
+    <text x="1110" y="196" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--muted)">multi-key &middot; multi-sig (M-of-N)</text>
+    <text x="1110" y="216" text-anchor="middle" font-size="12" fill="var(--muted)">customer-held</text>
+  </g>
+  <line x1="1110" y1="240" x2="1110" y2="300" stroke="var(--faint)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- ============ ATTESTATION SERVICE ============ -->
+  <g id="attestation">
+    <rect x="1340" y="360" width="220" height="180" rx="10" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
+    <text x="1450" y="395" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="var(--ink)">Attestation</text>
+    <text x="1450" y="420" text-anchor="middle" font-size="13" fill="var(--muted)">intelligent batching</text>
+    <text x="1450" y="447" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--faint)">time + volume + priority</text>
+    <text x="1450" y="490" text-anchor="middle" font-size="13" fill="var(--muted)">hashes only cross</text>
+  </g>
+
+  <!-- ============ PUBLIC LEDGER ============ -->
+  <g id="publicLedger">
+    <rect x="1660" y="360" width="220" height="180" rx="10" fill="var(--surface)" stroke="var(--verify)" stroke-width="2"/>
+    <text x="1770" y="395" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="var(--ink)">Public ledger</text>
+    <text x="1770" y="425" text-anchor="middle" font-size="13" fill="var(--muted)">Hedera mainnet</text>
+    <text x="1770" y="447" text-anchor="middle" font-size="13" fill="var(--muted)">Consensus Service</text>
+    <text x="1770" y="490" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--verify)">hashes + timestamps</text>
+  </g>
+
+  <!-- ============ VERIFIER (return path) ============ -->
+  <g id="verifier">
+    <rect x="1660" y="640" width="220" height="130" rx="10" fill="none" stroke="var(--verify)" stroke-width="2"/>
+    <text x="1770" y="678" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="17" font-weight="700" fill="var(--ink)">Verifier</text>
+    <text x="1770" y="702" text-anchor="middle" font-size="12" fill="var(--muted)">browser-based &middot; anyone</text>
+    <text x="1770" y="724" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--verify)">MATCH / NO MATCH</text>
+    <text x="1770" y="744" text-anchor="middle" font-size="11" fill="var(--muted)">no trust in Enoch required</text>
+  </g>
+
+  <!-- ============ 3 APIs ============ -->
+  <g id="apis" font-family="IBM Plex Sans, sans-serif">
+    <g>
+      <rect x="980" y="660" width="120" height="80" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <text x="1040" y="692" text-anchor="middle" font-size="14" font-weight="600" fill="var(--ink)">Audit</text>
+      <text x="1040" y="712" text-anchor="middle" font-size="11" fill="var(--muted)">API</text>
+    </g>
+    <g>
+      <rect x="1050" y="660" width="120" height="80" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5" transform="translate(70,0)"/>
+      <text x="1180" y="692" text-anchor="middle" font-size="14" font-weight="600" fill="var(--ink)">Query</text>
+      <text x="1180" y="712" text-anchor="middle" font-size="11" fill="var(--muted)">API</text>
+    </g>
+    <g>
+      <rect x="980" y="660" width="120" height="80" rx="8" fill="var(--surface)" stroke="var(--hairline)" stroke-width="1.5" transform="translate(280,0)"/>
+      <text x="1320" y="692" text-anchor="middle" font-size="14" font-weight="600" fill="var(--ink)">Reports</text>
+      <text x="1320" y="712" text-anchor="middle" font-size="11" fill="var(--muted)">auto-generated</text>
+    </g>
+  </g>
+  <text x="980" y="650" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="2" fill="var(--muted)">SECURE OUTBOUND APIs</text>
+
+  <!-- ============ STATIC CONNECTORS ============ -->
+  <g stroke="var(--hairline)" stroke-width="2" fill="none">
+    <!-- bridges -> classification -->
+    <line x1="560" y1="450" x2="660" y2="450"/>
+    <!-- classification -> private hedera -->
+    <line x1="880" y1="450" x2="980" y2="450"/>
+    <!-- private hedera -> attestation (both private) -->
+    <line x1="1240" y1="450" x2="1340" y2="450"/>
+    <!-- attestation -> public ledger (hashes cross the trust boundary) -->
+    <line x1="1560" y1="450" x2="1660" y2="450" stroke="var(--verify)" stroke-width="2.5"/>
+    <!-- public ledger -> verifier (query path) -->
+    <path d="M 1770 540 L 1770 640" stroke="var(--verify)" stroke-dasharray="8 5"/>
+    <!-- verifier return (conceptual loop back) -->
+    <path d="M 1660 705 L 1560 705 L 1560 480" stroke="var(--verify)" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.5"/>
+    <!-- private hedera -> APIs -->
+    <line x1="1040" y1="600" x2="1040" y2="660" stroke="var(--hairline)"/>
+    <line x1="1110" y1="600" x2="1180" y2="660" stroke="var(--hairline)"/>
+    <line x1="1180" y1="600" x2="1320" y2="660" stroke="var(--hairline)"/>
+  </g>
+  <g stroke="var(--accent)" stroke-width="1.5">
+    <line x1="1540" y1="298" x2="1596" y2="442"/>
+    <circle cx="1600" cy="446" r="3" fill="var(--accent)" stroke="none"/>
+  </g>
+  <text x="1500" y="288" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--accent)">hashes cross here</text>
+
+  <!-- particles layer (populated by JS) -->
+  <g id="particles"></g>
+</svg>
+
+  </div>
+  <p class="tagline">Eight sources &middot; bridge modules &middot; classification &middot; private Hedera &middot; attestation &middot; public ledger &middot; verify</p>
+  <div class="pagenum">05 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 06 &mdash; Editions</div>
+  <h2>Two ways to run Enoch.</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="edition">
+        <h3>Enterprise Version</h3>
+        <p>Pilot now. The Enoch team sets up the private instance, builds the integrations, deploys in the customer environment, and manages it day to day under SLA. For firms that want it handled.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="edition">
+        <h3>Community Version</h3>
+        <p>Upcoming. The same core system, published as open source. Completely self-managed, no SLA. For developers, researchers, and firms with in-house capability.</p>
+      </div>
+    </div>
+  </div>
+  <p class="tagline">A plain-language version of the site at enoch.goodcode.ca/simplify for non-technical decision-makers.</p>
+  <div class="pagenum">06 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 07 &mdash; Market</div>
+  <h2>The wedge is small firms with acute audit pain.</h2>
+  <ul>
+    <li>Law firms (5&ndash;50 lawyers), medical and dental practices, accounting firms</li>
+    <li>Notaries, NGOs, municipal government, construction, insurance</li>
+  </ul>
+  <p><strong>Expansion:</strong> upmarket to mid-market enterprise and government once the wedge is proven.</p>
+  <p><strong>Why Hedera wins here:</strong> every anchored record is a Consensus Service transaction. Enoch&rsquo;s growth is Hedera&rsquo;s transaction growth. Small-firm penetration on Hedera is near zero today.</p>
+  <div class="pagenum">07 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 08 &mdash; Business model</div>
+  <h2>Contracts for the handled, open source for the capable.</h2>
+  <ul>
+    <li><strong>Enterprise:</strong> annual contracts per deployment. Pilots convert to production subscriptions covering setup, integration, management, and SLA support.</li>
+    <li><strong>Community:</strong> open source, self-managed, no license fee. Drives adoption, developer mindshare, and Hedera transaction volume. Enterprise upsell path for firms that outgrow self-management.</li>
+  </ul>
+  <p>Pricing calibrated to small-firm budgets, not enterprise seat licenses. Unit economics to be validated in pilots.</p>
+  <div class="pagenum">08 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 09 &mdash; Status</div>
+  <h2>Honest pre-launch.</h2>
+  <ul>
+    <li>Pre-product, pre-revenue. Solo founder, bootstrapped, $0 raised.</li>
+    <li>Founded October 15, 2023 (The Good Code Company, Ontario). Incorporating federally as The Good Code Company Inc.</li>
+    <li>MVP in build; pilot-ready architecture. Website live: enoch.goodcode.ca</li>
+    <li>Grant applications submitted: NLNet, OTF, Emergent Ventures, MongoDB, Airtable, AssemblyAI, ElevenLabs, Hashgraph Association, Algolia, Together AI, Backblaze, Sentry, Afore Alpha, Awesome Foundation, Rogers Cybersecure Catalyst</li>
+  </ul>
+  <p>No traction invented. No customers yet. No certifications or audits yet.</p>
+  <div class="pagenum">09 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 10 &mdash; Why now</div>
+  <h2>Four forces, one window.</h2>
+  <ol class="steps">
+    <li><strong>Regulatory pressure is increasing.</strong> Data integrity requirements tighten across legal, medical, and financial sectors.</li>
+    <li><strong>Hedera is enterprise-ready.</strong> The Consensus Service is the trust anchor; Enoch makes it usable without blockchain expertise.</li>
+    <li><strong>The small-firm gap is open.</strong> Enterprise vendors price out the firms that need this most.</li>
+    <li><strong>Open source is the wedge.</strong> A community edition builds trust in a product whose value proposition is trust.</li>
+  </ol>
+  <div class="pagenum">10 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+<div class="page">
+  <div class="kicker">SEC. 11 &mdash; The ask</div>
+  <h2>Raising to reach pilots.</h2>
+  <div class="ask-box">
+    <div class="amount">$300,000</div>
+  </div>
+  <ul>
+    <li>Complete the MVP (private instance, microservice bridges, browser verifier)</li>
+    <li>Run 3&ndash;5 pilot deployments with wedge firms</li>
+    <li>Publish the Community Version open source</li>
+    <li>Validate unit economics and pilot-to-contract conversion</li>
+  </ul>
+  <p class="tagline">Andrew St. Bernard &middot; enoch@goodcode.ca &middot; enoch.goodcode.ca &middot; Toronto, Canada</p>
+  <div class="pagenum">11 / 11</div>
+  <div class="priv">PRIVATE &middot; DO NOT DISTRIBUTE</div>
+</div>
+
+</body>
+</html>
