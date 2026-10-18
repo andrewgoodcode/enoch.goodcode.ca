@@ -159,18 +159,11 @@
       .button.nav-cta { min-height: 38px; padding: 7px 14px; color: var(--on-dark); border-color: var(--line-dark-strong); }
       .button.nav-cta:hover { border-color: var(--verify-on-dark); color: var(--verify-on-dark); }
       .nav-toggle {
-        display: inline-block;
-        min-height: 38px;
-        padding: 7px 14px;
-        border: 1px solid var(--line-dark-strong);
-        border-radius: 999px;
-        color: var(--on-dark-muted);
-        text-decoration: none;
-        font-size: 14px;
-        line-height: 1.4;
-        white-space: nowrap;
+        opacity: 0.7;
+        margin-right: 3px;
+        transition: opacity 160ms ease, border-color 160ms ease, color 160ms ease;
       }
-      .nav-toggle:hover { border-color: var(--verify-on-dark); color: var(--verify-on-dark); }
+      .nav-toggle:hover { opacity: 1; }
 
       /* ---------- Hero ---------- */
       .hero {
@@ -728,7 +721,7 @@
           <a href="#editions">Editions</a>
           <a href="#limitations">Limitations</a>
           <a href="#faq">FAQ</a>
-          <a class="nav-toggle" href="/simplify/">Simplified</a>
+          <a class="button nav-cta nav-toggle" href="/simplify/">Simplified</a>
           <a class="button nav-cta" href="mailto:enoch@goodcode.ca?subject=Enoch%20inquiry">Contact</a>
         </div>
       </div>
