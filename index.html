@@ -1151,11 +1151,11 @@
         <div class="container">
           <div class="section-head"><span class="section-index">SEC. 06</span><p class="section-label">Pilot program</p></div>
           <h2 id="pilot-title">What a pilot looks like</h2>
-          <p class="section-intro">A focused 4 to 8 week engagement covering one record type. Scope, duration, and cost agreed in writing before anything starts.</p>
+          <p class="section-intro">A 4 to 8 week setup followed by a 3 to 12 month pilot (depending on company size), covering one record type. Scope, duration, and cost agreed in writing before anything starts.</p>
           <div class="pilot-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin: 32px 0;">
             <article class="edition">
               <h3>Duration and scope</h3>
-              <p>A pilot typically runs 4 to 8 weeks and covers one record type, the one that causes the most audit pain.</p>
+              <p>A pilot starts with a 4 to 8 week setup period, followed by a 3 to 12 month pilot run (depending on company size), covering one record type, the one that causes the most audit pain.</p>
             </article>
             <article class="edition">
               <h3>Who does what</h3>
@@ -1175,30 +1175,26 @@
       <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#52616a" stroke-width="1.5"/>
     </marker>
   </defs>
-  <!-- timeline line -->
   <line x1="60" y1="110" x2="940" y2="110" stroke="#d8dcd8" stroke-width="2"/>
-  <!-- Week 1-2: Setup -->
   <circle cx="180" cy="110" r="10" fill="#08111a"/>
-  <text x="180" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#121a1e">Setup</text>
-  <text x="180" y="150" text-anchor="middle" font-size="10" fill="#52616a">Weeks 1-2</text>
-  <text x="180" y="170" text-anchor="middle" font-size="9" fill="#85939b">We install Enoch</text>
-  <text x="180" y="186" text-anchor="middle" font-size="9" fill="#85939b">in your environment</text>
-  <!-- Week 3-6: Capture -->
+  <text x="180" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Setup</text>
+  <text x="180" y="150" text-anchor="middle" font-size="10" fill="#52616a">Weeks 1-8</text>
+  <text x="180" y="170" text-anchor="middle" font-size="9" fill="#85939b">We install Enoch,</text>
+  <text x="180" y="186" text-anchor="middle" font-size="9" fill="#85939b">build connectors</text>
   <circle cx="500" cy="110" r="10" fill="#08111a"/>
-  <text x="500" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#121a1e">Capture</text>
-  <text x="500" y="150" text-anchor="middle" font-size="10" fill="#52616a">Weeks 3-6</text>
-  <text x="500" y="170" text-anchor="middle" font-size="9" fill="#85939b">Records flow in,</text>
+  <text x="500" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Pilot run</text>
+  <text x="500" y="150" text-anchor="middle" font-size="10" fill="#52616a">Months 3-12</text>
+  <text x="500" y="170" text-anchor="middle" font-size="9" fill="#85939b">Records flow,</text>
   <text x="500" y="186" text-anchor="middle" font-size="9" fill="#85939b">proofs anchor daily</text>
-  <!-- Week 7-8: Review -->
   <circle cx="820" cy="110" r="10" fill="#17714f"/>
-  <text x="820" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="600" fill="#121a1e">Review</text>
-  <text x="820" y="150" text-anchor="middle" font-size="10" fill="#52616a">Weeks 7-8</text>
-  <text x="820" y="170" text-anchor="middle" font-size="9" fill="#85939b">Verify proofs together,</text>
+  <text x="820" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Review</text>
+  <text x="820" y="150" text-anchor="middle" font-size="10" fill="#52616a">End of pilot</text>
+  <text x="820" y="170" text-anchor="middle" font-size="9" fill="#85939b">Verify together,</text>
   <text x="820" y="186" text-anchor="middle" font-size="9" fill="#85939b">decide next steps</text>
-  <!-- arrows -->
   <line x1="195" y1="110" x2="485" y2="110" stroke="#52616a" stroke-width="1.5" marker-end="url(#pj-arrow)"/>
   <line x1="515" y1="110" x2="805" y2="110" stroke="#52616a" stroke-width="1.5" marker-end="url(#pj-arrow)"/>
 </svg>
+
 
             </div>
             <div style="border: 1px solid var(--hairline); border-radius: 8px; padding: 20px; background: var(--surface);">
@@ -1388,6 +1384,10 @@
               <details><summary>What if we lose a signing key?</summary><p>With multi-signature, losing one key does not block signing as long as the threshold (M) is still met. Lost keys are revoked and replaced. We strongly recommend secure backups and a documented recovery procedure, which we help you set up during the pilot.</p></details>
               <details><summary>What does a verification mismatch look like?</summary><p>The verifier shows NO MATCH with the expected and computed fingerprints side by side. A mismatch means the record differs from what was anchored, even by one character. Common innocent causes include re-saving a file, format migration, or metadata changes. The verifier does not accuse; it reports. Your team investigates using the version history Enoch maintains.</p></details>
               <details><summary>Who is alerted on a mismatch?</summary><p>Alerting rules are configured per customer during setup. Typically the record owner and a designated reviewer are notified. Enoch does not automatically notify external parties.</p></details>
+              <details><summary>Can someone guess my record from its public fingerprint?</summary><p>A fingerprint (SHA-256 hash) cannot be reversed to reveal the original. However, if a record is very short and predictable (for example, a single word like "approved"), someone who guesses the content could compute the same fingerprint and confirm their guess. This is a known property of hashing, not a flaw in Enoch specifically. For sensitive short records, we recommend including enough context to make guessing impractical. What also remains visible is timing: anyone can see when your firm anchors, though not what was anchored.</p></details>
+              <details><summary>What metadata is visible on the public ledger?</summary><p>Each anchor includes the fingerprint, a timestamp, and the signer's public key identifier. No record contents, filenames, or descriptions are published. An observer can see that your firm anchored something at a given time, but cannot tell what it was.</p></details>
+              <details><summary>If I only record some things, could the gaps be used against me?</summary><p>Enoch proves what was recorded and when. It cannot prove that something unrecorded happened, or that a gap means nothing occurred. If you record selectively, be aware that an auditor or opposing party could ask why certain records exist and others do not. We recommend a clear, written policy for what gets recorded, applied consistently. Enoch does not decide this for you.</p></details>
+              <details><summary>How long between an event and its anchor? Could someone alter a record before it is anchored?</summary><p>Yes, this is the pre-anchor window, and it is real. Between the moment an event is captured and the moment its fingerprint reaches the public ledger, a privileged insider with access to your systems could theoretically alter or delete the record. The window is typically minutes (depending on batching settings), not hours, but it is not zero. Enoch does not yet include tamper detection for this window. Capture is designed to happen as close to the source event as possible, and connector activity itself is logged, but a determined administrator could interfere before anchoring. This limitation will be documented in detail before launch.</p></details>
             </section>
 
             <section class="faq-group" aria-labelledby="faq-legal"><h3 id="faq-legal"><span class="n">E</span>LEGAL, REGULATORY, AND VENDOR STATUS</h3>
