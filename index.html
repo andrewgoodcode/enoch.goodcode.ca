@@ -1423,9 +1423,14 @@
           <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20pilot%20discussion">Discuss a pilot
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <div class="kit-signup" style="margin-top: 16px; max-width: 400px;">
+          <div class="kit-signup" style="margin-top: 16px;">
             <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Not yet? Keep me posted.</p>
-            <script async data-uid="5c564387ac" src="https://the-good-code-company.kit.com/5c564387ac/index.js"></script>
+            <form class="kit-custom-form" novalidate>
+              <input type="email" name="email_address" placeholder="Email Address" required autocomplete="email"
+                style="border: 1px solid var(--line-dark-strong); background: transparent; color: var(--on-dark);" />
+              <button type="submit" class="button secondary"><span class="btn-text">Sign up</span></button>
+            </form>
+            <p class="kit-feedback" role="status" aria-live="polite"></p>
           </div>
           </div>
         </div>
@@ -1627,6 +1632,87 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+
+<style>
+.kit-custom-form { display: flex; gap: 8px; max-width: 400px; }
+.kit-custom-form input[type="email"] {
+  flex: 1; padding: 10px 14px; border-radius: 6px; font-size: 14px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.kit-custom-form input[type="email"]:focus { outline: none; box-shadow: 0 0 0 2px rgba(23,113,79,.25); }
+.kit-custom-form button[type="submit"] { white-space: nowrap; transition: opacity .2s ease; }
+.kit-custom-form button[type="submit"]:disabled { opacity: .6; cursor: wait; }
+.kit-custom-form button[type="submit"].loading .btn-text::after {
+  content: ''; display: inline-block; width: 12px; height: 12px; margin-left: 8px;
+  border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%;
+  animation: kit-spin .7s linear infinite; vertical-align: -1px;
+}
+@keyframes kit-spin { to { transform: rotate(360deg); } }
+.kit-feedback {
+  margin-top: 10px; font-size: 14px; max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .3s ease, opacity .3s ease, margin-top .3s ease;
+}
+.kit-feedback.show { max-height: 60px; opacity: 1; }
+.kit-feedback.success { color: #17714f; }
+.kit-feedback.error { color: #b3261e; }
+.kit-signup { animation: kit-fade-in .5s ease; }
+@keyframes kit-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+<script>
+(function() {
+  document.querySelectorAll('.kit-custom-form').forEach(function(form) {
+    var emailInput = form.querySelector('input[type="email"]');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var btnText = submitBtn.querySelector('.btn-text');
+    var feedback = form.parentElement.querySelector('.kit-feedback');
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = emailInput.value.trim();
+      
+      // Basic email validation
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showFeedback('Please enter a valid email address.', 'error');
+        emailInput.focus();
+        return;
+      }
+      
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      btnText.textContent = 'Subscribing...';
+      hideFeedback();
+      
+      var formData = new FormData();
+      formData.append('email_address', email);
+      
+      fetch('https://app.kit.com/forms/10064828/subscriptions', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).then(function() {
+        // Success - show confirmation
+        form.style.display = 'none';
+        showFeedback('Success! Check your email to confirm your subscription.', 'success');
+      }).catch(function() {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+        btnText.textContent = 'Sign up';
+        showFeedback('Something went wrong. Please try again.', 'error');
+      });
+    });
+    
+    function showFeedback(msg, type) {
+      feedback.textContent = msg;
+      feedback.className = 'kit-feedback show ' + type;
+    }
+    
+    function hideFeedback() {
+      feedback.className = 'kit-feedback';
+    }
+  });
 })();
 </script>
 </body>
