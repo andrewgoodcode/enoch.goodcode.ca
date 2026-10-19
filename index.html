@@ -1661,6 +1661,47 @@
 @keyframes kit-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 </style>
 <script>
+var FREE_EMAIL_DOMAINS = [
+  // Google
+  'gmail.com', 'googlemail.com',
+  // Yahoo
+  'yahoo.com', 'yahoo.co.uk', 'yahoo.ca', 'yahoo.com.au', 'yahoo.fr', 'yahoo.de', 'yahoo.es', 'yahoo.it',
+  'yahoo.co.jp', 'yahoo.com.br', 'yahoo.com.mx', 'yahoo.com.ar', 'yahoo.co.in', 'ymail.com', 'rocketmail.com',
+  // Microsoft
+  'outlook.com', 'outlook.fr', 'outlook.de', 'outlook.es', 'outlook.it', 'outlook.com.au', 'outlook.co.uk',
+  'hotmail.com', 'hotmail.co.uk', 'hotmail.fr', 'hotmail.de', 'hotmail.es', 'hotmail.it', 'hotmail.com.au',
+  'hotmail.ca', 'live.com', 'live.co.uk', 'live.fr', 'live.de', 'live.ca', 'live.com.au', 'msn.com',
+  // Apple
+  'icloud.com', 'me.com', 'mac.com',
+  // AOL
+  'aol.com', 'aol.co.uk', 'aol.fr', 'aol.de',
+  // Proton
+  'protonmail.com', 'proton.me', 'pm.me', 'protonmail.ch',
+  // Tutanota
+  'tutanota.com', 'tutanota.de', 'tutamail.com', 'tuta.io', 'keemail.me',
+  // Zoho
+  'zoho.com', 'zohomail.com',
+  // Yandex
+  'yandex.com', 'yandex.ru', 'yandex.ua', 'yandex.kz', 'yandex.by', 'ya.ru',
+  // Mail.ru
+  'mail.ru', 'inbox.ru', 'list.ru', 'bk.ru', 'internet.ru',
+  // GMX / Web.de / 1&1
+  'gmx.com', 'gmx.net', 'gmx.de', 'gmx.fr', 'gmx.es', 'web.de', 'online.de',
+  // Other major free providers
+  'mail.com', 'email.com', 'usa.com', 'post.com',
+  'lycos.com', 'mail.lycos.com',
+  'rediffmail.com',
+  'sina.com', 'sina.cn', '163.com', '126.com', 'qq.com', 'foxmail.com',
+  'naver.com', 'daum.net', 'hanmail.net',
+  // Disposable / temporary email services
+  '10minutemail.com', '10minutemail.net', 'temp-mail.org', 'tempmail.com',
+  'guerrillamail.com', 'guerrillamail.net', 'guerrillamail.org', 'sharklasers.com',
+  'mailinator.com', 'yopmail.com', 'dispostable.com', 'fakeinbox.com',
+  'throwawaymail.com', 'trashmail.com', 'trashmail.net', 'tempmail.net',
+  'getnada.com', 'mohmal.com', 'emailondeck.com', 'mytemp.email',
+  'tempail.com', 'tmpmail.org', 'tmpmail.net', 'maildrop.cc', 'mailnesia.com',
+  'mintemail.com', 'mytrashmail.com', 'spamgourmet.com', 'mailexpire.com'
+];
 (function() {
   document.querySelectorAll('.kit-custom-form').forEach(function(form) {
     var emailInput = form.querySelector('input[type="email"]');
@@ -1675,6 +1716,14 @@
       // Basic email validation
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         showFeedback('Please enter a valid email address.', 'error');
+        emailInput.focus();
+        return;
+      }
+
+      // Block free email providers, require a company domain
+      var domain = email.split('@')[1].toLowerCase();
+      if (FREE_EMAIL_DOMAINS.indexOf(domain) !== -1) {
+        showFeedback('Please use your company email address.', 'error');
         emailInput.focus();
         return;
       }
