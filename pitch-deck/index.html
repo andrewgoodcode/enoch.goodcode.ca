@@ -67,7 +67,7 @@
     border-radius: 999px;
     background: color-mix(in srgb, var(--surface) 82%, transparent);
     backdrop-filter: blur(14px);
-    animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards;
+    animation: hero-in 0.4s ease-out 0s;
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: .08em;
@@ -91,9 +91,11 @@
     background: var(--surface);
     border: 1px solid var(--hairline);
     border-radius: 8px;
-    padding: clamp(32px, 5vw, 72px);
-    min-height: 520px;
+    padding: 56px clamp(32px, 5vw, 72px);
+    min-height: 440px;
   }
+  /* Round 3: slide 5 (architecture diagram) keeps the taller card. */
+  .slide[data-n="5"] { min-height: 520px; }
   .slide.active { display: flex; flex-direction: column; justify-content: center; }
   .slide .kicker {
     font-family: var(--font-mono);
@@ -138,14 +140,10 @@
     font-weight: 400;
     opacity: 0.75;
   }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  /* Round 2: slide headline reaches full opacity within 400ms (16px rise). */
-  @keyframes hero-rise {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* Round 3: slides are visible by default; animate transform only so cold first paint is never blank. */
+  @keyframes hero-in {
+    from { transform: translateY(16px); }
+    to { transform: translateY(0); }
   }
   /* Round 2: the architecture label is #E5E7EB on the dark panel; keep it ink on the light surface. */
   @media (prefers-color-scheme: light) {
@@ -174,10 +172,10 @@
     .topbar span:nth-child(2), .topbar a { display: none; }
     .topbar .nav-burger { display: inline-flex; }
   }
-  .slide.active .kicker { animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards; }
-  .slide.active h1, .slide.active h2 { animation: hero-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards; }
-  .slide.active .lede, .slide.active p { animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards; }
-  .slide.active ul, .slide.active .cols, .slide.active .steps, .slide.active .ask-box, .slide.active .tagline { animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards; }
+  .slide.active .kicker { animation: hero-in 0.4s ease-out 0s; }
+  .slide.active h1, .slide.active h2 { animation: hero-in 0.4s ease-out 0s; }
+  .slide.active .lede, .slide.active p { animation: hero-in 0.4s ease-out 0.15s; }
+  .slide.active ul, .slide.active .cols, .slide.active .steps, .slide.active .ask-box, .slide.active .tagline { animation: hero-in 0.4s ease-out 0.3s; }
   @media (prefers-reduced-motion: reduce) {
     .topbar, .slide.active .kicker, .slide.active h1, .slide.active h2,
     .slide.active .lede, .slide.active p, .slide.active ul, .slide.active .cols,
