@@ -125,25 +125,18 @@
       /* ---------- Nav: the instrument's header strip ---------- */
       .site-nav {
         position: sticky;
-        top: 12px;
+        top: 0;
         z-index: 20;
-        background: transparent;
-        border-bottom: 0;
+        background: var(--navy);
+        border-bottom: 1px solid var(--line-dark);
       }
       .nav-inner {
         min-height: 68px;
-        width: fit-content;
-        max-width: calc(100% - 24px);
-        margin: 12px auto 0;
         padding: 0 18px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 28px;
-        border: 1px solid var(--line-dark);
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--navy) 82%, transparent);
-        backdrop-filter: blur(14px);
       }
       .wordmark {
         display: inline-flex;
@@ -835,7 +828,7 @@
       }
       .pilot-card h3 { margin-bottom: 4px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
       .pilot-card p { margin-bottom: 0; color: var(--muted); }
-      /* Round 3: anchor targets clear the sticky nav pill; closing number reads at full contrast; FAQ-to-closing gap matches section rhythm. */
+      /* Round 3: anchor targets clear the sticky nav bar; closing number reads at full contrast; FAQ-to-closing gap matches section rhythm. */
       section[id], h2[id] { scroll-margin-top: 96px; }
       .closing .section-head { opacity: 0.9; }
       .closing .section-index { color: var(--on-dark); }
