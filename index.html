@@ -766,13 +766,16 @@
         to { opacity: 1; transform: translateY(0); }
       }
       .anim { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards; }
-      /* Round 2: hero headline reaches full opacity within 400ms; sub and CTA done by 600ms. */
-      .site-nav.anim, .hero .anim { animation-duration: 0.4s; }
-      @keyframes hero-rise {
-        from { opacity: 0; transform: translateY(16px); }
-        to { opacity: 1; transform: translateY(0); }
+      /* Round 3: hero is visible by default; animate transform only so cold first paint is never blank. */
+      @keyframes hero-in {
+        from { transform: translateY(16px); }
+        to { transform: translateY(0); }
       }
-      .hero h1.anim { animation: hero-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards; }
+      .site-nav.anim { animation: hero-in 0.4s ease-out 0s; }
+      .hero .kicker.anim { animation: hero-in 0.4s ease-out 0s; }
+      .hero h1.anim { animation: hero-in 0.4s ease-out 0s; }
+      .hero .lede.anim, .hero .brand-story.anim { animation: hero-in 0.4s ease-out 0.15s; }
+      .hero .hero-actions.anim { animation: hero-in 0.4s ease-out 0.3s; }
       /* Round 2: widen the How-it-works intro so the right side is not void. */
       #how-it-works .section-intro { max-width: 980px; }
       /* Round 2: the architecture label is #E5E7EB on the dark panel; keep it ink on the light surface. */
@@ -832,6 +835,12 @@
       }
       .pilot-card h3 { margin-bottom: 4px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
       .pilot-card p { margin-bottom: 0; color: var(--muted); }
+      /* Round 3: anchor targets clear the sticky nav pill; closing number reads at full contrast; FAQ-to-closing gap matches section rhythm. */
+      section[id], h2[id] { scroll-margin-top: 96px; }
+      .closing .section-head { opacity: 0.9; }
+      .closing .section-index { color: var(--on-dark); }
+      #faq { padding-bottom: 56px; }
+      .closing { padding-top: 56px; }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         *, *::before, *::after { transition-duration: 0.01ms !important; }
