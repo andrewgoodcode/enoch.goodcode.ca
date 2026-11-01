@@ -491,7 +491,7 @@
         font-weight: 600;
         letter-spacing: -0.01em;
       }
-      .block p { max-width: 780px; margin-bottom: 0; color: var(--on-dark-muted); }
+      .block p { max-width: 1080px; margin-bottom: 0; color: var(--on-dark-muted); }
       .block-receipt {
         margin-top: 16px;
         font-family: var(--font-mono);
@@ -509,7 +509,7 @@
         gap: 28px;
       }
       .architecture-note strong { color: var(--verify-on-dark); font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; }
-      .architecture-note p { max-width: 780px; margin: 0; color: #d5e0da; }
+      .architecture-note p { max-width: 1080px; margin: 0; color: #d5e0da; }
 
       /* Proof model: spec sheet rows */
       .spec { margin-top: 46px; border-top: 1px solid var(--hairline-strong); }
@@ -766,7 +766,44 @@
         to { opacity: 1; transform: translateY(0); }
       }
       .anim { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards; }
-      .word-reveal .w { opacity: 0.16; transition: opacity 0.2s linear; }
+      /* Round 2: hero headline reaches full opacity within 400ms; sub and CTA done by 600ms. */
+      .site-nav.anim, .hero .anim { animation-duration: 0.4s; }
+      @keyframes hero-rise {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .hero h1.anim { animation: hero-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards; }
+      /* Round 2: widen the How-it-works intro so the right side is not void. */
+      #how-it-works .section-intro { max-width: 980px; }
+      /* Round 2: the architecture label is #E5E7EB on the dark panel; keep it ink on the light surface. */
+      @media (prefers-color-scheme: light) {
+        #diagram .arch-label { fill: var(--ink); }
+      }
+      /* Round 2: hamburger menu below 1024px. */
+      .nav-burger { display: none; align-items: center; justify-content: center; flex-direction: column; gap: 6px; width: 44px; height: 44px; padding: 0; background: transparent; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; cursor: pointer; }
+      .nav-burger span { display: block; width: 20px; height: 2px; background: var(--on-dark); transition: transform 0.3s ease; }
+      body.nav-open .nav-burger span:first-child { transform: translateY(4px) rotate(45deg); }
+      body.nav-open .nav-burger span:last-child { transform: translateY(-4px) rotate(-45deg); }
+      .nav-menu { position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; padding: 96px 32px 48px; background: #0a141d; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+      body.nav-open .nav-menu { opacity: 1; visibility: visible; }
+      .nav-menu > * { opacity: 0; transform: translateY(12px); transition: opacity 0.35s ease, transform 0.35s ease; }
+      body.nav-open .nav-menu > * { opacity: 1; transform: none; }
+      body.nav-open .nav-menu > *:nth-child(1) { transition-delay: 0.05s; }
+      body.nav-open .nav-menu > *:nth-child(2) { transition-delay: 0.1s; }
+      body.nav-open .nav-menu > *:nth-child(3) { transition-delay: 0.15s; }
+      body.nav-open .nav-menu > *:nth-child(4) { transition-delay: 0.2s; }
+      body.nav-open .nav-menu > *:nth-child(5) { transition-delay: 0.25s; }
+      body.nav-open .nav-menu > *:nth-child(6) { transition-delay: 0.3s; }
+      body.nav-open .nav-menu > *:nth-child(7) { transition-delay: 0.35s; }
+      .nav-menu > a:not(.button) { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 600; letter-spacing: -0.01em; color: var(--on-dark); text-decoration: none; padding: 10px 0; }
+      .nav-menu > a.button { margin-top: 14px; }
+      body.nav-open { overflow: hidden; }
+      body.nav-open .site-nav { z-index: 50; }
+      @media (max-width: 1024px) {
+        .nav-links { display: none; }
+        .nav-burger { display: inline-flex; }
+      }
+      .word-reveal .w { opacity: 0.45; transition: opacity 0.2s linear; }
       .sheet {
         position: relative;
         z-index: 1;
@@ -781,18 +818,19 @@
         border: 1px solid var(--hairline-strong);
         background: var(--surface);
         border-radius: 12px;
-        padding: 26px 30px;
+        padding: 12px 24px;
       }
       .pilot-card .p-phase {
         display: block;
-        margin-bottom: 10px;
+        line-height: 1.2;
+        margin-bottom: 6px;
         font-family: var(--font-mono);
         font-size: 11px;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--faint);
       }
-      .pilot-card h3 { margin-bottom: 8px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+      .pilot-card h3 { margin-bottom: 4px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
       .pilot-card p { margin-bottom: 0; color: var(--muted); }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -800,6 +838,7 @@
         .anim { animation: none !important; }
         .word-reveal .w { opacity: 1 !important; }
         .pilot-card { transform: none !important; }
+        .nav-menu, .nav-menu > *, .nav-burger span { transition: none !important; }
       }
     </style>
   <!-- Google tag (gtag.js) -->
@@ -830,19 +869,30 @@
           <a class="button nav-cta nav-toggle" href="/simplify/">Simplified</a>
           <a class="button nav-cta" href="mailto:enoch@goodcode.ca?subject=Enoch%20inquiry">Contact</a>
         </div>
+        <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span></button>
       </div>
     </nav>
+
+    <div class="nav-menu" id="nav-menu">
+      <a href="#how-it-works">How it works</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#editions">Editions</a>
+      <a href="#limitations">Limitations</a>
+      <a href="#faq">FAQ</a>
+      <a class="button nav-cta" href="/simplify/">Simplified</a>
+      <a class="button nav-cta" href="mailto:enoch@goodcode.ca?subject=Enoch%20inquiry">Contact</a>
+    </div>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="container">
           <div class="hero-grid">
             <div class="hero-copy">
-              <p class="kicker anim" style="--d:0.1s">TRUST AS A SERVICE (TaaS) <b>/</b> IN DEVELOPMENT</p>
-              <h1 id="hero-title" class="anim" style="--d:0.2s">Tamper-evident records for regulated enterprises</h1>
-              <p class="lede anim" style="--d:0.3s">Enoch runs as a private Hedera instance inside the customer's own environment, bridged to the public mainnet. Record contents stay in systems the customer controls, whether local or in the cloud; only cryptographic proofs cross to the public ledger. Any later change to a record is detectable, by anyone, without asking Enoch.</p>
-              <p class="brand-story anim" style="--d:0.4s">Named for Enoch, the ancient scribe and keeper of records.</p>
-              <div class="hero-actions anim" style="--d:0.5s">
+              <p class="kicker anim" style="--d:0s">TRUST AS A SERVICE (TaaS) <b>/</b> IN DEVELOPMENT</p>
+              <h1 id="hero-title" class="anim" style="--d:0s">Tamper-evident records for regulated enterprises</h1>
+              <p class="lede anim" style="--d:0.1s">Enoch runs as a private Hedera instance inside the customer's own environment, bridged to the public mainnet. Record contents stay in systems the customer controls, whether local or in the cloud; only cryptographic proofs cross to the public ledger. Any later change to a record is detectable, by anyone, without asking Enoch.</p>
+              <p class="brand-story anim" style="--d:0.15s">Named for Enoch, the ancient scribe and keeper of records.</p>
+              <div class="hero-actions anim" style="--d:0.15s">
                 <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20pilot%20discussion">Discuss a pilot
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -1017,8 +1067,8 @@
     <text x="1110" y="345" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="21" font-weight="700" fill="var(--on-dark)">Private Hedera</text>
     <text x="1110" y="372" text-anchor="middle" font-size="14" fill="var(--on-dark-muted)">permissioned instance</text>
     <text x="1110" y="400" text-anchor="middle" font-size="14" fill="var(--on-dark-muted)">per customer</text>
-    <text x="1110" y="460" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--on-dark-faint)">contents stay inside</text>
-    <text x="1110" y="482" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--on-dark-faint)">customer-controlled</text>
+    <text x="1110" y="460" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#E5E7EB">contents stay inside</text>
+    <text x="1110" y="482" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#E5E7EB">customer-controlled</text>
     <text x="1110" y="540" text-anchor="middle" font-size="13" fill="var(--on-dark-muted)">multi-cloud &middot; multi-server</text>
     <text x="1110" y="562" text-anchor="middle" font-size="13" fill="var(--on-dark-muted)">or hybrid deployment</text>
   </g>
@@ -1077,7 +1127,7 @@
       <text x="1320" y="712" text-anchor="middle" font-size="11" fill="var(--muted)">auto-generated</text>
     </g>
   </g>
-  <text x="980" y="650" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="2" fill="var(--muted)">SECURE OUTBOUND APIs</text>
+  <text x="980" y="650" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2" fill="#E5E7EB" class="arch-label">SECURE OUTBOUND APIs</text>
 
   <!-- ============ STATIC CONNECTORS ============ -->
   <g stroke="var(--hairline)" stroke-width="2" fill="none">
@@ -1265,17 +1315,17 @@
               <h3>Setup</h3>
               <p>We install Enoch, build connectors.</p>
             </article>
-            <article class="pilot-card" style="top: 120px; transform: scale(0.98);">
+            <article class="pilot-card" style="top: 168px; transform: scale(0.98);">
               <span class="p-phase">Phase 02 · Months 3-12</span>
               <h3>Pilot run</h3>
               <p>Records flow, proofs anchor daily.</p>
             </article>
-            <article class="pilot-card" style="top: 144px; transform: scale(0.99);">
+            <article class="pilot-card" style="top: 240px; transform: scale(0.99);">
               <span class="p-phase">Phase 03 · End of pilot</span>
               <h3>Review</h3>
               <p>Verify together, decide next steps.</p>
             </article>
-            <article class="pilot-card" style="top: 168px;">
+            <article class="pilot-card" style="top: 312px;">
               <span class="p-phase">Phase 04</span>
               <h3>Decision</h3>
               <p>You keep your records, keys, and data. Anchored fingerprints stay verifiable indefinitely. No lock-in.</p>
@@ -1500,7 +1550,7 @@
       <section class="closing" aria-labelledby="closing-title">
         <div class="container closing-inner">
           <div>
-            <div class="section-head"><span class="section-index">13</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label" style="color:var(--on-dark-muted)">Build trust into the record</p></div>
+            <div class="section-head"><span class="section-index">12</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label" style="color:var(--on-dark-muted)">Build trust into the record</p></div>
             <h2 id="closing-title">Make your audit trail independently verifiable</h2>
             <p>Enoch is in development. We are discussing pilot requirements with regulated teams that can define a specific record-integrity problem.</p>
           </div>
@@ -1760,7 +1810,7 @@
             p = Math.max(0, Math.min(1, p));
             for (var i = 0; i < n; i++) {
               var wp = Math.max(0, Math.min(1, p * n - i));
-              spans[i].style.opacity = (0.16 + 0.84 * wp).toFixed(2);
+              spans[i].style.opacity = (0.45 + 0.55 * wp).toFixed(2);
             }
             if (p >= 1) {
               done = true;
@@ -1912,6 +1962,33 @@ var FREE_EMAIL_DOMAINS = [
     function hideFeedback() {
       feedback.className = 'kit-feedback';
     }
+  });
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  /* Round 2: mobile hamburger menu. */
+  var burger = document.querySelector('.nav-burger');
+  var menu = document.getElementById('nav-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    document.body.classList.toggle('nav-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+  menu.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (a) setOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) setOpen(false);
   });
 })();
 </script>
