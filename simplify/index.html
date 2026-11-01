@@ -71,6 +71,7 @@
         --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
         --font-body: "IBM Plex Sans", sans-serif;
         --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+        --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
       }
 
       /* Above 1280px viewport the layout may spread out, capped at 1800px. */
@@ -105,7 +106,7 @@
         color: var(--ink);
         font-family: var(--font-body);
         font-size: 16px;
-        line-height: 1.6;
+        line-height: 1.55;
         text-rendering: optimizeLegibility;
         font-variant-numeric: tabular-nums;
       }
@@ -124,18 +125,25 @@
       /* ---------- Nav: the instrument's header strip ---------- */
       .site-nav {
         position: sticky;
-        top: 0;
+        top: 12px;
         z-index: 20;
-        background: color-mix(in srgb, var(--navy) 94%, transparent);
-        border-bottom: 1px solid var(--line-dark);
-        backdrop-filter: blur(14px);
+        background: transparent;
+        border-bottom: 0;
       }
       .nav-inner {
         min-height: 68px;
+        width: fit-content;
+        max-width: calc(100% - 24px);
+        margin: 12px auto 0;
+        padding: 0 18px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 28px;
+        border: 1px solid var(--line-dark);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--navy) 82%, transparent);
+        backdrop-filter: blur(14px);
       }
       .wordmark {
         display: inline-flex;
@@ -207,16 +215,17 @@
         overflow: hidden;
         background: var(--navy);
         color: var(--on-dark);
-        padding: 88px 0 0;
+        padding: 88px 0 48px;
       }
       .hero::before {
         content: "";
         position: absolute;
         inset: 0;
         background-image:
+          var(--grain),
           linear-gradient(rgba(237,243,240,0.045) 1px, transparent 1px),
           linear-gradient(90deg, rgba(237,243,240,0.045) 1px, transparent 1px);
-        background-size: 56px 56px;
+        background-size: 160px 160px, 56px 56px, 56px 56px;
         mask-image: linear-gradient(to bottom, black, transparent 88%);
       }
       .hero-grid {
@@ -239,13 +248,13 @@
         margin-bottom: 24px;
         max-width: 720px;
         font-family: var(--font-display);
-        font-size: clamp(42px, 5.6vw, 68px);
-        line-height: 1.04;
-        letter-spacing: -0.02em;
+        font-size: clamp(42px, 5.6vw, 72px);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
         font-weight: 600;
       }
       .hero-copy > p.lede {
-        max-width: 600px;
+        max-width: 34rem;
         margin-bottom: 18px;
         color: var(--on-dark-muted);
         font-size: clamp(17px, 1.9vw, 20px);
@@ -376,20 +385,27 @@
 
       /* ---------- Sections ---------- */
       .section { padding: 104px 0; }
-      .section-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 20px; }
+      .section-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; opacity: 0.5; }
       .section-index {
         font-family: var(--font-mono);
-        font-size: 12.5px;
+        font-size: 11px;
         font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
         color: var(--verify);
         white-space: nowrap;
+      }
+      .section-sep {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--faint);
       }
       .section-label {
         margin: 0;
         font-family: var(--font-mono);
-        font-size: 12.5px;
+        font-size: 11px;
         font-weight: 500;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--muted);
       }
@@ -405,7 +421,7 @@
         font-weight: 600;
       }
       .section-intro { max-width: 680px; color: var(--muted); font-size: 17.5px; }
-      .on-dark { background: var(--navy); color: var(--on-dark); }
+      .on-dark { background: var(--navy); background-image: var(--grain); color: var(--on-dark); }
       .on-dark .section-intro { color: var(--on-dark-muted); }
 
       /* Problem */
@@ -683,12 +699,12 @@
       details p { max-width: 740px; margin: -2px 44px 22px 0; color: var(--muted); }
 
       /* Closing + footer */
-      .closing { padding: 92px 0; background: var(--navy); color: var(--on-dark); }
+      .closing { padding: 92px 0; background: var(--navy); background-image: var(--grain); color: var(--on-dark); }
       .closing-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 48px; }
       .closing h2 { margin-bottom: 14px; font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
       .closing p { max-width: 640px; margin-bottom: 0; color: var(--on-dark-muted); font-size: 17.5px; }
       .closing .button { min-width: 180px; }
-      footer { background: var(--navy); color: var(--on-dark-muted); border-top: 1px solid var(--line-dark); }
+      footer { background: var(--navy); background-image: var(--grain); color: var(--on-dark-muted); border-top: 1px solid var(--line-dark); }
       .footer-inner { min-height: 88px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 13px; }
       .footer-inner .mono { font-size: 11.5px; color: var(--on-dark-faint); }
       footer a { display: inline-block; padding: 8px 0; }
@@ -709,10 +725,10 @@
 
       @media (max-width: 720px) {
         .container { width: min(100% - 32px, var(--max)); }
-        .nav-inner { min-height: 62px; }
+        .nav-inner { min-height: 62px; padding: 0 14px; }
         .nav-links > a:not(.button), .nav-status, .wordmark .tag { display: none; }
         .hero { padding-top: 62px; }
-        h1 { font-size: clamp(38px, 11.5vw, 54px); }
+        h1 { font-size: clamp(38px, 11.5vw, 54px); line-height: 0.95; letter-spacing: -0.03em; }
         .hero-actions .button { flex: 1 1 150px; }
         .receipt-body { padding: 18px; }
         .receipt-head { padding: 14px 18px; }
@@ -739,9 +755,53 @@
 
       .simple-diagram { margin: 40px 0 8px; border: 1px solid var(--hairline); border-radius: 8px; background: var(--surface); padding: 28px 24px 12px; }
       .simple-diagram svg { width: 100%; height: auto; display: block; }
+
+      /* ---------- Design polish (branch design-polish) ---------- */
+      .accent-serif {
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 400;
+        opacity: 0.75;
+      }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .anim { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards; }
+      .word-reveal .w { opacity: 0.16; transition: opacity 0.2s linear; }
+      .sheet {
+        position: relative;
+        z-index: 1;
+        background: var(--paper);
+        border-radius: 48px 48px 0 0;
+        margin-top: -48px;
+      }
+      .status-band.sheet { background: var(--surface-alt); }
+      .pilot-stack { margin-top: 32px; display: grid; gap: 16px; }
+      .pilot-card {
+        position: sticky;
+        border: 1px solid var(--hairline-strong);
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 26px 30px;
+      }
+      .pilot-card .p-phase {
+        display: block;
+        margin-bottom: 10px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--faint);
+      }
+      .pilot-card h3 { margin-bottom: 8px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+      .pilot-card p { margin-bottom: 0; color: var(--muted); }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         *, *::before, *::after { transition-duration: 0.01ms !important; }
+        .anim { animation: none !important; }
+        .word-reveal .w { opacity: 1 !important; }
+        .pilot-card { transform: none !important; }
       }
     </style>
   <!-- Google tag (gtag.js) -->
@@ -756,11 +816,11 @@
   </head>
   <body>
     <a class="skip-link" href="#top">Skip to content</a>
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav anim" style="--d:0s" aria-label="Primary navigation">
       <div class="container nav-inner">
         <a class="wordmark" href="#top" aria-label="Enoch, back to page start">
           <span class="name">ENOCH</span>
-          <span class="tag">private data · public proof</span>
+          <span class="tag">private data · <em class="accent-serif">public proof</em></span>
         </a>
         <div class="nav-links">
           <span class="nav-status" aria-hidden="true">PUBLIC LEDGER / RECORDING</span>
@@ -780,11 +840,11 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-copy">
-              <p class="kicker">TRUST AS A SERVICE (TaaS) <b>/</b> IN DEVELOPMENT</p>
-              <h1 id="hero-title">Proof your records haven't been changed</h1>
-              <p class="lede">Enoch is Trust as a Service: proof your records are untouched. It runs inside your own environment as your private record system, connected to Hedera, a public digital ledger. Your actual records stay in your systems; only a digital fingerprint of each one is recorded publicly. If anyone changes a record later, the fingerprint won't match, and anyone can check that without asking us.</p>
-              <p class="brand-story">Named for Enoch, the ancient scribe and keeper of records.</p>
-              <div class="hero-actions">
+              <p class="kicker anim" style="--d:0.1s">TRUST AS A SERVICE (TaaS) <b>/</b> IN DEVELOPMENT</p>
+              <h1 id="hero-title" class="anim" style="--d:0.2s">Proof your records haven't been changed</h1>
+              <p class="lede anim" style="--d:0.3s">Enoch is Trust as a Service: proof your records are untouched. It runs inside your own environment as your private record system, connected to Hedera, a public digital ledger. Your actual records stay in your systems; only a digital fingerprint of each one is recorded publicly. If anyone changes a record later, the fingerprint won't match, and anyone can check that without asking us.</p>
+              <p class="brand-story anim" style="--d:0.4s">Named for Enoch, the ancient scribe and keeper of records.</p>
+              <div class="hero-actions anim" style="--d:0.5s">
                 <a class="button primary" href="mailto:enoch@goodcode.ca?subject=Enoch%20pilot%20discussion">Discuss a pilot
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -830,12 +890,12 @@
         </div>
       </section>
 
-      <section class="section" id="what-it-does" aria-labelledby="what-title">
+      <section class="section sheet" id="what-it-does" aria-labelledby="what-title">
         <div class="container problem-grid">
           <div class="problem-copy">
-            <div class="section-head"><span class="section-index">SEC. 01</span><p class="section-label">What Enoch does</p></div>
+            <div class="section-head"><span class="section-index">01</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label">What Enoch does</p></div>
             <h2 id="what-title">Your records, with proof nobody changed them</h2>
-            <p class="section-intro">Every day your firm creates records that matter: client files, financial records, approvals, correspondence. Most live in systems where someone with access could quietly change them, and you would never know. Enoch gives you a way to prove, months or years later, that a record is exactly what it was when you sealed it.</p>
+            <p class="section-intro" data-word-reveal>Every day your firm creates records that matter: client files, financial records, approvals, correspondence. Most live in systems where someone with access could quietly change them, and you would never know. Enoch gives you a way to prove, months or years later, that a record is exactly what it was when you sealed it.</p>
             <p class="section-intro" style="margin-top: 12px;">Built for Canadian regulated firms: law practices answering to the Law Society, clinics handling PHIPA-protected health records, accountants preparing CRA-facing workpapers.</p>
             <p class="fig-note">FIG. 01 · A timestamp in a database is just a claim.<br>A sealed fingerprint is evidence.</p>
           </div>
@@ -858,7 +918,7 @@
 
       <section class="section on-dark" id="how-it-works" aria-labelledby="how-title">
         <div class="container">
-          <div class="section-head"><span class="section-index">SEC. 02</span><p class="section-label">How it works</p></div>
+          <div class="section-head"><span class="section-index">02</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label">How it works</p></div>
           <h2 id="how-title">Three steps, no trust required</h2>
           <p class="section-intro">Enoch works alongside the systems you already use. It does not replace them.</p>
 
@@ -929,9 +989,9 @@
         </div>
       </section>
 
-      <section class="section" id="pilot" aria-labelledby="pilot-title">
+      <section class="section sheet" id="pilot" aria-labelledby="pilot-title">
         <div class="container">
-          <div class="section-head"><span class="section-index">SEC. 03</span><p class="section-label">Pilot</p></div>
+          <div class="section-head"><span class="section-index">03</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label">Pilot</p></div>
           <h2 id="pilot-title">What a pilot looks like</h2>
           <p class="section-intro">Enoch is in development, so the first firms to use it will do so as pilot partners. Here is what that means in practice.</p>
           <div class="problem-list">
@@ -948,35 +1008,27 @@
               <div><h3>Agreed in writing first</h3><p>Scope, duration, and cost are agreed with each firm in writing before anything starts. When the pilot ends, you keep your records and your keys, and old fingerprints stay checkable.</p></div>
             </article>
           </div>
-          <div style="margin-top: 32px; border: 1px solid var(--hairline); border-radius: 8px; padding: 24px; background: var(--surface);">
-            <p style="font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px;">What the weeks look like</p>
-            <svg viewBox="0 0 1000 220" role="img" aria-label="Pilot journey timeline" style="width:100%;height:auto;display:block">
-  <defs>
-    <marker id="pj-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#52616a" stroke-width="1.5"/>
-    </marker>
-  </defs>
-  <line x1="60" y1="110" x2="940" y2="110" stroke="#d8dcd8" stroke-width="2"/>
-  <circle cx="180" cy="110" r="10" fill="#08111a"/>
-  <text x="180" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Setup</text>
-  <text x="180" y="150" text-anchor="middle" font-size="10" fill="#52616a">Weeks 1-8</text>
-  <text x="180" y="170" text-anchor="middle" font-size="9" fill="#85939b">We install Enoch,</text>
-  <text x="180" y="186" text-anchor="middle" font-size="9" fill="#85939b">build connectors</text>
-  <circle cx="500" cy="110" r="10" fill="#08111a"/>
-  <text x="500" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Pilot run</text>
-  <text x="500" y="150" text-anchor="middle" font-size="10" fill="#52616a">Months 3-12</text>
-  <text x="500" y="170" text-anchor="middle" font-size="9" fill="#85939b">Records flow,</text>
-  <text x="500" y="186" text-anchor="middle" font-size="9" fill="#85939b">proofs anchor daily</text>
-  <circle cx="820" cy="110" r="10" fill="#17714f"/>
-  <text x="820" y="70" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#121a1e">Review</text>
-  <text x="820" y="150" text-anchor="middle" font-size="10" fill="#52616a">End of pilot</text>
-  <text x="820" y="170" text-anchor="middle" font-size="9" fill="#85939b">Verify together,</text>
-  <text x="820" y="186" text-anchor="middle" font-size="9" fill="#85939b">decide next steps</text>
-  <line x1="195" y1="110" x2="485" y2="110" stroke="#52616a" stroke-width="1.5" marker-end="url(#pj-arrow)"/>
-  <line x1="515" y1="110" x2="805" y2="110" stroke="#52616a" stroke-width="1.5" marker-end="url(#pj-arrow)"/>
-</svg>
-
-
+          <div class="pilot-stack">
+            <article class="pilot-card" style="top: 96px; transform: scale(0.97);">
+              <span class="p-phase">Phase 01 · Weeks 1-8</span>
+              <h3>Setup</h3>
+              <p>We install Enoch, build connectors.</p>
+            </article>
+            <article class="pilot-card" style="top: 120px; transform: scale(0.98);">
+              <span class="p-phase">Phase 02 · Months 3-12</span>
+              <h3>Pilot run</h3>
+              <p>Records flow, proofs anchor daily.</p>
+            </article>
+            <article class="pilot-card" style="top: 144px; transform: scale(0.99);">
+              <span class="p-phase">Phase 03 · End of pilot</span>
+              <h3>Review</h3>
+              <p>Verify together, decide next steps.</p>
+            </article>
+            <article class="pilot-card" style="top: 168px;">
+              <span class="p-phase">Phase 04</span>
+              <h3>Decision</h3>
+              <p>When the pilot ends, you keep your records and your keys, and old fingerprints stay checkable.</p>
+            </article>
           </div>
           <div style="margin-top: 24px; border: 1px solid var(--hairline); border-radius: 8px; padding: 24px; background: var(--surface);">
             <p style="font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px;">How we connect to your software</p>
@@ -1025,7 +1077,7 @@
 
       <section class="section on-dark" id="limitations" aria-labelledby="limitations-title">
         <div class="container">
-          <div class="section-head"><span class="section-index">SEC. 04</span><p class="section-label">Honest limitations</p></div>
+          <div class="section-head"><span class="section-index">04</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label">Honest limitations</p></div>
           <h2 id="limitations-title">What Enoch does not prove</h2>
           <p class="section-intro">Sealing narrows the trust problem. It does not remove every source of error or fraud.</p>
           <div class="limits-grid">
@@ -1037,10 +1089,10 @@
         </div>
       </section>
 
-      <section class="section" id="faq" aria-labelledby="faq-title">
+      <section class="section sheet" id="faq" aria-labelledby="faq-title">
         <div class="container faq-layout">
           <div class="faq-intro">
-            <div class="section-head"><span class="section-index">SEC. 05</span><p class="section-label">Questions and direct answers</p></div>
+            <div class="section-head"><span class="section-index">05</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label">Questions and direct answers</p></div>
             <h2 id="faq-title">Questions, answered plainly</h2>
             <p class="section-intro">Straight answers, no jargon. If your question is not here, write to us.</p>
           </div>
@@ -1081,7 +1133,7 @@
       <section class="closing" aria-labelledby="closing-title">
         <div class="container closing-inner">
           <div>
-            <div class="section-head"><span class="section-index">SEC. 07</span><p class="section-label" style="color:var(--on-dark-muted)">Talk to us</p></div>
+            <div class="section-head"><span class="section-index">07</span><span class="section-sep" aria-hidden="true">/</span><p class="section-label" style="color:var(--on-dark-muted)">Talk to us</p></div>
             <h2 id="closing-title">Tell us about your records problem</h2>
             <p>Enoch is in development. We are talking with small firms about pilot projects, starting with teams that can describe one specific records headache.</p>
           </div>
@@ -1117,6 +1169,70 @@
       (function () {
         var year = document.getElementById("year");
         if (year) year.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+
+    <script>
+      (function () {
+        'use strict';
+        /* Design polish: scroll-linked word reveal (item 2). No-op under
+           reduced motion or without IntersectionObserver; the paragraph
+           stays fully visible in every fallback case. */
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) return;
+        if (!('IntersectionObserver' in window)) return;
+        var targets = document.querySelectorAll('[data-word-reveal]');
+        if (!targets.length) return;
+        function split(el) {
+          var words = el.textContent.trim().split(/\s+/);
+          el.textContent = '';
+          words.forEach(function (w) {
+            var s = document.createElement('span');
+            s.className = 'w';
+            s.textContent = w;
+            el.appendChild(s);
+            el.appendChild(document.createTextNode(' '));
+          });
+          return el.querySelectorAll('.w');
+        }
+        targets.forEach(function (el) {
+          el.classList.add('word-reveal');
+          var spans = split(el);
+          var n = spans.length;
+          var done = false;
+          var listening = false;
+          function update() {
+            if (done) return;
+            var r = el.getBoundingClientRect();
+            var vh = window.innerHeight || document.documentElement.clientHeight;
+            /* progress 0 when the block first enters view, 1 when its top
+               reaches 35% of the viewport height */
+            var p = (vh - r.top) / (vh - vh * 0.35);
+            p = Math.max(0, Math.min(1, p));
+            for (var i = 0; i < n; i++) {
+              var wp = Math.max(0, Math.min(1, p * n - i));
+              spans[i].style.opacity = (0.16 + 0.84 * wp).toFixed(2);
+            }
+            if (p >= 1) {
+              done = true;
+              window.removeEventListener('scroll', onScroll, { passive: true });
+            }
+          }
+          function onScroll() { requestAnimationFrame(update); }
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) {
+                update();
+                if (!listening) {
+                  listening = true;
+                  window.addEventListener('scroll', onScroll, { passive: true });
+                }
+              }
+            });
+          }, { threshold: 0.15 });
+          io.observe(el);
+          update();
+        });
       })();
     </script>
 
