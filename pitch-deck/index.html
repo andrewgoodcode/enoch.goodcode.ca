@@ -67,7 +67,7 @@
     border-radius: 999px;
     background: color-mix(in srgb, var(--surface) 82%, transparent);
     backdrop-filter: blur(14px);
-    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards;
+    animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards;
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: .08em;
@@ -92,9 +92,9 @@
     border: 1px solid var(--hairline);
     border-radius: 8px;
     padding: clamp(32px, 5vw, 72px);
-    min-height: 60vh;
+    min-height: 520px;
   }
-  .slide.active { display: block; }
+  .slide.active { display: flex; flex-direction: column; justify-content: center; }
   .slide .kicker {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -142,19 +142,52 @@
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .slide.active .kicker { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards; }
-  .slide.active h1, .slide.active h2 { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards; }
-  .slide.active .lede, .slide.active p { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards; }
-  .slide.active ul, .slide.active .cols, .slide.active .steps, .slide.active .ask-box, .slide.active .tagline { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s backwards; }
+  /* Round 2: slide headline reaches full opacity within 400ms (16px rise). */
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  /* Round 2: the architecture label is #E5E7EB on the dark panel; keep it ink on the light surface. */
+  @media (prefers-color-scheme: light) {
+    #diagram .arch-label { fill: var(--ink); }
+  }
+  /* Round 2: the $300,000 ask figure stays ink in dark mode. */
+  @media (prefers-color-scheme: dark) {
+    .slide .ask-box .amount { color: var(--ink); }
+  }
+  /* Round 2: hamburger menu below 1024px. */
+  .topbar .nav-burger { display: none; align-items: center; justify-content: center; flex-direction: column; gap: 6px; width: 40px; height: 40px; padding: 0; background: transparent; border: 1px solid var(--hairline); border-radius: 8px; cursor: pointer; }
+  .topbar .nav-burger span { display: block; width: 20px; height: 2px; background: var(--ink); transition: transform 0.3s ease; }
+  body.nav-open .topbar .nav-burger span:first-child { transform: translateY(4px) rotate(45deg); }
+  body.nav-open .topbar .nav-burger span:last-child { transform: translateY(-4px) rotate(-45deg); }
+  .nav-menu { position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; padding: 96px 32px 48px; background: var(--navy); opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+  body.nav-open .nav-menu { opacity: 1; visibility: visible; }
+  .nav-menu > * { opacity: 0; transform: translateY(12px); transition: opacity 0.35s ease, transform 0.35s ease; }
+  body.nav-open .nav-menu > * { opacity: 1; transform: none; }
+  body.nav-open .nav-menu > *:nth-child(1) { transition-delay: 0.05s; }
+  body.nav-open .nav-menu > *:nth-child(2) { transition-delay: 0.1s; }
+  .nav-menu > a { display: block; font-family: var(--font-display); font-size: 30px; font-weight: 600; letter-spacing: -0.01em; color: var(--on-dark); text-decoration: none; padding: 10px 0; }
+  .nav-menu-note { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark-muted); }
+  body.nav-open { overflow: hidden; }
+  body.nav-open .topbar { z-index: 50; }
+  @media (max-width: 1024px) {
+    .topbar span:nth-child(2), .topbar a { display: none; }
+    .topbar .nav-burger { display: inline-flex; }
+  }
+  .slide.active .kicker { animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards; }
+  .slide.active h1, .slide.active h2 { animation: hero-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0s backwards; }
+  .slide.active .lede, .slide.active p { animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards; }
+  .slide.active ul, .slide.active .cols, .slide.active .steps, .slide.active .ask-box, .slide.active .tagline { animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards; }
   @media (prefers-reduced-motion: reduce) {
     .topbar, .slide.active .kicker, .slide.active h1, .slide.active h2,
     .slide.active .lede, .slide.active p, .slide.active ul, .slide.active .cols,
     .slide.active .steps, .slide.active .ask-box, .slide.active .tagline { animation: none; }
+    .nav-menu, .nav-menu > *, .nav-burger span { transition: none !important; }
   }
   @media (max-width: 720px) { .slide .cols { grid-template-columns: 1fr; } .topbar span:nth-child(2) { display: none; } }
   .slide .edition { border: 1px solid var(--hairline); border-radius: 6px; padding: 24px; }
   .slide .edition h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 12px; }
-  .slide .edition p { font-size: 16px; color: var(--muted); }
+  .slide .edition p { font-size: 16px; color: var(--ink); }
   .slide .steps { counter-reset: step; list-style: none; padding: 0; }
   .slide .steps li {
     counter-increment: step;
@@ -184,6 +217,7 @@
     font-family: var(--font-display);
     font-size: clamp(40px, 6vw, 72px);
     font-weight: 700;
+    color: #111827;
   }
   .controls {
     display: flex;
@@ -241,6 +275,12 @@
   <span class="brand">Enoch — Investor Deck</span>
   <span>Private &middot; Do not distribute</span>
   <a href="enoch-pitch-deck.pdf" download>Download PDF</a>
+  <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span></button>
+</div>
+
+<div class="nav-menu" id="nav-menu">
+  <a href="enoch-pitch-deck.pdf" download>Download PDF</a>
+  <p class="nav-menu-note">Private &middot; Do not distribute</p>
 </div>
 
 <main class="deck" id="deck">
@@ -390,8 +430,8 @@
     <text x="1110" y="345" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="21" font-weight="700" fill="var(--on-dark)">Private Hedera</text>
     <text x="1110" y="372" text-anchor="middle" font-size="14" fill="var(--on-dark-muted)">permissioned instance</text>
     <text x="1110" y="400" text-anchor="middle" font-size="14" fill="var(--on-dark-muted)">per customer</text>
-    <text x="1110" y="460" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--on-dark-faint)">contents stay inside</text>
-    <text x="1110" y="482" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--on-dark-faint)">customer-controlled</text>
+    <text x="1110" y="460" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#E5E7EB">contents stay inside</text>
+    <text x="1110" y="482" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#E5E7EB">customer-controlled</text>
     <text x="1110" y="540" text-anchor="middle" font-size="13" fill="var(--on-dark-muted)">multi-cloud &middot; multi-server</text>
     <text x="1110" y="562" text-anchor="middle" font-size="13" fill="var(--on-dark-muted)">or hybrid deployment</text>
   </g>
@@ -450,7 +490,7 @@
       <text x="1320" y="712" text-anchor="middle" font-size="11" fill="var(--muted)">auto-generated</text>
     </g>
   </g>
-  <text x="980" y="650" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="2" fill="var(--muted)">SECURE OUTBOUND APIs</text>
+  <text x="980" y="650" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2" fill="#E5E7EB" class="arch-label">SECURE OUTBOUND APIs</text>
 
   <!-- ============ STATIC CONNECTORS ============ -->
   <g stroke="var(--hairline)" stroke-width="2" fill="none">
@@ -595,6 +635,33 @@
   });
   var h = location.hash.match(/slide-(\d+)/);
   if (h) show(parseInt(h[1], 10) - 1);
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  /* Round 2: mobile hamburger menu. */
+  var burger = document.querySelector('.nav-burger');
+  var menu = document.getElementById('nav-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    document.body.classList.toggle('nav-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+  menu.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (a) setOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) setOpen(false);
+  });
 })();
 </script>
 </body>
